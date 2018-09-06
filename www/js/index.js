@@ -424,7 +424,7 @@ var phonegapApp = {
         }).done(function (rply){
             if (rply.status){
                 let ref = cordova.InAppBrowser.open(rply.url, '_blank', 'location=no');
-                ref.addEventListener('loadstart', function (event) {
+                ref.addEventListener('loadstop', function (event) {
                     ref.close();
                 })
             }
