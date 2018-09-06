@@ -424,7 +424,7 @@ var phonegapApp = {
         }).done(function (rply){
             if (rply.status){
                 downloader.init({ folder: "Susoma" });
-                downloader.get(rply.url)
+                downloader.get('http://susomaias.com/susoma/uploads/Wildlife.wmv')
             }
             else{
                 notificationCourseMissmach.open();
