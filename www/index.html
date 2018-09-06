@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!--
+  Customize this policy to fit your own app's needs. For more guidance, see:
+      https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+  Some notes:
+      * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+      * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+      * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+          * Enable inline JS: add 'unsafe-inline' to default-src
+  -->
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#423bb0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <title>Susoma</title>
+
+  <link rel="stylesheet" href="framework7/css/framework7.min.css">
+  <link rel="stylesheet" href="css/icons.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link rel="stylesheet" href="css/animate.css">
+</head>
+
+<body>
+  <div id="app">
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar"></div>
+    <!-- Left panel with reveal effect when hidden -->
+    <div class="panel panel-left panel-reveal">
+      <div class="view view-left">
+        <div class="page" data-name="index">
+          <div class="page-content">
+            <div class="card card-outline">
+              <div class="card-content card-content-padding">
+                <div class="list media-list">
+                  <ul>
+                    <li>
+                      <a href="/profile/" class="item-link item-content panel-close" data-view=".view-main">
+                        <div class="item-media"><img src="img/logouser.jpg" width="40" /></div>
+                        <div class="item-inner">
+                          <div class="item-title-row">My Downloads
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="card card-outline">
+              <div class="card-content card-content-padding">
+                <div class="list media-list">
+                  <ul>
+                    <li>
+                      <a href="/institute/" class="item-link item-content inset panel-close" data-view=".view-main">
+                        <div class="item-media"><img src="img/iconset/ins.png" width="30" /></div>
+                        <div class="item-inner">
+                          <div class="item-title-row">
+                            <div class="item-title">Institutes</div>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/course/" class="item-link item-content inset panel-close" data-view=".view-main">
+                        <div class="item-media"><img src="img/iconset/cou.png" width="30" /></div>
+                        <div class="item-inner">
+                          <div class="item-title-row">
+                            <div class="item-title">Course</div>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="card card-outline">
+              <div class="card-content card-content-padding">
+                <div class="list media-list">
+                  <ul>
+                    <li>
+                      <a href="/review/" class="item-link item-content inset panel-close" data-view=".view-main">
+                        <div class="item-media"><img src="img/iconset/rev.png" width="30" /></div>
+                        <div class="item-inner">
+                          <div class="item-title-row">
+                            <div class="item-title">Review</div>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/notification/" class="item-link item-content inset panel-close" data-view=".view-main">
+                        <div class="item-media"><img src="img/iconset/not.png" width="30" /></div>
+                        <div class="item-inner">
+                          <div class="item-title-row">
+                            <div class="item-title">Notification</div>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="card card-outline">
+              <div class="card-content card-content-padding">
+                <div class="list media-list">
+                  <ul>
+                    <li>
+                      <a href="/application/" class="item-link item-content inset panel-close" data-view=".view-main">
+                        <div class="item-media"><img src="img/iconset/appliform.png" width="30" /></div>
+                        <div class="item-inner">
+                          <div class="item-title-row">
+                            <div class="item-title">Application Form</div>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="/enquiry/" class="item-link item-content inset panel-close" data-view=".view-main">
+                        <div class="item-media"><img src="img/iconset/enq.png" width="30" /></div>
+                        <div class="item-inner">
+                          <div class="item-title-row">
+                            <div class="item-title">Enquiry</div>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="card card-outline">
+              <div class="card-content card-content-padding">
+                <div class="list media-list">
+                  <ul>
+                    <li>
+                      <a href="#" class="item-link item-content pb-standalone-dark inset panel-close">
+                        <div class="item-media"><img src="img/iconset/bro.png" width="30" /></div>
+                        <div class="item-inner">
+                          <div class="item-title-row">
+                            <div class="item-title">Brochure</div>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/policy/" class="item-link item-content inset panel-close" data-view=".view-main">
+                        <div class="item-media"><img src="img/iconset/pvc.png" width="30" /></div>
+                        <div class="item-inner">
+                          <div class="item-title-row">
+                            <div class="item-title">Privacy Policy</div>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <!--  -->
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main ios-edges">
+      <!-- Page, data-name contains page name which can be used in callbacks -->
+      <div class="page" data-name="home">
+        <!-- Top Navbar -->
+        <div class="navbar  no-shadow">
+          <div class="navbar-inner">
+            <div class="left">
+              <a href="#" class="link icon-only panel-open" data-panel="left">
+                <i class="icon f7-icons ios-only">menu</i>
+                <i class="icon material-icons md-only">menu</i>
+              </a>
+            </div>
+            <div class="title sliding">Susoma Ankan Kendra</div>
+            <div class="right">
+              <a href="/notification/" class="link icon-only">
+                <i class="icon f7-icons md-only">bell_fill<span class="badge color-red">5</span></i>
+                <!-- <i class="icon f7-icons ios-only">bell</i>
+                <i class="icon material-icons md-only">bell</i> -->
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scrollable page content-->
+        <div class="page-content" style="background-color: #f4f3f3e0;">
+          <div class="block" style="margin: 0;padding: 0;width: 100%">
+            <div data-speed="900" data-pagination='{"el": ".swiper-pagination"}' data-space-between="20" data-slides-per-view="auto"
+              data-centered-slides="true" class="swiper-container swiper-init demo-swiper demo-swiper-auto swiper-container-banner" style="height: auto;margin: 0px;">
+              <!-- <div class="swiper-pagination"></div> -->
+              <div class="swiper-wrapper" id="lblBanner">
+                <div class="swiper-slide">
+                  <img src="img/01.jpg" alt="" srcset="" style="width: 100%;">
+                </div>
+                <div class="swiper-slide">
+                  <img src="img/02.jpg" alt="" srcset="" style="width: 100%;">
+                </div>
+                <div class="swiper-slide">
+                  <img src="img/03.jpg" alt="" srcset="" style="width: 100%;">
+                </div>
+                <div class="swiper-slide">
+                  <img src="img/04.jpg" alt="" srcset="" style="width: 100%;">
+                </div>
+                <div class="swiper-slide">
+                  <img src="img/05.jpg" alt="" srcset="" style="width: 100%;">
+                </div>
+                <div class="swiper-slide">
+                  <img src="img/06.jpg" alt="" srcset="" style="width: 100%;">
+                </div>
+                <div class="swiper-slide">
+                  <img src="img/07.jpg" alt="" srcset="" style="width: 100%;">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-outline">
+            <div class="card-header">
+              <strong><i class="icon f7-icons md-only size-12" style="color:#f9696b">tabs_fill</i><span style="margin-left:12px;">Courses Offered</span></strong>
+            </div>
+            <div class="card-content" style="padding: 14px;">
+              <div id="courses"></div>
+            </div>
+          </div>
+
+          <div class="card card-outline">
+            <div class="card-header">
+              <strong><i class="icon f7-icons md-only size-12" style="color:#f9696b">home_fill</i><span style="margin-left:12px;">Institutes</span></strong>
+            </div>
+            <div class="card-content" style="padding: 14px;margin-bottom: -35px;">
+              <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="10" data-slides-per-view="4" class="swiper-container swiper-init demo-swiper"
+                style="height: auto;">
+                <div class="swiper-wrapper" style="text-align: center;" id="lblInstitute">
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- Login Screen -->
+    <div class="login-screen" id="my-login-screen">
+      <div class="view">
+        <div class="page">
+          <div class="page-content login-screen-content">
+            <div class="login-screen-title text-color-red">No Internet Connection Detected</div>
+            <div class="row text-align-center">
+              <img src="img/no-internet-image.png" alt="" class="col">
+            </div>
+            <div class="row text-align-center">
+              <div class="col"></div>
+              <button class="col button button-fill color-red" onclick="phonegapApp.tryAgainInternet()">Try Again</button>
+              <div class="col"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="login-screen" id="login-screen">
+      <div class="view">
+        <div class="page">
+          <div class="page-content login-screen-content">
+            <div class="login-screen-title text-color-red">Login</div>
+              <div class="list">
+                <ul>
+                  <li class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">Candidate Id</div>
+                      <div class="item-input-wrap">
+                        <input type="text" id="txtUserName"  placeholder="Your Candidate Id" autofocus>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content item-input" id="blockOTP" style="display:none;">
+                    <div class="item-inner">
+                      <div class="item-title item-label">OTP</div>
+                      <div class="item-input-wrap">
+                        <input type="password" id="txtOTP" placeholder="Your OTP">
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            <div class="row text-align-center" id="blockGetOTPButton">
+              <div class="col"></div>
+              <button class="col button button-fill color-red" onclick="phonegapApp.sendOTPRequest()">Get OTP</button>
+              <div class="col"></div>
+            </div>
+            <div class="row text-align-center" id="blockOTPButton"  style="display:none;">
+              <div class="col"></div>
+              <button class="col button button-fill color-red" onclick="phonegapApp.uservalidation()">Login</button>
+              <div class="col"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Cordova -->
+  
+  <script src="cordova.js"></script>
+ 
+
+  <!-- Framework7 library -->
+  <script src="framework7/js/framework7.min.js"></script>
+
+  <!-- App routes -->
+  <script src="js/routes.js"></script>
+
+  <!-- Your custom app scripts -->
+  <script src="js/app.js"></script>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+  <script type="text/javascript">
+    phonegapApp.initialize();
+  </script>
+</body>
+
+</html>
