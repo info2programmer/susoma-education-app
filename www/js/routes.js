@@ -159,7 +159,22 @@ routes = [
   
   {
     path: '/enquiry/',
-    componentUrl: './pages/submit-enquiry.html',
+    async: function (routeTo, routeFrom, resolve, reject) {
+      let router = this;
+      let unique = router.app;
+
+      unique.preloader.show();
+      setTimeout(function () {
+        phonegapApp.getEnquiryAge();
+        unique.preloader.hide();
+        resolve(
+          {
+            componentUrl: './pages/submit-enquiry.html',
+          }
+        );
+      }, 1000);
+    },
+    
   },
 
 

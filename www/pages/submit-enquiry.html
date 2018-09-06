@@ -19,7 +19,7 @@
             </a>
         </div> -->
         <div class="page-content">
-            <div class="list no-hairlines-md">
+            <form class="list no-hairlines-md" id="enquiry-form">
                 <ul>
                     <li class="item-content item-input">
                         <div class="item-media">
@@ -28,7 +28,7 @@
                         <div class="item-inner">
                             <div class="item-title item-floating-label">Name</div>
                             <div class="item-input-wrap">
-                                <input type="text" placeholder="Name">
+                                <input type="text" placeholder="Name" id="enqname">
                                 <span class="input-clear-button"></span>
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                         <div class="item-inner">
                             <div class="item-title item-floating-label">Phone</div>
                             <div class="item-input-wrap">
-                                <input type="number" placeholder="Phone">
+                                <input type="number" placeholder="Phone" id="enqphone">
                                 <span class="input-clear-button"></span>
                             </div>
                         </div>
@@ -52,27 +52,14 @@
                             <i class="icon f7-icons md-only color-orange">chevron_right</i>
                         </div>
                         <div class="item-inner">
-                            <div class="item-title item-floating-label">One Time Password</div>
+                            <div class="item-title item-floating-label" >Select Age Range</div>
                             <div class="item-input-wrap">
-                                <input type="number" placeholder="OTP">
-                                <span class="input-clear-button"></span>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="item-content item-input">
-                        <div class="item-media">
-                            <i class="icon f7-icons md-only color-orange">chevron_right</i>
-                        </div>
-                        <div class="item-inner">
-                            <div class="item-title item-floating-label">Select Age Range</div>
-                            <div class="item-input-wrap">
-                                <select>
-                                    <option value="" hidden selected>Select</option>
+                                <select id="enqage" onchange ="phonegapApp.getEnquiryGroup(this.value)">
+                                    <!-- <option value="" hidden selected>Select</option>
                                     <option value="1-4">1 to 4</option>
                                     <option value="5-9">5 to 9</option>
                                     <option value="10-14">10 to 14</option>
-                                    <option value="15-19">15 to 19</option>
+                                    <option value="15-19">15 to 19</option> -->
                                 </select>
                                 <!-- <span class="input-clear-button"></span> -->
                             </div>
@@ -86,7 +73,7 @@
                         <div class="item-inner">
                             <div class="item-title item-floating-label">Group</div>
                             <div class="item-input-wrap">
-                                <input type="text" readonly placeholder="Group">
+                                <input type="text" readonly id="enqgroup" readonly>
                                 <span class="input-clear-button"></span>
                             </div>
                         </div>
@@ -99,21 +86,16 @@
                         <div class="item-inner">
                             <div class="item-title item-floating-label">Comment</div>
                             <div class="item-input-wrap">
-                                <textarea class="resizable" placeholder="Comment" rows="5"></textarea>
+                                <textarea class="resizable" placeholder="Comment" rows="5" id="enqcomment"></textarea>
                                 <span class="input-clear-button"></span>
                             </div>
                         </div>
                     </li>
-
-                    <li class="item-content item-input">
-                        <div class="row">
-                            <button class="col button button-fill color-orange">Submit</button>
-                        </div>
-
-                    </li>
                 </ul>
+            </form>
+            <div class="row">
+                <button onclick="phonegapApp.requestOTPforEnquiryForm()" class="col button button-fill color-orange">Submit</button>
             </div>
-
         </div>
     </div>
 </template>

@@ -28,7 +28,7 @@
                         <div class="item-inner">
                             <div class="item-title item-floating-label">Applicant Name</div>
                             <div class="item-input-wrap">
-                                <input type="text" placeholder="Applicant Name" id="txtName">
+                                <input type="text" placeholder="Applicant Name" id="applyname">
                                 <span class="input-clear-button"></span>
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                         <div class="item-inner">
                             <div class="item-title item-floating-label">Student Master / Miss Name</div>
                             <div class="item-input-wrap">
-                                <input type="text" placeholder="Student Master / Miss Name" id="txtMasterName">
+                                <input type="text" placeholder="Student Master / Miss Name" id="applyteacher">
                                 <span class="input-clear-button"></span>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                         <div class="item-inner">
                             <div class="item-title item-floating-label">Student's A/C No</div>
                             <div class="item-input-wrap">
-                                <input type="text" placeholder="Student's A/C No" id="txtACNum">
+                                <input type="text" placeholder="Student's A/C No" id="applyaccountno">
                                 <span class="input-clear-button"></span>
                             </div>
                         </div>
@@ -67,7 +67,7 @@
                         <div class="item-inner">
                             <div class="item-title item-floating-label">Branch</div>
                             <div class="item-input-wrap">
-                                <input type="text" placeholder="Branch" id="txtBranch">
+                                <input type="text" placeholder="Branch" id="applybranch">
                                 <span class="input-clear-button"></span>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                         <div class="item-inner">
                             <div class="item-title item-floating-label">Phone</div>
                             <div class="item-input-wrap">
-                                <input type="number" placeholder="Contact No" id="txtPhone">
+                                <input type="number" placeholder="Contact No" id="applyphone">
                                 <span class="input-clear-button"></span>
                             </div>
                         </div>
@@ -91,9 +91,9 @@
                             <i class="icon f7-icons md-only color-blue">bolt</i>
                         </div>
                         <div class="item-inner">
-                            <div class="item-title item-floating-label">Deparment</div>
+                            <div class="item-title item-floating-label">Department</div>
                             <div class="item-input-wrap">
-                                <input type="text" placeholder="Deparment" id="txtDeparment">
+                                <input type="text" placeholder="Deparment" id="applydepartmnet">
                                 <span class="input-clear-button"></span>
                             </div>
                         </div>
@@ -106,7 +106,7 @@
                         <div class="item-inner">
                             <div class="item-title item-floating-label">Present Class Time</div>
                             <div class="item-input-wrap">
-                                <input type="time" placeholder="Present Class Time" id="txtPresentClassTime">
+                                <input type="time" placeholder="Present Class Time" id="applypreclasstime">
                                 <span class="input-clear-button"></span>
                             </div>
                         </div>
@@ -119,7 +119,7 @@
                         <div class="item-inner">
                             <div class="item-title item-floating-label">Caurse of Change</div>
                             <div class="item-input-wrap">
-                                <input type="text" placeholder="Caurse of Change" id="txtCourseChange">
+                                <input type="text" placeholder="Caurse of Change" id="applycoursechange">
                                 <span class="input-clear-button"></span>
                             </div>
                         </div>
@@ -132,7 +132,7 @@
                         <div class="item-inner">
                             <div class="item-title item-floating-label">Applied for the Class Time</div>
                             <div class="item-input-wrap">
-                                <input type="time" placeholder="Applied for the Class Time" id="txtAppliedClassTime">
+                                <input type="time" placeholder="Applied for the Class Time" id="applynewclasstime">
                                 <span class="input-clear-button"></span>
                             </div>
                         </div>
@@ -145,7 +145,7 @@
                         <div class="item-inner">
                             <div class="item-title item-floating-label">Applied for the Class Branch</div>
                             <div class="item-input-wrap">
-                                <input type="text" placeholder="Applied for the Class Branch" id="txtAppliedClassBranch">
+                                <input type="text" placeholder="Applied for the Class Branch" id="applyclassbranch">
                                 <span class="input-clear-button"></span>
                             </div>
                         </div>
@@ -158,18 +158,18 @@
                         <div class="item-inner">
                             <div class="item-title item-floating-label">Last Monthly fees paid on</div>
                             <div class="item-input-wrap">
-                                <input type="date" placeholder="Last Monthly fees paid on" id="txtLastMonthFeesPaid">
+                                <input type="date" placeholder="Last Monthly fees paid on" id="applylastmonthfee">
                                 <span class="input-clear-button"></span>
                             </div>
                         </div>
                     </li>
                 </ul>
-                <div class="row">
-                    <div class="col"></div>
-                    <div class="col"><button class="button button-fill color-blue">Submit</button></div>
-                    <div class="col"></div>
-                </div>
             </form>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col"><button type="button" onclick="phonegapApp.requestOTPforApplicationForm()" class="button button-fill color-blue">Submit</button></div>
+                <div class="col"></div>
+            </div>
         </div>
     </div>
 </template>

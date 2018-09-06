@@ -13,7 +13,7 @@ var phonegapApp = {
 
     /******* When Device Is Ready Then This Block Will Execute ******/
     onDeviceReady: function() {
-        
+        phonegapApp.fcmGetToken()
         if (user == "" || user == null){
             app.popup.open("#login-screen")
         }
@@ -82,7 +82,7 @@ var phonegapApp = {
             let postDatas = { 'device_uuid': device.uuid, 'token': token, 'type': 'get_token' }
             $.ajax({
                 type: "POST",
-                url: url,
+                url: url + "DeviceLog",
                 data: postDatas,
                 dataType: "JSON"
             }).done(function (rply) {
@@ -350,16 +350,12 @@ var phonegapApp = {
                 for (meterialList in rply.crsdetails[1][list].material){
                     count = count + 1
 
-                    switch (rply.crsdetails[1][list].material[meterialList].mat_type) {
-                        case 'wmv':
+                    switch (rply.crsdetails[1][list].material[meterialList].dctype) {
+                        case 'video':
                             groupDetails += '<button class="col button button-fill color-pink ripple-color-white" onclick="phonegapApp.rquestDownloadOTP(' + rply.crsdetails[1][list].material[meterialList].mat_id + ')"><i class="f7-icons" style="font-size: 18px;padding-right: 6px;">videocam</i>Download</button>'
                             break;
 
-                        case 'mp3':
-                            groupDetails += '<button class="col button button-fill color-yellow ripple-color-white" onclick="phonegapApp.rquestDownloadOTP(' + rply.crsdetails[1][list].material[meterialList].mat_id + ')"><i class="f7-icons" style="font-size: 18px;padding-right: 6px;">tune</i>Download</button>'
-                            break;
-
-                        case 'mp4':
+                        case 'audio':
                             groupDetails += '<button class="col button button-fill color-yellow ripple-color-white" onclick="phonegapApp.rquestDownloadOTP(' + rply.crsdetails[1][list].material[meterialList].mat_id + ')"><i class="f7-icons" style="font-size: 18px;padding-right: 6px;">tune</i>Download</button>'
                             break;
 
@@ -439,23 +435,40 @@ var phonegapApp = {
     /*******  This Function For Requresting OTP Password For Application Form  ******/
     requestOTPforApplicationForm:function(){
         let applicationFormData = app.form.convertToData('#application-form')
+        
         if (applicationFormData){
             $.ajax({
                 type: "post",
-                url: url + "url",
+                url: url + "ApplicationCheck",
                 data: { userid: user, otptype: 'application' },
                 dataType: "JSON"
             }).done(function (rply) {
                 if(rply.status){
                     app.dialog.password('Enter your OTP', function (password) {
+                        
                         if (password == "") {
                             openOTPdialog()
                         }
                         else {
+                            
                             $.ajax({
                                 type: "post",
-                                url: url + "url",
-                                data: JSON.stringify(applicationFormData),
+                                url: url + "ApplicationSubmit",
+                                data: {
+                                    applyname: $('#applyname').val(),
+                                    applyteacher: $('#applyteacher').val(),
+                                    applyaccountno: $('#applyaccountno').val(),
+                                    applybranch: $('#applybranch').val(),
+                                    applyphone: $('#applyphone').val(),
+                                    applydepartment: $('#applydepartmnet').val(),
+                                    applypreclasstime: $('#applypreclasstime').val(),
+                                    applycoursechange: $('#applycoursechange').val(),
+                                    applynewclasstime: $('#applynewclasstime').val(),
+                                    applyclassbranch: $('#applyclassbranch').val(),
+                                    applylastmonthfee: $('#applylastmonthfee').val(),
+                                    userid : user,
+                                    otp : password
+                                },
                                 dataType: "json"
                             }).done(function(rply){
                                 if(rply.status){
@@ -476,5 +489,94 @@ var phonegapApp = {
 
     splashredirection: function(){
         window.location.href = "index.html"
+    },
+
+    /*******  This Function For Requresting OTP Password For Enquiry Form  ******/
+    requestOTPforEnquiryForm: function () {
+        let applicationFormData = app.form.convertToData('#enquiry-form')
+        if (applicationFormData) {
+            $.ajax({
+                type: "post",
+                url: url + "EnquiryCheck",
+                data: { userid: $('#enqphone').val() },
+                dataType: "JSON"
+            }).done(function (rply) {
+                if (rply.status) {
+                    app.dialog.password('Enter your OTP', function (password) {
+
+                        if (password == "") {
+                            openOTPdialog()
+                        }
+                        else {
+
+                            $.ajax({
+                                type: "post",
+                                url: url + "EnquirySubmit",
+                                data: {
+                                    enqname: $('#enqname').val(),
+                                    enqphone: $('#enqphone').val(),
+                                    enqage: $('#enqage').val(),
+                                    enqgroup: $('#enqgroup').val(),
+                                    applyphone: $('#applyphone').val(),
+                                    enqcomment: $('#enqcomment').val(),
+                                    userid: user,
+                                    otp: password
+                                },
+                                dataType: "json"
+                            }).done(function (rply) {
+                                if (rply.status) {
+                                    $('#enqname').val('')
+                                    $('#enqphone').val('')
+                                    $('#enqage').val('')
+                                    $('#enqgroup').val('')
+                                    $('#applyphone').val('')
+                                    $('#enqcomment').val('')
+                                    applicationRequestNotification.open()
+                                }
+                            })
+                        }
+                        // console.log(`OTP is ${password}`)
+                    })
+                }
+                else {
+                    notificationCourseMissmach.open()
+                }
+            })
+        }
+
+    },
+
+    /*******  This Function For Requresting Age Range  ******/
+    getEnquiryAge : function(){
+        let ageOption = ''
+        $.ajax({
+            type: "post",
+            url: url + "EnquiryAgeRange",
+            dataType: "JSON"
+        }).done(function (rply){
+            console.log(rply)
+            ageOption += '<option value="" hidden selected>Select</option>'
+            for (list in rply.ages){
+                ageOption += `<option value="${rply.ages[list].group_id}">${rply.ages[list].age}</option>`
+                $('#enqage').html(ageOption)
+            }
+        })
+    },
+
+    /*******  This Function For Get Enquiry Group  ******/
+    getEnquiryGroup : function (val){ 
+        app.preloader.show()
+        $.ajax({
+            type: "post",
+            url: url + "EnquiryGetGroup",
+            data: { grupid: val },
+            dataType: "json"
+        }).done(function (rply){
+            $('#enqgroup').val(rply.ages)
+            app.preloader.hide()
+        })
     }
+
+
+
 };  
