@@ -424,9 +424,10 @@ var phonegapApp = {
         }).done(function (rply){
             if (rply.status){
                 let ref = cordova.InAppBrowser.open(rply.url, '_blank', 'location=no');
-                ref.addEventListener('loadstop', function (event) {
-                    ref.close();
-                })
+                // ref.addEventListener('loadstop', function (event) {
+                //     ref.close();
+                // })
+                ref.show()
             }
             else{
                 notificationCourseMissmach.open();
