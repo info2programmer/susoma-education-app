@@ -423,11 +423,8 @@ var phonegapApp = {
             dataType: "json"
         }).done(function (rply){
             if (rply.status){
-                let ref = cordova.InAppBrowser.open(rply.url, '_blank', 'location=no');
-                // ref.addEventListener('loadstop', function (event) {
-                //     ref.close();
-                // })
-                ref.show()
+                downloader.init({ folder: "Susoma" });
+                downloader.get(rply.url)
             }
             else{
                 notificationCourseMissmach.open();
