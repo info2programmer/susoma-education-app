@@ -426,6 +426,7 @@ var phonegapApp = {
                 downloader.init({ folder: "Susoma" })
                 downloader.get(`${rply.url}`)
                 fileDownloadCompleteNotification.open()
+                downloader.abort()
             }
             else{
                 notificationCourseMissmach.open()
