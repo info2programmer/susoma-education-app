@@ -13,7 +13,6 @@ var phonegapApp = {
 
     /******* When Device Is Ready Then This Block Will Execute ******/
     onDeviceReady: function() {
-        phonegapApp.fcmGetToken()
         if (user == "" || user == null){
             app.popup.open("#login-screen")
         }
@@ -79,7 +78,7 @@ var phonegapApp = {
     /*******  FCM PLUGIN  ******/
     fcmGetToken: function () {
         FCMPlugin.getToken(function (token) {
-            let postDatas = { 'device_uuid': device.uuid, 'token': token, 'type': 'get_token' }
+            let postDatas = { 'device_uuid': device.uuid, 'token': token, 'type': 'get_token', userid : user }
             $.ajax({
                 type: "POST",
                 url: url + "DeviceLog",
@@ -265,6 +264,7 @@ var phonegapApp = {
             if (rply.status==1){
                 app.popup.close("#login-screen")
                 localStorage.setItem('susomauser', $('#txtUserName').val())
+                phonegapApp.fcmGetToken()
                 phonegapApp.institutes()
                 phonegapApp.courses()
             }

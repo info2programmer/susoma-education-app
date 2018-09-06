@@ -124,8 +124,9 @@ var fileDownloadCompleteNotification = app.notification.create({
   icon: '<i class="icon f7-icons color-green">check_round_fill</i>',
   title: 'Susoma',
   subtitle: 'Success',
-  text: 'File downloaded. Search in Susoma Folder In Your Intarnal Storage.',
+  text: '<strong>File downloaded. Search in Susoma Folder In Your Intarnal Storage.</strong>',
   closeButton: true,
+  closeTimeout: 30000,
 });
 
 // Login Screen Demo
