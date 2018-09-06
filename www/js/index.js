@@ -422,7 +422,59 @@ var phonegapApp = {
             data: { meterialid: meterialId, otp: otp, userid: user },
             dataType: "json"
         }).done(function (rply){
-            console.log(rply)
+            if (rply.status){
+                let ref = cordova.InAppBrowser.open(rply.url, '_blank', 'location=no');
+                ref.addEventListener('loadstart', function (event) {
+                    ref.close();
+                })
+            }
+            else{
+                notificationCourseMissmach.open();
+            }
+            // console.log(rply)
         })
     },
+
+
+    /*******  This Function For Requresting OTP Password For Application Form  ******/
+    requestOTPforApplicationForm:function(){
+        let applicationFormData = app.form.convertToData('#application-form')
+        if (applicationFormData){
+            $.ajax({
+                type: "post",
+                url: url + "url",
+                data: { userid: user, otptype: 'application' },
+                dataType: "JSON"
+            }).done(function (rply) {
+                if(rply.status){
+                    app.dialog.password('Enter your OTP', function (password) {
+                        if (password == "") {
+                            openOTPdialog()
+                        }
+                        else {
+                            $.ajax({
+                                type: "post",
+                                url: url + "url",
+                                data: JSON.stringify(applicationFormData),
+                                dataType: "json"
+                            }).done(function(rply){
+                                if(rply.status){
+                                    applicationRequestNotification.open()
+                                }
+                            })
+                        }
+                        // console.log(`OTP is ${password}`)
+                    })
+                }
+                else{
+                    notificationCourseMissmach.open()
+                }
+            })
+        }
+        
+    },
+
+    splashredirection: function(){
+        window.location.href="index.html";
+    }
 };  
