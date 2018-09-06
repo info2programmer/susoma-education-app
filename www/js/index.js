@@ -423,11 +423,12 @@ var phonegapApp = {
             dataType: "json"
         }).done(function (rply){
             if (rply.status){
-                downloader.init({ folder: "Susoma" });
-                downloader.get('http://susomaias.com/susoma/uploads/Wildlife.wmv')
+                downloader.init({ folder: "Susoma" })
+                downloader.get(`${rply.url}`)
+                fileDownloadCompleteNotification.open()
             }
             else{
-                notificationCourseMissmach.open();
+                notificationCourseMissmach.open()
             }
             // console.log(rply)
         })
@@ -473,6 +474,6 @@ var phonegapApp = {
     },
 
     splashredirection: function(){
-        window.location.href="index.html";
+        window.location.href = "index.html"
     }
 };  
