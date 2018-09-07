@@ -16,7 +16,7 @@ var phonegapApp = {
         app.statusbar.show()
         phonegapApp.fcmGetToken()
         phonegapApp.institutes()
-        phonegapApp.courses()
+        phonegapApp.courseHome()
         // if (user == "" || user == null){
         //     app.popup.open("#login-screen")
         // }
@@ -169,7 +169,7 @@ var phonegapApp = {
         });
     },
 
-    /*******  This Function For Get Courses Home Page  ******/
+    /*******  This Function For Get Courses Page  ******/
     courses : function(){
         let courses = ''
         $.ajax({
@@ -183,6 +183,39 @@ var phonegapApp = {
                 count=count+1
                 courses += '<div class="col">'
                 courses += '<a href="/course-details/' + rply.crsdetails[list].course_id +'" class="color-black">'
+                courses += '<div class="row">'
+                courses += '<div class="col"><img src="http://susomaias.com/susoma/uploads/' + rply.crsdetails[list].logo + '" alt="" width="72"></div>'
+                courses += '</div>'
+                courses += '<div class="row">'
+                courses += '<div class="col" style="font-size: 14px;">' + rply.crsdetails[list].name+'</div>'
+                courses += '</div>'
+                courses += '</a>'
+                courses += '</div>'
+                if(count==3 || count%3==0 ){
+                    courses += '</div>' 
+                    courses += '<div class="row"  style="text-align:center;margin-bottom:20px;">' 
+                }
+                
+            }
+            courses += '</div>'
+            $('#coursesInner').html(courses)
+        });
+    },
+
+    /*******  This Function For Get Courses Home Page  ******/
+     courseHome : function(){
+        let courses = ''
+        $.ajax({
+            type: "post",
+            url: url+'courses',
+            dataType: "JSON"
+        }).done(function(rply){
+            let count = 0
+            courses += '<div class="row" style="text-align:center;margin-bottom:20px;">'
+            for (list in rply.crsdetails){
+                count=count+1
+                courses += '<div class="col">'
+                courses += '<a href="/course-content/' + rply.crsdetails[list].course_id +'" class="color-black">'
                 courses += '<div class="row">'
                 courses += '<div class="col"><img src="http://susomaias.com/susoma/uploads/' + rply.crsdetails[list].logo + '" alt="" width="72"></div>'
                 courses += '</div>'
@@ -657,4 +690,23 @@ var phonegapApp = {
             $("#enqage").val(year_age + " years " + month_age + " months " + day_age + " days old")
         }
     },
+
+    courseContent : function(courseId){
+        let courseContent = ''
+        $.ajax({
+            type: "post",
+            url: url + "courseContent",
+            data: { courseid: courseId },
+            dataType: "json"
+        }).done(function(rply){
+            console.log(rply)
+            for (list in rply.crsdetails){
+                courseContent += '<div class="card">'
+                courseContent += `<div class="card-content"><img src="http://susomaias.com/susoma/uploads/${rply.crsdetails[list].brochure}" style="width:100%"></div>`
+                courseContent += '</div>'
+                $('#contentCourseNew').html(courseContent)
+            }
+            $('#lblCourseContentNameNew').html(rply.crsdetails[0].name)
+        })
+    }
 };  

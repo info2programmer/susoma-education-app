@@ -97,7 +97,7 @@ routes = [
 
       unique.preloader.show();
       setTimeout(function () {
-        // app.getChat(parseInt(id));
+         phonegapApp.courses();
         unique.preloader.hide();
         resolve(
           {
@@ -215,6 +215,25 @@ routes = [
         resolve(
           {
             componentUrl: './pages/course-user.html',
+          }
+        );
+      }, 1000);
+    },
+  },
+
+  {
+    path: '/course-content/:courseId',
+    async: function (routeTo, routeFrom, resolve, reject) {
+      let router = this;
+      let unique = router.app;
+      let courseId = routeTo.params.courseId;
+      unique.preloader.show();
+      setTimeout(function () {
+        phonegapApp.courseContent(courseId);
+        unique.preloader.hide();
+        resolve(
+          {
+            componentUrl: './pages/course-content.html',
           }
         );
       }, 1000);
