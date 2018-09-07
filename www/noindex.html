@@ -52,7 +52,7 @@
         phonegapApp.initialize();
 
         setTimeout(function(){
-            phonegapApp.splashredirection();
+             navigator.app.loadUrl("file:///android_asset/www/index.html", { wait: 2, loadingDialog: "Wait,Loading App", loadUrlTimeoutValue: 60000 });
         });
     </script>
 </body>
