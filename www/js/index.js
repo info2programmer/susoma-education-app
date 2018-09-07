@@ -605,7 +605,6 @@ var phonegapApp = {
             data: { 'device_uuid': device.uuid },
             dataType: "JSON"
         }).done(function (rply){
-            phonegapApp.readNotification()
             for (list in rply.details){
                 notification += '<div class="card card-outline slideInRight" >'
                 notification += '<div class="card-content">'
