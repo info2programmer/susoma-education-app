@@ -165,7 +165,6 @@ routes = [
 
       unique.preloader.show();
       setTimeout(function () {
-        phonegapApp.getEnquiryAge();
         unique.preloader.hide();
         resolve(
           {

@@ -23,10 +23,10 @@
                 <ul>
                     <li class="item-content item-input">
                         <div class="item-media">
-                            <i class="icon f7-icons md-only color-orange">chevron_right</i>
+                            <i class="icon f7-icons md-only color-orange">person_fill</i>
                         </div>
                         <div class="item-inner">
-                            <div class="item-title item-floating-label">Name</div>
+                            <div class="item-title item-floating-label">Candidate Name</div>
                             <div class="item-input-wrap">
                                 <input type="text" placeholder="Name" id="enqname">
                                 <span class="input-clear-button"></span>
@@ -36,7 +36,21 @@
 
                     <li class="item-content item-input">
                         <div class="item-media">
-                            <i class="icon f7-icons md-only color-orange">chevron_right</i>
+                            <i class="icon f7-icons md-only color-orange">persons_fill</i>
+                        </div>
+                        <div class="item-inner">
+                            <div class="item-title item-floating-label">Guardian Name</div>
+                            <div class="item-input-wrap">
+                                <input type="text" placeholder="Name" id="enqgurdianname">
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li class="item-content item-input">
+                        <div class="item-media">
+                            <i class="icon f7-icons md-only color-orange">phone_fill</i>
                         </div>
                         <div class="item-inner">
                             <div class="item-title item-floating-label">Phone</div>
@@ -49,31 +63,82 @@
 
                     <li class="item-content item-input">
                         <div class="item-media">
-                            <i class="icon f7-icons md-only color-orange">chevron_right</i>
+                            <i class="icon f7-icons md-only color-orange">calendar_fill</i>
                         </div>
                         <div class="item-inner">
-                            <div class="item-title item-floating-label" >Select Age Range</div>
+                            <div class="item-title item-floating-label">Date of birth</div>
                             <div class="item-input-wrap">
-                                <select id="enqage" onchange ="phonegapApp.getEnquiryGroup(this.value)">
-                                    <!-- <option value="" hidden selected>Select</option>
-                                    <option value="1-4">1 to 4</option>
-                                    <option value="5-9">5 to 9</option>
-                                    <option value="10-14">10 to 14</option>
-                                    <option value="15-19">15 to 19</option> -->
+                                <input type="date" placeholder="Date of birth" id="enqdob" onchange="phonegapApp.calculateAge(this.value)">
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="item-content item-input">
+                        <div class="item-media">
+                            <i class="icon f7-icons md-only color-orange">check_round_fill</i>
+                        </div>
+                        <div class="item-inner">
+                            <!-- <div class="item-title item-floating-label">Age As On</div> -->
+                            <div class="item-input-wrap">
+                                <input type="text" id="enqage" readonly>
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="item-content item-input">
+                        <div class="item-media">
+                            <i class="icon f7-icons md-only color-orange">layers</i>
+                        </div>
+                        <div class="item-inner">
+                            <div class="item-title item-floating-label">Class</div>
+                            <div class="item-input-wrap">
+                                <input type="text" id="enqclass" placeholder="Enter Class">
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="item-content item-input">
+                        <div class="item-media">
+                            <i class="icon f7-icons md-only color-orange">home_fill</i>
+                        </div>
+                        <div class="item-inner">
+                            <div class="item-title item-floating-label">School</div>
+                            <div class="item-input-wrap">
+                                <input type="text" id="enqschool" placeholder="Enter School">
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="item-content item-input">
+                        <div class="item-media">
+                            <i class="icon f7-icons md-only color-orange">favorites_fill</i>
+                        </div>
+                        <div class="item-inner">
+                            <div class="item-title item-floating-label">Medium</div>
+                            <div class="item-input-wrap">
+                                <select name="ddlMedium" id="ddlMedium">
+                                    <option value="" select hidden>Select Medium</option>
+                                    <option value="Bengali">Bengali</option>
+                                    <option value="Hindi">Hindi</option>
+                                    <option value="English">English</option>
                                 </select>
-                                <!-- <span class="input-clear-button"></span> -->
                             </div>
                         </div>
                     </li>
 
+
                     <li class="item-content item-input">
                         <div class="item-media">
-                            <i class="icon f7-icons md-only color-orange">chevron_right</i>
+                            <i class="icon f7-icons md-only color-orange">document_text</i>
                         </div>
                         <div class="item-inner">
-                            <div class="item-title item-floating-label">Group</div>
+                            <div class="item-title item-floating-label">Previous (if any) Details</div>
                             <div class="item-input-wrap">
-                                <input type="text" readonly id="enqgroup" readonly>
+                                <input type="text" id="enqprevious" placeholder="Enter School">
                                 <span class="input-clear-button"></span>
                             </div>
                         </div>
@@ -81,16 +146,72 @@
 
                     <li class="item-content item-input">
                         <div class="item-media">
-                            <i class="icon f7-icons md-only color-orange">chevron_right</i>
+                            <i class="icon f7-icons md-only color-orange">compose_fill</i>
                         </div>
                         <div class="item-inner">
-                            <div class="item-title item-floating-label">Comment</div>
+                            <div class="item-title item-floating-label">Subject 1</div>
                             <div class="item-input-wrap">
-                                <textarea class="resizable" placeholder="Comment" rows="5" id="enqcomment"></textarea>
-                                <span class="input-clear-button"></span>
+                                <select id="ddlSubject1">
+                                    <option value="">Select</option>
+                                    <option value="Art and Craft">Art and Craft</option>
+                                    <option value="Bharatnatyam">Bharatnatyam</option>
+                                    <option value="Katthak">Katthak</option>
+                                    <option value="Odissi">Odissi</option>
+                                    <option value="Classical music">Classical music</option>
+                                    <option value="Recitation">Recitation</option>
+                                    <option value="Spanish Guitar">Spanish Guitar</option>
+                                    <option value="Key Board">Key Board</option>
+                                    <option value="Western">Western</option>
+                                </select>
                             </div>
                         </div>
                     </li>
+                    <li class="item-content item-input">
+                        <div class="item-media">
+                            <i class="icon f7-icons md-only color-orange">compose_fill</i>
+                        </div>
+                        <div class="item-inner">
+                            <div class="item-title item-floating-label">Subject 2</div>
+                            <div class="item-input-wrap">
+                                <select id="ddlSubject2">
+                                    <option value="">Selecte</option>
+                                    <option value="Art and Craft">Art and Craft</option>
+                                    <option value="Bharatnatyam">Bharatnatyam</option>
+                                    <option value="Katthak">Katthak</option>
+                                    <option value="Odissi">Odissi</option>
+                                    <option value="Classical music">Classical music</option>
+                                    <option value="Recitation">Recitation</option>
+                                    <option value="Spanish Guitar">Spanish Guitar</option>
+                                    <option value="Key Board">Key Board</option>
+                                    <option value="Western">Western</option>
+                                </select>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-media">
+                            <i class="icon f7-icons md-only color-orange">compose_fill</i>
+                        </div>
+                        <div class="item-inner">
+                            <div class="item-title item-floating-label">Subject 3</div>
+                            <div class="item-input-wrap">
+                                <select id="ddlSubject3">
+                                    <option value="" selected>Select</option>
+                                    <option value="Art and Craft" >Art and Craft</option>
+                                    <option value="Bharatnatyam" >Bharatnatyam</option>
+                                    <option value="Katthak" >Katthak</option>
+                                    <option value="Odissi" >Odissi</option>
+                                    <option value="Classical music">Classical music</option>
+                                    <option value="Recitation">Recitation</option>
+                                    <option value="Spanish Guitar">Spanish Guitar</option>
+                                    <option value="Key Board">Key Board</option>
+                                    <option value="Western">Western</option>
+                                </select>
+                            </div>
+                        </div>
+                    </li>
+
+                   
                 </ul>
             </form>
             <div class="row">

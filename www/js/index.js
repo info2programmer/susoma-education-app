@@ -13,14 +13,16 @@ var phonegapApp = {
 
     /******* When Device Is Ready Then This Block Will Execute ******/
     onDeviceReady: function() {
-        app.statusbar.show();
-        if (user == "" || user == null){
-            app.popup.open("#login-screen")
-        }
-        else{
-            phonegapApp.institutes()
-            phonegapApp.courses()
-        }
+        app.statusbar.show()
+        phonegapApp.fcmGetToken()
+        phonegapApp.institutes()
+        phonegapApp.courses()
+        // if (user == "" || user == null){
+        //     app.popup.open("#login-screen")
+        // }
+        // else{
+            
+        // }
     },
 
     /******* Back Button Function ******/
@@ -86,7 +88,7 @@ var phonegapApp = {
                 data: postDatas,
                 dataType: "JSON"
             }).done(function (rply) {
-                console.log(rply);
+                $('#notificationCount').html(rply.notify)
             });
         });
     },
@@ -509,29 +511,45 @@ var phonegapApp = {
                             openOTPdialog()
                         }
                         else {
+                            // dob = new Date(dob);
+                            // var today = new Date();
+                            // var age = Math.floor((today - dob) / (365.25 * 24 * 60 * 60 * 1000));
+                            // $('#age').html(age + ' years old');
 
                             $.ajax({
                                 type: "post",
                                 url: url + "EnquirySubmit",
                                 data: {
                                     enqname: $('#enqname').val(),
+                                    enqgurdianname: $('#enqgurdianname').val(),
                                     enqphone: $('#enqphone').val(),
+                                    enqdob: $('#enqdob').val(),
                                     enqage: $('#enqage').val(),
-                                    enqgroup: $('#enqgroup').val(),
-                                    applyphone: $('#applyphone').val(),
-                                    enqcomment: $('#enqcomment').val(),
-                                    userid: user,
+                                    enqclass: $('#enqclass').val(),
+                                    enqschool: $('#enqschool').val(),
+                                    ddlMedium: $('#ddlMedium').val(),
+                                    enqprevious: $('#enqprevious').val(),
+                                    ddlSubject1: $('#ddlSubject1').val(),
+                                    ddlSubject2: $('#ddlSubject2').val(),
+                                    ddlSubject3: $('#ddlSubject3').val(),
                                     otp: password
                                 },
                                 dataType: "json"
                             }).done(function (rply) {
                                 if (rply.status) {
                                     $('#enqname').val('')
-                                    $('#enqphone').val('')
+                                    $('#enqprevious').val('')
+                                    $('#ddlSubject1').val('')
+                                    $('#ddlSubject2').val('')
+                                    $('#ddlSubject3').val('')
+                                    $('#enqschool').val('')
+                                    $('#ddlMedium').val('')
+                                    $('#enqclass').val('')
                                     $('#enqage').val('')
-                                    $('#enqgroup').val('')
-                                    $('#applyphone').val('')
-                                    $('#enqcomment').val('')
+                                    $('#enqdob').val('')
+                                    $('#enqphone').val('')
+                                    $('#enqgurdianname').val('')
+                                    $('#enqname').val('')
                                     applicationRequestNotification.open()
                                 }
                             })
@@ -586,6 +604,7 @@ var phonegapApp = {
             url: url + "AllNotification",
             dataType: "JSON"
         }).done(function (rply){
+            phonegapApp.readNotification()
             for (list in rply.details){
                 notification += '<div class="card card-outline slideInRight" >'
                 notification += '<div class="card-content">'
@@ -605,7 +624,47 @@ var phonegapApp = {
             }
             
         })
-    }
+    },
 
+    /*******  Calculate Age  ******/
+    calculateAge : function(age) {
+        let mdate = age.toString()
+        let yearThen = parseInt(mdate.substring(0, 4), 10)
+        let monthThen = parseInt(mdate.substring(5, 7), 10)
+        let dayThen = parseInt(mdate.substring(8, 10), 10)
 
+        let today = new Date();
+        let birthday = new Date(yearThen, monthThen - 1, dayThen)
+
+        let differenceInMilisecond = today.valueOf() - birthday.valueOf()
+
+        let year_age = Math.floor(differenceInMilisecond / 31536000000)
+        let day_age = Math.floor((differenceInMilisecond % 31536000000) / 86400000)
+
+        // if ((today.getMonth() == birthday.getMonth()) && (today.getDate() == birthday.getDate())) {
+        //     alert("Happy B'day!!!");
+        // }
+
+        var month_age = Math.floor(day_age / 30)
+
+        day_age = day_age % 30
+
+        if (isNaN(year_age) || isNaN(month_age) || isNaN(day_age)) {
+            // $("#exact_age").text("Invalid birthday - Please try again!");
+            return
+        }
+        else {
+            $("#enqage").val(year_age + " years " + month_age + " months " + day_age + " days old")
+        }
+    },
+
+    /*******  This function for read all notification  ******/
+    readNotification : function(){
+        $.ajax({
+            type: "post",
+            url: url + "NotificationUpdate",
+            data: { 'device_uuid': device.uuid},
+            dataType: "json"
+        }).done(function(rply){})
+    },
 };  
