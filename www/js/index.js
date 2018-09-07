@@ -602,6 +602,7 @@ var phonegapApp = {
         $.ajax({
             type: "post",
             url: url + "AllNotification",
+            data: { 'device_uuid': device.uuid },
             dataType: "JSON"
         }).done(function (rply){
             phonegapApp.readNotification()
@@ -656,15 +657,5 @@ var phonegapApp = {
         else {
             $("#enqage").val(year_age + " years " + month_age + " months " + day_age + " days old")
         }
-    },
-
-    /*******  This function for read all notification  ******/
-    readNotification : function(){
-        $.ajax({
-            type: "post",
-            url: url + "NotificationUpdate",
-            data: { 'device_uuid': device.uuid},
-            dataType: "json"
-        }).done(function(rply){})
     },
 };  
