@@ -580,12 +580,30 @@ var phonegapApp = {
 
     /*******  Get Notification  ******/
     getNotification : function(){
+        let notification = ''
         $.ajax({
             type: "post",
             url: url + "AllNotification",
             dataType: "JSON"
         }).done(function (rply){
-            console.log(rply)
+            for (list in rply.details){
+                notification += '<div class="card card-outline slideInRight" >'
+                notification += '<div class="card-content">'
+                notification += '<div class="row">'
+                notification += '<div class="col-30" style="text-align: center;margin-top: 4%;">'
+                notification += '<img src="img/iconset/not.png" width="60">'
+                notification += '</div>'
+                notification += '<div class="col-70">'
+                notification += `<div class="title" style="font-size: 20px;"><strong>${rply.details[list].push_title}</strong></div>`
+                notification += `<div>${rply.details[list].push_msg}</div>`
+                notification += `<div>${rply.details[list].sent_date}&nbsp;${rply.details[list].sent_time}</div>`
+                notification += '</div>'
+                notification += '</div>'
+                notification += '</div>'
+                notification += '</div>'
+                $('#notification').html(notification)
+            }
+            
         })
     }
 
