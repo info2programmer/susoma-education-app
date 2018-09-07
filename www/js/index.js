@@ -576,8 +576,18 @@ var phonegapApp = {
             $('#enqgroup').val(rply.ages)
             app.preloader.hide()
         })
-    }
+    },
 
+    /*******  Get Notification  ******/
+    getNotification : function(){
+        $.ajax({
+            type: "post",
+            url: url + "AllNotification",
+            dataType: "JSON"
+        }).done(function (rply){
+            console.log(rply)
+        })
+    }
 
 
 };  

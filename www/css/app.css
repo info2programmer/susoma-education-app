@@ -119,7 +119,7 @@
   width: 30%;
 }
 
-.statusbar {
+.md .statusbar {
   background: #0c83c8;
   /* We can add transition for smooth color animation */
   transition: 400ms;
