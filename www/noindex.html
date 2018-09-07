@@ -50,7 +50,10 @@
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         phonegapApp.initialize();
-        navigator.app.loadUrl("file:///android_asset/www/index.html", { wait: 2000, loadingDialog: "Wait,Loading App", loadUrlTimeoutValue: 60000 });
+
+        setTimeout(function(){
+            phonegapApp.splashredirection();
+        },3000);
     </script>
 </body>
 
