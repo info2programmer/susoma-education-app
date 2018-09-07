@@ -19,9 +19,9 @@
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
     <preference name="Fullscreen" value="false" />
     <preference name="Orientation" value="portrait" />
-    <preference name="StatusBarOverlaysWebView" value="true" />
-    <preference name="StatusBarStyle" value="lightcontent" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarBackgroundColor" value="#0d4067" />
+    <preference name="StatusBarStyle" value="lightcontent" />
     <preference name="phonegap-version" value="cli-8.0.0" />
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
     <platform name="android">
