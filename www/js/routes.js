@@ -37,7 +37,7 @@ routes = [
      
       unique.preloader.show();
       setTimeout(function () {
-        // app.getChat(parseInt(id));
+        phonegapApp.getNotification();
         unique.preloader.hide();
         resolve(
           {
