@@ -309,6 +309,11 @@ var phonegapApp = {
                 phonegapApp.fcmGetToken()
                 phonegapApp.institutes()
                 phonegapApp.courses()
+                $("#linkHyper").prop("href", "/profile/")
+                $("#linkCourse").prop("href", "/course/")
+                $("#lblReview").prop("href", "/review/")
+                $("#linkNotification").prop("href", "/notification/")
+                window.location.href="index.html"
             }
         });
     },
