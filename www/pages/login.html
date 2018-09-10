@@ -1,0 +1,49 @@
+<div class="page" data-name="about">
+    <div class="navbar">
+        <div class="navbar-inner sliding">
+            <div class="left">
+                <a href="#" class="link back">
+                    <i class="icon icon-back"></i>
+                    <span class="ios-only">Back</span>
+                </a>
+            </div>
+            <div class="title">Login</div>
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="block" style="margin:0px;padding:0px;">
+            <img src="img/banner-login.jpg" style="width: 104%;">
+        </div>
+        <div class="login-screen-title text-color-red">Login</div>
+        <div class="list">
+            <ul>
+                <li class="item-content item-input">
+                    <div class="item-inner">
+                        <div class="item-title item-label">Candidate Id</div>
+                        <div class="item-input-wrap">
+                            <input type="text" id="txtUserName" placeholder="Your Candidate Id" autofocus>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-content item-input" id="blockOTP" style="display:none;">
+                    <div class="item-inner">
+                        <div class="item-title item-label">OTP</div>
+                        <div class="item-input-wrap">
+                            <input type="password" id="txtOTP" placeholder="Your OTP">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="row text-align-center" id="blockGetOTPButton">
+            <div class="col"></div>
+            <button class="col button button-fill color-red" onclick="phonegapApp.sendOTPRequest()">Get OTP</button>
+            <div class="col"></div>
+        </div>
+        <div class="row text-align-center" id="blockOTPButton" style="display:none;">
+            <div class="col"></div>
+            <button class="col button button-fill color-red" onclick="phonegapApp.uservalidation()">Login</button>
+            <div class="col"></div>
+        </div>
+    </div>
+</div>

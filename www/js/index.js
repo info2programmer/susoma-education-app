@@ -17,12 +17,12 @@ var phonegapApp = {
         phonegapApp.fcmGetToken()
         phonegapApp.institutes()
         phonegapApp.courseHome()
-        // if (user == "" || user == null){
-        //     app.popup.open("#login-screen")
-        // }
-        // else{
-            
-        // }
+        if (user == "" || user == null){
+            $("#linkHyper").prop("href", "/login/")
+        }
+        else{
+            $("#linkHyper").prop("href", "/profile/")
+        }
     },
 
     /******* Back Button Function ******/
