@@ -139,7 +139,7 @@ routes = [
 
       unique.preloader.show();
       setTimeout(function () {
-        // app.getChat(parseInt(id));
+        phonegapApp.reviewLists();
         unique.preloader.hide();
         resolve(
           {

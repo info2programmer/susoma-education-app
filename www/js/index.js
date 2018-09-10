@@ -702,6 +702,7 @@ var phonegapApp = {
         }
     },
 
+    /*******  Calculate Content  ******/
     courseContent : function(courseId){
         let courseContent = ''
         $.ajax({
@@ -719,5 +720,54 @@ var phonegapApp = {
             }
             $('#lblCourseContentNameNew').html(rply.crsdetails[0].name)
         })
+    },
+
+    /*******  Review List  ******/
+    reviewLists : function(){
+        let reviewList = ''
+        $.ajax({
+            type: "post",
+            url: url + "reviewList",
+            data: {userid : user},
+            dataType: "json"
+        }).done(function(rply){
+           for(list in rply.review){
+               reviewList += '<div class="card card-outline slideInRight">'
+               reviewList += '<div class="card-content">'
+               reviewList += '<div class="row">'
+               reviewList += '<div class="col-30" style="text-align: center;margin-top: 4%;">'
+               reviewList += '<img src="img/iconset/rev.png" width="60">'
+               reviewList += '</div>'
+               reviewList += '<div class="col-70">'
+               reviewList += `<div class="title" style="font-size: 20px;"><strong>${rply.review[list].review_title}</strong></div>`
+               reviewList += `<div>${rply.review[list].review}</div>`
+               reviewList += `<div>${rply.review[list].date} &nbsp; ${rply.review[list].time}</div>`
+               reviewList += '</div>'
+               reviewList += '</div>'
+               reviewList += '</div>'
+               reviewList += '</div>'
+               $('#lblReviewLists').html(reviewList)
+           }
+        })
+    },
+
+    /*******  Review Submit  ******/
+    submitReview : function(){
+        if ($('#txtReviewTitle').val() == "" || $('#txtReviewComment').val() == ""){
+            notificationValidationError.open()
+        }
+        else{
+            $.ajax({
+                type: "post",
+                url: url + "submitReview",
+                data: { userid: user, title: $('#txtReviewTitle').val(), comment: $('#txtReviewComment').val() },
+                dataType: "json"
+            }).done(function () {
+                reviewSubmitMessage.open()
+                $('#txtReviewTitle').val('')
+                $('#txtReviewComment').val('')
+                phonegapApp.reviewLists()
+            }) 
+        }
     }
 };  

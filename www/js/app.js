@@ -108,11 +108,27 @@ var otpsuccessmsg = app.notification.create({
   closeButton: true,
 });
 
+var reviewSubmitMessage = app.notification.create({
+  icon: '<i class="icon f7-icons color-green">check_round_fill</i>',
+  title: 'Susoma',
+  subtitle: 'Success',
+  text: 'Your Review Submit Successfully',
+  closeButton: true,
+});
+
 var notificationCourseMissmach = app.notification.create({
   icon: '<i class="icon f7-icons color-red">close_round_fill</i>',
   title: 'Susoma',
   subtitle: 'Opps',
   text: 'You are not able to download this content',
+  closeButton: true,
+});
+
+var notificationValidationError = app.notification.create({
+  icon: '<i class="icon f7-icons color-red">close_round_fill</i>',
+  title: 'Susoma',
+  subtitle: 'Opps',
+  text: 'Validation Error',
   closeButton: true,
 });
 

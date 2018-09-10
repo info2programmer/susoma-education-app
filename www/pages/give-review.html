@@ -28,7 +28,7 @@
                         <div class="item-inner">
                             <div class="item-title item-floating-label">Review Title</div>
                             <div class="item-input-wrap">
-                                <input type="text" placeholder="Review Title">
+                                <input type="text" placeholder="Review Title" id="txtReviewTitle">
                                 <span class="input-clear-button"></span>
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                         <div class="item-inner">
                             <div class="item-title item-floating-label">Comment</div>
                             <div class="item-input-wrap">
-                                <textarea class="resizable" placeholder="Comment" rows="5"></textarea>
+                                <textarea class="resizable" placeholder="Comment" rows="5" id="txtReviewComment"></textarea>
                                 <span class="input-clear-button"></span>
                             </div>
                         </div>
@@ -49,7 +49,7 @@
 
                     <li class="item-content item-input">
                         <div class="row">
-                            <button class="col button button-fill color-red">Post</button>
+                            <button class="col button button-fill color-red" onclick="phonegapApp.submitReview()">Post</button>
                         </div>
                         
                     </li>
