@@ -19,9 +19,15 @@ var phonegapApp = {
         phonegapApp.courseHome()
         if (user == "" || user == null){
             $("#linkHyper").prop("href", "/login/")
+            $("#linkCourse").prop("href", "/login/")
+            $("#lblReview").prop("href", "/login/")
+            $("#linkNotification").prop("href", "/login/")
         }
         else{
             $("#linkHyper").prop("href", "/profile/")
+            $("#linkCourse").prop("href", "/course/")
+            $("#lblReview").prop("href", "/review/")
+            $("#linkNotification").prop("href", "/notification/")
         }
     },
 

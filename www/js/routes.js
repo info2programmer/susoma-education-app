@@ -203,6 +203,11 @@ routes = [
   },
 
   {
+    path: '/login/',
+    url: './pages/login.html',
+  },
+
+  {
     path: '/course-user/',
     async: function (routeTo, routeFrom, resolve, reject) {
       let router = this;
