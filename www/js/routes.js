@@ -204,7 +204,7 @@ routes = [
 
   {
     path: '/login/',
-    url: './pages/login.html',
+    componentUrl: './pages/login.html',
   },
 
   {
