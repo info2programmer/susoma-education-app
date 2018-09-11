@@ -467,13 +467,10 @@ var phonegapApp = {
             dataType: "json"
         }).done(function (rply){
             if (rply.status){
-                
-                app.preloader.show();
                 downloader.init({ folder: "Susoma" })
                 downloader.get(`${rply.url}`)
-                downloader.abort()
                 fileDownloadCompleteNotification.open()
-                app.preloader.hide();
+                downloader.abort()
             }
             else{
                 notificationCourseMissmach.open()
