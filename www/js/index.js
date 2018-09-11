@@ -471,7 +471,8 @@ var phonegapApp = {
                 let uri = encodeURI(`${rply.url}`);
                 app.preloader.show();
                 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
-                    let fileURL = fs.root.fullPath + rply.file_name; // full file path
+                    let fileURL = 'file:///storage/emulated/0/Download/' + rply.file_name; // full file path
+                    console.log(fileURL)
                     fileTransfer.download(
                         uri,
                         fileURL,
