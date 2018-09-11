@@ -335,8 +335,9 @@ var phonegapApp = {
                 courseDetails += '<img src="img/iconset/cou.png" width="60">'
                 courseDetails += '</div>'
                 courseDetails += '<div class="col-70">'
-                courseDetails += '<div class="title" style="font-size: 20px;"><strong>Music</strong></div>'
-                courseDetails += '<div> Rainbow Group</div>'
+                courseDetails += `<div class="title" style="font-size: 20px;"><strong>${rply.othdtl[list].name}</strong></div>`
+                courseDetails += `<div>${rply.othdtl[list].grp_name}</div>`
+                courseDetails += `<div><strong>Total Fees : </strong> ${rply.payment_dtl[list].tamt} <strong>Due Amount : </strong> ${rply.payment_dtl[list].tamt - rply.othdtl[list].fees}</div>`
                 courseDetails += '</div>'
                 courseDetails += '</div>'
                 courseDetails += '</div>'
@@ -466,10 +467,31 @@ var phonegapApp = {
             dataType: "json"
         }).done(function (rply){
             if (rply.status){
-                downloader.init({ folder: "Susoma" })
-                downloader.get(`${rply.url}`)
-                fileDownloadCompleteNotification.open()
-                downloader.abort()
+                let fileTransfer = new FileTransfer();
+                let uri = encodeURI(`${rply.url}`);
+
+                fileTransfer.download(
+                    uri,
+                    fileURL,
+                    function (entry) {
+                        console.log("download complete: " + entry.toURL());
+                    },
+                    function (error) {
+                        console.log("download error source " + error.source);
+                        console.log("download error target " + error.target);
+                        console.log("download error code" + error.code);
+                    },
+                    false,
+                    {
+                        headers: {
+                            "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
+                        }
+                    }
+                );
+                // downloader.init({ folder: "Susoma" })
+                // downloader.get(`${rply.url}`)
+                // fileDownloadCompleteNotification.open()
+                // downloader.abort()
             }
             else{
                 notificationCourseMissmach.open()
@@ -769,5 +791,42 @@ var phonegapApp = {
                 phonegapApp.reviewLists()
             }) 
         }
-    }
+    },
+
+
+    /*******  Contact Student Details  ******/
+    studentDetails : function(){
+        $.ajax({
+            type: "post",
+            url: url + "GetContactDetails",
+            data: {userid : user},
+            dataType: "json"
+        }).done(function(rply){
+            $('#studentId').val(rply.details[0].reg_id)
+            $('#studentNameContact').val(rply.details[0].cname)
+            $('#conactSubject').val(rply.details[0].name)
+            $('#conatctGroupName').val(rply.details[0].grp_name)
+            $('#contactPhone').val(rply.details[0].c_mobile)
+        })
+    },
+
+    /*******  Contact Student Details  ******/
+    contactSubmit : function(){
+        let message = $('#txtContactMessage').val()
+        if (message){
+            $.ajax({
+                type: "post",
+                url: url + "ContactSubmit",
+                data: {userid : user,msg : message},
+                dataType: "json"
+            }).done(function(){
+                contactSubmitMessage.open()
+            })
+        }
+        else{
+            notificationValidationError.open()
+        }
+        
+    },
+    
 };  

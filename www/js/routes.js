@@ -198,6 +198,26 @@ routes = [
   },
 
   {
+    path: '/contact/',
+    async: function (routeTo, routeFrom, resolve, reject) {
+      let router = this;
+      let unique = router.app;
+
+      unique.preloader.show();
+      setTimeout(function () {
+        phonegapApp.studentDetails();
+        unique.preloader.hide();
+        resolve(
+          {
+            componentUrl: './pages/conatct-us.html',
+          }
+        );
+      }, 1000);
+    },
+
+  },
+
+  {
     path: '/application/',
     componentUrl: './pages/application.html',
   },

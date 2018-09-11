@@ -116,6 +116,14 @@ var reviewSubmitMessage = app.notification.create({
   closeButton: true,
 });
 
+var contactSubmitMessage = app.notification.create({
+  icon: '<i class="icon f7-icons color-green">check_round_fill</i>',
+  title: 'Susoma',
+  subtitle: 'Success',
+  text: 'Your Contact Submit Successfully',
+  closeButton: true,
+});
+
 var notificationCourseMissmach = app.notification.create({
   icon: '<i class="icon f7-icons color-red">close_round_fill</i>',
   title: 'Susoma',

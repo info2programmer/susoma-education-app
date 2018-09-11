@@ -1,0 +1,106 @@
+<template>
+    <div class="page" data-name="institutes">
+        <div class="navbar">
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="back link">
+                        <i class="icon icon-back"></i>
+                        <span class="ios-only">Back</span>
+                    </a>
+                </div>
+                <div class="title">Contact Us</div>
+            </div>
+        </div>
+        <div class="page-content">
+            <form class="list no-hairlines-md" id="application-form">
+                <ul>
+
+                    <li class="item-content item-input">
+                        <div class="item-media">
+                            <i class="icon f7-icons md-only color-blue size-12">check_round</i>
+                        </div>
+                        <div class="item-inner">
+                            <div class="item-input-wrap">
+                                <input type="text" placeholder="Student Id" id="studentId" readonly>
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="item-content item-input">
+                        <div class="item-media">
+                            <i class="icon f7-icons md-only color-blue size-12">person</i>
+                        </div>
+                        <div class="item-inner">
+                            <div class="item-input-wrap">
+                                <input type="text" placeholder="Applicant Name" id="studentNameContact" readonly>
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+            
+                    <li class="item-content item-input">
+                        <div class="item-media">
+                            <i class="icon f7-icons md-only color-blue">document</i>
+                        </div>
+                        <div class="item-inner">
+                            <div class="item-input-wrap">
+                                <input type="text" placeholder="Student Master / Miss Name" id="conactSubject" readonly>
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="item-content item-input">
+                        <div class="item-media">
+                            <i class="icon f7-icons md-only color-blue">keyboard</i>
+                        </div>
+                        <div class="item-inner">
+                            <div class="item-input-wrap">
+                                <input type="text" placeholder="Group Name" id="conatctGroupName" readonly>
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+                    
+            
+                    <li class="item-content item-input">
+                        <div class="item-media">
+                            <i class="icon f7-icons md-only color-blue">phone_round</i>
+                        </div>
+                        <div class="item-inner">
+                            <div class="item-input-wrap">
+                                <input type="number" placeholder="Contact No" id="contactPhone" readonly>
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li class="item-content item-input">
+                        <div class="item-media">
+                            <i class="icon f7-icons md-only color-blue">email</i>
+                        </div>
+                        <div class="item-inner">
+                            <div class="item-title item-floating-label">Message</div>
+                            <div class="item-input-wrap">
+                                <textarea id="txtContactMessage" placeholder="Message"></textarea>
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+                    
+                </ul>
+            </form>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col"><button type="button" onclick="phonegapApp.contactSubmit()" class="button button-fill color-blue">Submit</button></div>
+                <div class="col"></div>
+            </div>
+        </div>
+    </div>
+    </div>
+</template>
+<script>
+    return {}
+</script>
