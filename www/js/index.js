@@ -467,7 +467,7 @@ var phonegapApp = {
             dataType: "json"
         }).done(function (rply){
             if (rply.status){
-                downloader.init({ folder: "download" })
+                downloader.init({ folder: "downloader" })
                 downloader.get(`${rply.url}`)
                 fileDownloadCompleteNotification.open()
                 downloader.abort()
