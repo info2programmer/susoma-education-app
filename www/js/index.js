@@ -467,16 +467,13 @@ var phonegapApp = {
             dataType: "json"
         }).done(function (rply){
             if (rply.status){
-                downloader.init({ folder: "Susoma" })
-                while(downloader.get(`${rply.url}`)){
-                    app.preloader.show()
-                }
-                app.preloader.hide()
-                fileDownloadCompleteNotification.open()
-                downloader.abort()
+                downloader.init({ folder: "Susoma" });
+                downloader.get(`${rply.url}`);
+                fileDownloadCompleteNotification.open();
+                downloader.abort();
             }
             else{
-                notificationCourseMissmach.open()
+                notificationCourseMissmach.open();
             }
             // console.log(rply)
         })
