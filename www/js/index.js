@@ -493,7 +493,7 @@ var phonegapApp = {
                     );
                     
                 })
-                ft.abort();
+                fileTransfer.abort();
                 app.preloader.hide();
                 // downloader.init({ folder: "Susoma" })
                 // downloader.get(`${rply.url}`)
