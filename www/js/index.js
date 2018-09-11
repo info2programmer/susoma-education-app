@@ -470,7 +470,7 @@ var phonegapApp = {
                 let fileTransfer = new FileTransfer();
                 let uri = encodeURI(`${rply.url}`);
                 app.preloader.show();
-                window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
+                // window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
                     let fileURL = 'file:///storage/emulated/0/Download/' + rply.file_name; // full file path
                     console.log(fileURL)
                     fileTransfer.download(
@@ -492,7 +492,7 @@ var phonegapApp = {
                         }
                     );
                     
-                })
+                // })
                 fileTransfer.abort();
                 
                 // downloader.init({ folder: "Susoma" })
