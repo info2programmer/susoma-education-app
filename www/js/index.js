@@ -467,11 +467,13 @@ var phonegapApp = {
             dataType: "json"
         }).done(function (rply){
             if (rply.status){
-                // downloader.init({ folder: "downloader" })
-                // downloader.get(`${rply.url}`)
-                // fileDownloadCompleteNotification.open()
-                // downloader.abort()
-                let ref = cordova.InAppBrowser.open(`${rply.url}`, '_blank', 'location=yes');
+                downloader.init({ folder: "downloader" })
+                while(downloader.get(`${rply.url}`)){
+                    app.preloader.show()
+                }
+                app.preloader.hide()
+                fileDownloadCompleteNotification.open()
+                downloader.abort()
             }
             else{
                 notificationCourseMissmach.open()
