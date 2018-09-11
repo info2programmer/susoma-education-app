@@ -467,8 +467,8 @@ var phonegapApp = {
             dataType: "json"
         }).done(function (rply){
             if (rply.status){
-                let fileTransfer = new FileTransfer();
-                let uri = encodeURI(`${rply.url}`);
+                // let fileTransfer = new FileTransfer();
+                // let uri = encodeURI(`${rply.url}`);
                 // let fileURL = 'download'
                 app.preloader.show();
                 // window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
