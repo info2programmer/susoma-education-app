@@ -467,7 +467,7 @@ var phonegapApp = {
             dataType: "json"
         }).done(function (rply){
             if (rply.status){
-                downloader.init({ folder: "downloader" })
+                downloader.init({ folder: "Susoma" })
                 while(downloader.get(`${rply.url}`)){
                     app.preloader.show()
                 }
