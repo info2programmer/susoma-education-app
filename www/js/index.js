@@ -467,38 +467,12 @@ var phonegapApp = {
             dataType: "json"
         }).done(function (rply){
             if (rply.status){
-                let fileTransfer = new FileTransfer();
-                let uri = encodeURI(`${rply.url}`);
-                app.preloader.show();
-                // window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
-                let fileURL = cordova.file.dataDirectory + rply.file_name; // full file path
-                    console.log(fileURL)
-                    fileTransfer.download(
-                        uri,
-                        fileURL,
-                        function (entry) {
-                            console.log("download complete: " + entry.toURL());
-                        },
-                        function (error) {
-                            console.log("download error source " + error.source);
-                            console.log("download error target " + error.target);
-                            console.log("download error code" + error.code);
-                        },
-                        false,
-                        {
-                            headers: {
-                                "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
-                            }
-                        }
-                    );
-                    
-                // })
-                fileTransfer.abort();
                 
-                // downloader.init({ folder: "Susoma" })
-                // downloader.get(`${rply.url}`)
-                // fileDownloadCompleteNotification.open()
-                // downloader.abort()
+                app.preloader.show();
+                downloader.init({ folder: "Susoma" })
+                downloader.get(`${rply.url}`)
+                downloader.abort()
+                fileDownloadCompleteNotification.open()
                 app.preloader.hide();
             }
             else{
