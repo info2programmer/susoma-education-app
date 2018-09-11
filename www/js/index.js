@@ -467,12 +467,11 @@ var phonegapApp = {
             dataType: "json"
         }).done(function (rply){
             if (rply.status){
-                // let fileTransfer = new FileTransfer();
-                // let uri = encodeURI(`${rply.url}`);
-                // let fileURL = 'download'
+                let fileTransfer = new FileTransfer();
+                let uri = encodeURI(`${rply.url}`);
                 app.preloader.show();
                 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
-                    let fileURL = fs.root.fullPath + "/logo.png"; // full file path
+                    let fileURL = fs.root.fullPath + rply.file_name; // full file path
                     fileTransfer.download(
                         uri,
                         fileURL,
