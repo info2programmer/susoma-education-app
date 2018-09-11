@@ -470,6 +470,7 @@ var phonegapApp = {
                 let fileTransfer = new FileTransfer();
                 let uri = encodeURI(`${rply.url}`);
 
+                app.preloader.show();
                 fileTransfer.download(
                     uri,
                     fileURL,
@@ -488,6 +489,8 @@ var phonegapApp = {
                         }
                     }
                 );
+                ft.abort();
+                app.preloader.hide();
                 // downloader.init({ folder: "Susoma" })
                 // downloader.get(`${rply.url}`)
                 // fileDownloadCompleteNotification.open()
