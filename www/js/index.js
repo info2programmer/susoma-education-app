@@ -469,26 +469,30 @@ var phonegapApp = {
             if (rply.status){
                 let fileTransfer = new FileTransfer();
                 let uri = encodeURI(`${rply.url}`);
-
+                // let fileURL = 'download'
                 app.preloader.show();
-                fileTransfer.download(
-                    uri,
-                    fileURL,
-                    function (entry) {
-                        console.log("download complete: " + entry.toURL());
-                    },
-                    function (error) {
-                        console.log("download error source " + error.source);
-                        console.log("download error target " + error.target);
-                        console.log("download error code" + error.code);
-                    },
-                    false,
-                    {
-                        headers: {
-                            "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
+                window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
+                    let fileURL = fs.root.fullPath + "/logo.png"; // full file path
+                    fileTransfer.download(
+                        uri,
+                        fileURL,
+                        function (entry) {
+                            console.log("download complete: " + entry.toURL());
+                        },
+                        function (error) {
+                            console.log("download error source " + error.source);
+                            console.log("download error target " + error.target);
+                            console.log("download error code" + error.code);
+                        },
+                        false,
+                        {
+                            headers: {
+                                "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
+                            }
                         }
-                    }
-                );
+                    );
+                    
+                })
                 ft.abort();
                 app.preloader.hide();
                 // downloader.init({ folder: "Susoma" })
