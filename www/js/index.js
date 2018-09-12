@@ -477,7 +477,7 @@ var phonegapApp = {
                     fileURL,
                     function (entry) {
                         console.log("download complete: " + entry.toURL());
-                        //phonegapApp.moveFile(entry.toURL());
+                        phonegapApp.moveFile(entry.toURL(),`${rply.file_name}`);
                     },
                     function (error) {
                         console.log("download error source " + error.source);
@@ -838,42 +838,43 @@ var phonegapApp = {
     },
 
     /*******  this Function For File Download  ******/
-    // moveFile: function (fileUri,filename) {
-    //     let storageLocation = 'file:///storage/emulated/0/Susoma';
-    //     window.resolveLocalFileSystemURL(
-    //         fileUri,
-    //         function (fileEntry) {
-
-    //             let parentEntry = storageLocation + "Susoma";
-
-    //             // move the file to a new directory and rename it
-    //             fileEntry.moveTo(parentEntry, filename, phonegapApp.fileMoveSuccess, phonegapApp.fileMoveError);
-
-    //         }, phonegapApp.errorCallback);
-    // },
-
-    // errorCallback : function(mdg){
-    //     console.log(mdg);
-    // },
-
-    // fileMoveSuccess: function(msg){
-    //     console.log(mgs);
-    // },
-
-    // fileMoveError: function(rply){
-    //     console.log(rply);
-    // }
-
-    moveFile: function (fileUri) {
-        wwindow.resolveLocalFileSystemURL(
+    moveFile: function (fileUri,filename) {
+        let storageLocation = 'file:///storage/emulated/0/';
+        window.resolveLocalFileSystemURL(
             fileUri,
             function (fileEntry) {
 
-                var parentEntry = storageLocation + "Download";
+                let parentEntry = storageLocation + "Download";
 
                 // move the file to a new directory and rename it
-                fileEntry.moveTo(parentEntry, "newFile.pdf");
+                fileEntry.moveTo(parentEntry, filename, phonegapApp.fileMoveSuccess, phonegapApp.fileMoveError);
 
-            });
+            }, phonegapApp.errorCallback);
+    },
+
+    errorCallback : function(mdg){
+        console.log(mdg);
+    },
+
+    fileMoveSuccess: function(msg){
+        console.log(mgs);
+    },
+
+    fileMoveError: function(rply){
+        console.log(rply);
     }
+
+//     moveFile: function (fileUri,fileName) {
+//         let storageLocation = 'file:///storage/emulated/0/Download/' + fileName;
+//         window.resolveLocalFileSystemURL(
+//             fileUri,
+//             function (fileEntry) {
+
+//                 var parentEntry = storageLocation + "Download";
+
+//                 // move the file to a new directory and rename it
+//                 fileEntry.moveTo(parentEntry, "newFile.pdf");
+
+//             });
+//     }
 };  
