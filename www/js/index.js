@@ -843,7 +843,8 @@ var phonegapApp = {
         window.resolveLocalFileSystemURL(
             fileUri,
             function (fileEntry) {
-                newFileUri = cordova.file.dataDirectory + "Download/";
+                newFileUri = "file:///storage/emulated/0/Download/";
+                // newFileUri = cordova.file.dataDirectory + "Download/";
                 oldFileUri = fileUri;
                 fileExt = "." + oldFileUri.split('.').pop();
 
