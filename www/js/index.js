@@ -476,6 +476,7 @@ var phonegapApp = {
                     fileURL,
                     function (entry) {
                         console.log("download complete: " + entry.toURL());
+                        phonegapApp.moveFile(entry.toURL(), rply.file_name);
                     },
                     function (error) {
                         console.log("download error source " + error.source);
@@ -827,15 +828,16 @@ var phonegapApp = {
     },
 
     /*******  this Function For File Download  ******/
-    moveFile: function (fileUri) {
+    moveFile: function (fileUri,filename) {
+        let storageLocation = 'file:///storage/emulated/0/';
         window.resolveLocalFileSystemURL(
             fileUri,
             function (fileEntry) {
 
-                var parentEntry = storageLocation + "Download";
+                let parentEntry = storageLocation + "Download";
 
                 // move the file to a new directory and rename it
-                fileEntry.moveTo(parentEntry, "newFile.pdf", success, fail);
+                fileEntry.moveTo(parentEntry, filename, success, fail);
 
             },
             errorCallback);
