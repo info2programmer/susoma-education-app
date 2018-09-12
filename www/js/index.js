@@ -843,19 +843,13 @@ var phonegapApp = {
             fileUri,
             function (fileEntry) {
 
-                let parentEntry = storageLocation + "Download";
+                let parentEntry = storageLocation + "Susoma";
 
                 // move the file to a new directory and rename it
-                fileEntry.moveTo(parentEntry, filename, function(successMsg){
-                    console.log(successMsg)
-                }, function(errorMsg){
-                    console.log(errorMsg)
-                });
+                fileEntry.moveTo(parentEntry, filename, fileMoveSuccess, fileMoveError);
 
-            },
-            function(rply){
-                console.log(rply)
-            });
-    }
+            }, errorCallback);
+    },
+    
 
 };  
