@@ -541,6 +541,9 @@ var phonegapApp = {
                                 if (rply.status) {
                                     applicationRequestNotification.open()
                                 }
+                                else{
+                                    applicationErrorRequestNotification.open()
+                                }
                             })
                         }
                         // console.log(`OTP is ${password}`)
@@ -800,11 +803,17 @@ var phonegapApp = {
             data: { userid: user },
             dataType: "json"
         }).done(function (rply) {
-            $('#studentId').val(rply.details[0].reg_id)
-            $('#studentNameContact').val(rply.details[0].cname)
-            $('#conactSubject').val(rply.details[0].name)
-            $('#conatctGroupName').val(rply.details[0].grp_name)
-            $('#contactPhone').val(rply.details[0].c_mobile)
+            if(rply.status){
+                $('#studentId').val(rply.details[0].reg_id)
+                $('#studentNameContact').val(rply.details[0].cname)
+                $('#conactSubject').val(rply.details[0].name)
+                $('#conatctGroupName').val(rply.details[0].grp_name)
+                $('#contactPhone').val(rply.details[0].c_mobile)
+            }
+            else{
+                applicationErrorRequestNotification.open()
+                return 0;
+            }
         })
     },
 
@@ -837,10 +846,16 @@ var phonegapApp = {
                 let parentEntry = storageLocation + "Download";
 
                 // move the file to a new directory and rename it
-                fileEntry.moveTo(parentEntry, filename, success, fail);
+                fileEntry.moveTo(parentEntry, filename, function(successMsg){
+                    console.log(successMsg)
+                }, function(errorMsg){
+                    console.log(errorMsg)
+                });
 
             },
-            errorCallback);
+            function(rply){
+                console.log(rply)
+            });
     }
 
 };  

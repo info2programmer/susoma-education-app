@@ -149,6 +149,14 @@ var applicationRequestNotification = app.notification.create({
   closeButton: true,
 });
 
+var applicationErrorRequestNotification = app.notification.create({
+  icon: '<i class="icon f7-icons color-red">close_round_fill</i>',
+  title: 'Susoma',
+  subtitle: 'Error',
+  text: 'Your are note allow to submit request',
+  closeButton: true,
+});
+
 
 var fileDownloadCompleteNotification = app.notification.create({
   icon: '<i class="icon f7-icons color-green">check_round_fill</i>',
