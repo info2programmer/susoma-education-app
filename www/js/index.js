@@ -846,12 +846,20 @@ var phonegapApp = {
                 let parentEntry = storageLocation + "Susoma";
 
                 // move the file to a new directory and rename it
-                fileEntry.moveTo(parentEntry, filename, fileMoveSuccess, fileMoveError);
+                fileEntry.moveTo(parentEntry, filename, phonegapApp.fileMoveSuccess, phonegapApp.fileMoveError);
 
             }, phonegapApp.errorCallback);
     },
     
     errorCallback : function(mdg){
         console.log(mdg);
+    },
+
+    fileMoveSuccess: function(msg){
+        console.log(mgs);
+    },
+
+    fileMoveError: function(rply){
+        console.log(rply);
     }
 };  
