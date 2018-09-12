@@ -469,12 +469,12 @@ var phonegapApp = {
             if (rply.status) {
                 var fileTransfer = new FileTransfer();
                 let uri = encodeURI(`${rply.url}`);
-                let storageLocation = 'file:///storage/emulated/0/Susoma' + rply.file_name;
+                // let storageLocation = 'file:///storage/emulated/0/Susoma' + rply.file_name;
                 let fileURL = cordova.file.dataDirectory + rply.file_name;
 
                 fileTransfer.download(
                     uri,
-                    storageLocation,
+                    fileURL,
                     function (entry) {
                         console.log("download complete: " + entry.toURL());
                         // phonegapApp.moveFile(entry.toURL(), rply.file_name);
@@ -838,29 +838,48 @@ var phonegapApp = {
     },
 
     /*******  this Function For File Download  ******/
-    moveFile: function (fileUri,filename) {
-        let storageLocation = 'file:///storage/emulated/0/Susoma';
+    // moveFile: function (fileUri,filename) {
+    //     let storageLocation = 'file:///storage/emulated/0/Susoma';
+    //     window.resolveLocalFileSystemURL(
+    //         fileUri,
+    //         function (fileEntry) {
+
+    //             let parentEntry = storageLocation + "Susoma";
+
+    //             // move the file to a new directory and rename it
+    //             fileEntry.moveTo(parentEntry, filename, phonegapApp.fileMoveSuccess, phonegapApp.fileMoveError);
+
+    //         }, phonegapApp.errorCallback);
+    // },
+    
+    // errorCallback : function(mdg){
+    //     console.log(mdg);
+    // },
+
+    // fileMoveSuccess: function(msg){
+    //     console.log(mgs);
+    // },
+
+    // fileMoveError: function(rply){
+    //     console.log(rply);
+    // }
+
+    moveFile: function(fileUri) {
         window.resolveLocalFileSystemURL(
             fileUri,
             function (fileEntry) {
+                newFileUri = cordova.file.externalRootDirectory + "susoma/";
+                oldFileUri = fileUri;
+                fileExt = "." + oldFileUri.split('.').pop();
 
-                let parentEntry = storageLocation + "Susoma";
-
-                // move the file to a new directory and rename it
-                fileEntry.moveTo(parentEntry, filename, phonegapApp.fileMoveSuccess, phonegapApp.fileMoveError);
-
-            }, phonegapApp.errorCallback);
-    },
-    
-    errorCallback : function(mdg){
-        console.log(mdg);
-    },
-
-    fileMoveSuccess: function(msg){
-        console.log(mgs);
-    },
-
-    fileMoveError: function(rply){
-        console.log(rply);
-    }
+                newFileName = guid("car") + fileExt;
+                window.resolveLocalFileSystemURL(newFileUri,
+                    function (dirEntry) {
+                        // move the file to a new directory and rename it
+                        fileEntry.moveTo(dirEntry, newFileName, successCallback, errorCallback);
+                    },
+                    errorCallback);
+            },
+            errorCallback);
+}
 };  
