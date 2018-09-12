@@ -469,14 +469,15 @@ var phonegapApp = {
             if (rply.status) {
                 var fileTransfer = new FileTransfer();
                 let uri = encodeURI(`${rply.url}`);
+                let storageLocation = 'file:///storage/emulated/0/Susoma' + rply.file_name;
                 let fileURL = cordova.file.dataDirectory + rply.file_name;
 
                 fileTransfer.download(
                     uri,
-                    fileURL,
+                    storageLocation,
                     function (entry) {
                         console.log("download complete: " + entry.toURL());
-                        phonegapApp.moveFile(entry.toURL(), rply.file_name);
+                        // phonegapApp.moveFile(entry.toURL(), rply.file_name);
                     },
                     function (error) {
                         console.log("download error source " + error.source);
@@ -838,7 +839,7 @@ var phonegapApp = {
 
     /*******  this Function For File Download  ******/
     moveFile: function (fileUri,filename) {
-        let storageLocation = 'file:///storage/emulated/0/';
+        let storageLocation = 'file:///storage/emulated/0/Susoma';
         window.resolveLocalFileSystemURL(
             fileUri,
             function (fileEntry) {
