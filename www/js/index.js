@@ -848,7 +848,7 @@ var phonegapApp = {
                 // move the file to a new directory and rename it
                 fileEntry.moveTo(parentEntry, filename, fileMoveSuccess, fileMoveError);
 
-            }, errorCallback);
+            }, phonegapApp.errorCallback);
     },
     
     errorCallback : function(mdg){
