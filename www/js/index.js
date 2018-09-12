@@ -851,7 +851,7 @@ var phonegapApp = {
                 window.resolveLocalFileSystemURL(newFileUri,
                     function (dirEntry) {
                         // move the file to a new directory and rename it
-                        fileEntry.moveTo(dirEntry, filename, phonegapApp.fileMoveSuccess, phonegapApp.fileMoveError);
+                        fileEntry.moveTo(dirEntry, 'hellouser.pdf', phonegapApp.fileMoveSuccess, phonegapApp.fileMoveError);
                     },
                     phonegapApp.errorCallback);
             },
