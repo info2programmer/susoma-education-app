@@ -483,13 +483,9 @@ var phonegapApp = {
                         console.log("download error target " + error.target);
                         console.log("download error code" + error.code);
                     },
-                    false,
-                    {
-                        headers: {
-                            "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
-                        }
-                    }
+                    false
                 );
+                fileTransfer.abort();
             }
             else {
                 notificationCourseMissmach.open();
