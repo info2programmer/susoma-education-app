@@ -477,7 +477,7 @@ var phonegapApp = {
                     fileURL,
                     function (entry) {
                         console.log("download complete: " + entry.toURL());
-                        phonegapApp.moveFile(entry.toURL());
+                        //phonegapApp.moveFile(entry.toURL());
                     },
                     function (error) {
                         console.log("download error source " + error.source);
@@ -865,23 +865,15 @@ var phonegapApp = {
     // }
 
     moveFile: function (fileUri) {
-        window.resolveLocalFileSystemURL(
+        wwindow.resolveLocalFileSystemURL(
             fileUri,
             function (fileEntry) {
-                let my_media = new Media(fileUri);
-                my_media.play();
-                // newFileUri = cordova.file.externalRootDirectory + "susoma/";
-                // oldFileUri = fileUri;
-                // fileExt = "." + oldFileUri.split('.').pop();
 
-                // newFileName = guid("car") + fileExt;
-                // window.resolveLocalFileSystemURL(newFileUri,
-                //     function (dirEntry) {
-                //         // move the file to a new directory and rename it
-                //         fileEntry.moveTo(dirEntry, newFileName, successCallback, errorCallback);
-                //     },
-                //     errorCallback);
+                var parentEntry = storageLocation + "Download";
+
+                // move the file to a new directory and rename it
+                fileEntry.moveTo(parentEntry, "newFile.pdf");
+
             });
-        
     }
 };  
