@@ -467,9 +467,9 @@ var phonegapApp = {
             dataType: "json"
         }).done(function (rply) {
             if (rply.status) {
-                let fileTransfer = new FileTransfer();
+                var fileTransfer = new FileTransfer();
                 let uri = encodeURI(`${rply.url}`);
-                let fileURL = cordova.file.dataDirectory + rply.file_name;
+                let fileURL = cordova.file.externalRootDirectory + rply.file_name;
 
                 fileTransfer.download(
                     uri,
@@ -846,12 +846,20 @@ var phonegapApp = {
                 let parentEntry = storageLocation + "Susoma";
 
                 // move the file to a new directory and rename it
-                fileEntry.moveTo(parentEntry, filename, fileMoveSuccess, fileMoveError);
+                fileEntry.moveTo(parentEntry, filename, phonegapApp.fileMoveSuccess, phonegapApp.fileMoveError);
 
             }, phonegapApp.errorCallback);
     },
     
     errorCallback : function(mdg){
         console.log(mdg);
+    },
+
+    fileMoveSuccess:function(msg){
+        console.log(msg)
+    },
+
+    fileMoveError : function(msg){
+        console.log(mdg)
     }
 };  
