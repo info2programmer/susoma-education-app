@@ -839,17 +839,36 @@ var phonegapApp = {
 
     /*******  this Function For File Download  ******/
     moveFile: function (fileUri,filename) {
-        let storageLocation = 'file:///storage/emulated/0/';
+
         window.resolveLocalFileSystemURL(
             fileUri,
             function (fileEntry) {
+                newFileUri = cordova.file.dataDirectory + "Download/";
+                oldFileUri = fileUri;
+                fileExt = "." + oldFileUri.split('.').pop();
 
-                let parentEntry = storageLocation + "Download";
+                newFileName = guid("car") + fileExt;
+                window.resolveLocalFileSystemURL(newFileUri,
+                    function (dirEntry) {
+                        // move the file to a new directory and rename it
+                        fileEntry.moveTo(dirEntry, newFileName, phonegapApp.fileMoveSuccess, phonegapApp.fileMoveError);
+                    },
+                    phonegapApp.errorCallback);
+            },
+            phonegapApp.errorCallback);
 
-                // move the file to a new directory and rename it
-                fileEntry.moveTo(parentEntry, filename, phonegapApp.fileMoveSuccess, phonegapApp.fileMoveError);
 
-            }, phonegapApp.errorCallback);
+        // let storageLocation = 'file:///storage/emulated/0/';
+        // window.resolveLocalFileSystemURL(
+        //     fileUri,
+        //     function (fileEntry) {
+
+        //         let parentEntry = cordova.file.dataDirectory + "Download/";
+
+        //         // move the file to a new directory and rename it
+        //         fileEntry.moveTo(parentEntry, filename, phonegapApp.fileMoveSuccess, phonegapApp.fileMoveError);
+
+        //     }, phonegapApp.errorCallback);
     },
 
     errorCallback : function(mdg){
