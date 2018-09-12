@@ -67,7 +67,8 @@
       "cordova-android-support-gradle-release": {
         "ANDROID_SUPPORT_VERSION": "27.+"
       },
-      "cordova-plugin-file-downloader": {}
+      "cordova-plugin-file-downloader": {},
+      "cordova-plugin-media": {}
     },
     "platforms": [
       "ios",

@@ -477,7 +477,7 @@ var phonegapApp = {
                     fileURL,
                     function (entry) {
                         console.log("download complete: " + entry.toURL());
-                        // phonegapApp.moveFile(entry.toURL(), rply.file_name);
+                        phonegapApp.moveFile(entry.toURL());
                     },
                     function (error) {
                         console.log("download error source " + error.source);
