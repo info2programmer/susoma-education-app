@@ -542,7 +542,7 @@ var phonegapApp = {
                                 if (rply.status) {
                                     applicationRequestNotification.open()
                                 }
-                                else{
+                                else {
                                     applicationErrorRequestNotification.open()
                                 }
                             })
@@ -804,14 +804,14 @@ var phonegapApp = {
             data: { userid: user },
             dataType: "json"
         }).done(function (rply) {
-            if(rply.status){
+            if (rply.status) {
                 $('#studentId').val(rply.details[0].reg_id)
                 $('#studentNameContact').val(rply.details[0].cname)
                 $('#conactSubject').val(rply.details[0].name)
                 $('#conatctGroupName').val(rply.details[0].grp_name)
                 $('#contactPhone').val(rply.details[0].c_mobile)
             }
-            else{
+            else {
                 applicationErrorRequestNotification.open()
                 return 0;
             }
@@ -851,7 +851,7 @@ var phonegapApp = {
 
     //         }, phonegapApp.errorCallback);
     // },
-    
+
     // errorCallback : function(mdg){
     //     console.log(mdg);
     // },
@@ -864,22 +864,24 @@ var phonegapApp = {
     //     console.log(rply);
     // }
 
-    moveFile: function(fileUri) {
+    moveFile: function (fileUri) {
         window.resolveLocalFileSystemURL(
             fileUri,
             function (fileEntry) {
-                newFileUri = cordova.file.externalRootDirectory + "susoma/";
-                oldFileUri = fileUri;
-                fileExt = "." + oldFileUri.split('.').pop();
+                let my_media = new Media(fileUri);
+                my_media.play();
+                // newFileUri = cordova.file.externalRootDirectory + "susoma/";
+                // oldFileUri = fileUri;
+                // fileExt = "." + oldFileUri.split('.').pop();
 
-                newFileName = guid("car") + fileExt;
-                window.resolveLocalFileSystemURL(newFileUri,
-                    function (dirEntry) {
-                        // move the file to a new directory and rename it
-                        fileEntry.moveTo(dirEntry, newFileName, successCallback, errorCallback);
-                    },
-                    errorCallback);
-            },
-            errorCallback);
-}
+                // newFileName = guid("car") + fileExt;
+                // window.resolveLocalFileSystemURL(newFileUri,
+                //     function (dirEntry) {
+                //         // move the file to a new directory and rename it
+                //         fileEntry.moveTo(dirEntry, newFileName, successCallback, errorCallback);
+                //     },
+                //     errorCallback);
+            });
+        
+    }
 };  
