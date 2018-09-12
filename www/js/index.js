@@ -851,5 +851,7 @@ var phonegapApp = {
             }, errorCallback);
     },
     
-
+    errorCallback : function(mdg){
+        console.log(mdg);
+    }
 };  
