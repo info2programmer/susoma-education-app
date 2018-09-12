@@ -847,11 +847,11 @@ var phonegapApp = {
                 oldFileUri = fileUri;
                 fileExt = "." + oldFileUri.split('.').pop();
 
-                newFileName = guid("car") + fileExt;
+                //newFileName = guid("car") + fileExt;
                 window.resolveLocalFileSystemURL(newFileUri,
                     function (dirEntry) {
                         // move the file to a new directory and rename it
-                        fileEntry.moveTo(dirEntry, newFileName, phonegapApp.fileMoveSuccess, phonegapApp.fileMoveError);
+                        fileEntry.moveTo(dirEntry, filename, phonegapApp.fileMoveSuccess, phonegapApp.fileMoveError);
                     },
                     phonegapApp.errorCallback);
             },
