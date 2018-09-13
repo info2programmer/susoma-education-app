@@ -844,15 +844,15 @@ var phonegapApp = {
             fileUri,
             function (fileEntry) {
                 // newFileUri = "file:///storage/emulated/0/Download/";
-                newFileUri = cordova.file.externalRootDirectory;
+                newFileUri = cordova.file.dataDirectory + 'susoma';
                 oldFileUri = fileUri;
                 fileExt = "." + oldFileUri.split('.').pop();
 
-                //newFileName = guid("car") + fileExt;
+                newFileName = guid() + fileExt;
                 window.resolveLocalFileSystemURL(newFileUri,
                     function (dirEntry) {
                         // move the file to a new directory and rename it
-                        fileEntry.moveTo(dirEntry, filename, phonegapApp.fileMoveSuccess, phonegapApp.fileMoveError);
+                        fileEntry.moveTo(dirEntry, newFileName, phonegapApp.fileMoveSuccess, phonegapApp.fileMoveError);
                     },
                     phonegapApp.errorCallback);
             },
@@ -901,3 +901,12 @@ var phonegapApp = {
 //             });
 //     }
 };  
+
+function guid() {
+    function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
+    }
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+}
