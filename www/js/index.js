@@ -840,7 +840,7 @@ var phonegapApp = {
     /*******  this Function For File Download  ******/
     moveFile: function (fileUri,filename) {
 
-        window.resolveLocalFileSystemURI(
+        window.resolveLocalFileSystemURL(
             fileUri,
             function (fileEntry) {
                 newFileUri = "file:///storage/emulated/0/Download/";
