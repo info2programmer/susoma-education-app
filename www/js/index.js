@@ -345,11 +345,49 @@ var phonegapApp = {
                 courseDetails += '</div>'
                 $('#lblCourseUser').html(courseDetails);
             }
+
+            let swiching = ''
+            if (rply.othdtl[0].course_id==2){
+
+                if (!rply.othdtl[0].doc_pub_stat) {//assessment Not Publish
+                    swiching += '<a href="#" class="item-link item-content inset" @click="oprnComingSoon">'
+                }
+                else {//assessment  Publish
+                    swiching += '<a href="#" class="item-link item-content inset" onclick="phonegapApp.verifyDownloadAdmit">'
+                }
+                swiching += '<div class="item-media"><i class="icon f7-icons md-only color-green">sort_fill</i></div>'
+                swiching += '<div class="item-inner">'
+                swiching += '<div class="item-title-row">'
+                swiching += '<div class="item-title">Assessment</div>'
+                swiching += '</div>'
+                swiching += '</div>'
+                swiching += '</a>'
+            }
+            else{
+                if (!rply.othdtl[0].doc_pub_stat){//Admit Card Not Publish
+                    swiching += '<a href="#" class="item-link item-content inset" @click="oprnComingSoon">'
+                }
+                else{//Admit Card Publish
+                    swiching += '<a href="#" class="item-link item-content inset" onclick="">'
+                }
+                swiching += '<div class="item-media"><i class="icon f7-icons md-only color-green">sort_fill</i></div>'
+                swiching += '<div class="item-inner">'
+                swiching += '<div class="item-title-row">'
+                swiching += '<div class="item-title">Admit Card</div>'
+                swiching += '</div>'
+                swiching += '</div>'
+                swiching += '</a>'
+            }
+            $('#ass-add').html(swiching)
+
             $("#lblCandidateProfile").attr("src", "http://susomaias.com/susoma/uploads/photo/" + rply.candprof[0].cimage + ".jpg");
             $('#lblCandidateName').html(rply.candprof[0].cname + '&nbsp;<i class="icon f7-icons md-only color-green">check_round_fill</i>');
             $('#lblCandidatePhone').html(rply.candprof[0].c_mobile);
         });
     },
+
+
+
 
     /*******  This Function For Course Detaails  ******/
     courseDetails: function (courseID) {
@@ -500,6 +538,78 @@ var phonegapApp = {
             // console.log(rply)
         })
     },
+
+
+  /*******  This Function For Requresting OTP Password For File Download  ******/
+    verifyDownloadAdmit: function () {
+        app.preloader.show()
+        $.ajax({
+            type: "post",
+            url: url + "AdmitDownloadCheck",
+            data: { userid: user },
+            dataType: "JSON"
+        }).done(function (rply) {
+            app.preloader.hide()
+            if (rply.status) {
+                app.dialog.password('Enter your OTP', function (password) {
+                    if (password == "") {
+                        openOTPdialog()
+                    }
+                    else {
+                        navigator.app.loadUrl(rply.downloadlink, { openExternal: true });
+                    }
+                })
+            }
+            else {
+                notificationCourseMissmach.open()
+            }
+
+        })
+    },
+
+    /*******  This Function For Requresting OTP Password For File Download  ******/
+    // validateAdmitDownloadOTP: function (otp) {
+    //     $.ajax({
+    //         type: "post",
+    //         url: url + "verifyAdmitDownload",
+    //         data: { otp: otp, userid: user, type : 'admit' },
+    //         dataType: "json"
+    //     }).done(function (rply) {
+    //         if (rply.status) {
+    //             navigator.app.loadUrl(rply.downloadlink, { openExternal: true });
+    //             // window.open(rply.url,'_blank');
+    //             // var fileTransfer = new FileTransfer();
+    //             // let uri = encodeURI(`${rply.url}`);
+    //             // // let storageLocation = 'file:///storage/emulated/0/Susoma' + rply.file_name;
+    //             // let fileURL = cordova.file.dataDirectory + rply.file_name;
+
+    //             // fileTransfer.download(
+    //             //     uri,
+    //             //     fileURL,
+    //             //     function (entry) {
+    //             //         console.log("download complete: " + entry.toURL());
+    //             //         phonegapApp.moveFile(entry.toURL(),rply.file_name);
+    //             //     },
+    //             //     function (error) {
+    //             //         console.log("download error source " + error.source);
+    //             //         console.log("download error target " + error.target);
+    //             //         console.log("download error code" + error.code);
+    //             //     },
+    //             //     false,
+    //             //     {
+    //             //         headers: {
+    //             //             "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
+    //             //         }
+    //             //     }
+    //             // );
+    //         }
+    //         else {
+    //             notificationCourseMissmach.open();
+    //         }
+    //         // console.log(rply)
+    //     })
+    // },
+    
 
 
     /*******  This Function For Requresting OTP Password For Application Form  ******/
