@@ -467,7 +467,8 @@ var phonegapApp = {
             dataType: "json"
         }).done(function (rply) {
             if (rply.status) {
-                window.open(rply.url,'_blank');
+                navigator.app.loadUrl(rply.downloadlink, { openExternal: true });
+                // window.open(rply.url,'_blank');
                 // var fileTransfer = new FileTransfer();
                 // let uri = encodeURI(`${rply.url}`);
                 // // let storageLocation = 'file:///storage/emulated/0/Susoma' + rply.file_name;
