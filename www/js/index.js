@@ -476,8 +476,8 @@ var phonegapApp = {
                     uri,
                     fileURL,
                     function (entry) {
-                        console.log("download complete: " + entry.toURL());
-                        phonegapApp.moveFile(entry.toURL(),rply.file_name);
+                        console.log("download complete: " + entry.toInternalURL());
+                        phonegapApp.moveFile(entry.toInternalURL(),rply.file_name);
                     },
                     function (error) {
                         console.log("download error source " + error.source);
@@ -843,8 +843,8 @@ var phonegapApp = {
         window.resolveLocalFileSystemURL(
             fileUri,
             function (fileEntry) {
-                newFileUri = "file:///storage/emulated/0/Download/";
-                // newFileUri = cordova.file.dataDirectory + "Download/";
+                // newFileUri = "file:///storage/emulated/0/Download/";
+                newFileUri = cordova.file.dataDirectory + "Download/";
                 oldFileUri = fileUri;
                 fileExt = "." + oldFileUri.split('.').pop();
 
