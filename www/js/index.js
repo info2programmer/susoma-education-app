@@ -467,30 +467,31 @@ var phonegapApp = {
             dataType: "json"
         }).done(function (rply) {
             if (rply.status) {
-                var fileTransfer = new FileTransfer();
-                let uri = encodeURI(`${rply.url}`);
-                // let storageLocation = 'file:///storage/emulated/0/Susoma' + rply.file_name;
-                let fileURL = cordova.file.dataDirectory + rply.file_name;
+                window.open(rply.url,'_blank');
+                // var fileTransfer = new FileTransfer();
+                // let uri = encodeURI(`${rply.url}`);
+                // // let storageLocation = 'file:///storage/emulated/0/Susoma' + rply.file_name;
+                // let fileURL = cordova.file.dataDirectory + rply.file_name;
 
-                fileTransfer.download(
-                    uri,
-                    fileURL,
-                    function (entry) {
-                        console.log("download complete: " + entry.toURL());
-                        phonegapApp.moveFile(entry.toURL(),rply.file_name);
-                    },
-                    function (error) {
-                        console.log("download error source " + error.source);
-                        console.log("download error target " + error.target);
-                        console.log("download error code" + error.code);
-                    },
-                    false,
-                    {
-                        headers: {
-                            "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
-                        }
-                    }
-                );
+                // fileTransfer.download(
+                //     uri,
+                //     fileURL,
+                //     function (entry) {
+                //         console.log("download complete: " + entry.toURL());
+                //         phonegapApp.moveFile(entry.toURL(),rply.file_name);
+                //     },
+                //     function (error) {
+                //         console.log("download error source " + error.source);
+                //         console.log("download error target " + error.target);
+                //         console.log("download error code" + error.code);
+                //     },
+                //     false,
+                //     {
+                //         headers: {
+                //             "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
+                //         }
+                //     }
+                // );
             }
             else {
                 notificationCourseMissmach.open();
@@ -838,54 +839,54 @@ var phonegapApp = {
     },
 
     /*******  this Function For File Download  ******/
-    moveFile: function (fileUri,filename) {
+    // moveFile: function (fileUri,filename) {
 
-        window.resolveLocalFileSystemURL(
-            fileUri,
-            function (fileEntry) {
-                newFileUri = "file:///storage/emulated/0/Download/";
-                // newFileUri = cordova.file.dataDirectory + 'susoma';
-                oldFileUri = fileUri;
-                fileExt = "." + oldFileUri.split('.').pop();
+    //     window.resolveLocalFileSystemURL(
+    //         fileUri,
+    //         function (fileEntry) {
+    //             newFileUri = "file:///storage/emulated/0/Download/";
+    //             // newFileUri = cordova.file.dataDirectory + 'susoma';
+    //             oldFileUri = fileUri;
+    //             fileExt = "." + oldFileUri.split('.').pop();
 
-                newFileName = guid() + fileExt;
-                window.resolveLocalFileSystemURI(newFileUri,
-                    function (dirEntry) {
-                        // move the file to a new directory and rename it
-                        fileEntry.moveTo(dirEntry, newFileName, phonegapApp.fileMoveSuccess, phonegapApp.fileMoveError);
-                    },
-                    phonegapApp.errorCallback);
-            },
-            phonegapApp.errorCallback);
+    //             newFileName = guid() + fileExt;
+    //             window.resolveLocalFileSystemURI(newFileUri,
+    //                 function (dirEntry) {
+    //                     // move the file to a new directory and rename it
+    //                     fileEntry.moveTo(dirEntry, newFileName, phonegapApp.fileMoveSuccess, phonegapApp.fileMoveError);
+    //                 },
+    //                 phonegapApp.errorCallback);
+    //         },
+    //         phonegapApp.errorCallback);
 
 
-        // let storageLocation = 'file:///storage/emulated/0/';
-        // window.resolveLocalFileSystemURL(
-        //     fileUri,
-        //     function (fileEntry) {
+    //     // let storageLocation = 'file:///storage/emulated/0/';
+    //     // window.resolveLocalFileSystemURL(
+    //     //     fileUri,
+    //     //     function (fileEntry) {
 
-        //         let parentEntry = cordova.file.dataDirectory + "Download/";
+    //     //         let parentEntry = cordova.file.dataDirectory + "Download/";
 
-        //         // move the file to a new directory and rename it
-        //         fileEntry.moveTo(parentEntry, filename, phonegapApp.fileMoveSuccess, phonegapApp.fileMoveError);
+    //     //         // move the file to a new directory and rename it
+    //     //         fileEntry.moveTo(parentEntry, filename, phonegapApp.fileMoveSuccess, phonegapApp.fileMoveError);
 
-        //     }, phonegapApp.errorCallback);
-    },
+    //     //     }, phonegapApp.errorCallback);
+    // },
 
-    errorCallback : function(mdg){
-        console.log('Error 1');
-        console.log(mdg);
-    },
+    // errorCallback : function(mdg){
+    //     console.log('Error 1');
+    //     console.log(mdg);
+    // },
 
-    fileMoveSuccess: function(msg){
-        console.log('Success 1');
-        console.log(mgs);
-    },
+    // fileMoveSuccess: function(msg){
+    //     console.log('Success 1');
+    //     console.log(mgs);
+    // },
 
-    fileMoveError: function(rply){
-        console.log('Error 1');
-        console.log(rply);
-    }
+    // fileMoveError: function(rply){
+    //     console.log('Error 1');
+    //     console.log(rply);
+    // }
 
 //     moveFile: function (fileUri,fileName) {
 //         let storageLocation = 'file:///storage/emulated/0/Download/' + fileName;
