@@ -873,14 +873,17 @@ var phonegapApp = {
     },
 
     errorCallback : function(mdg){
+        console.log('Error 1');
         console.log(mdg);
     },
 
     fileMoveSuccess: function(msg){
+        console.log('Success 1');
         console.log(mgs);
     },
 
     fileMoveError: function(rply){
+        console.log('Error 1');
         console.log(rply);
     }
 
