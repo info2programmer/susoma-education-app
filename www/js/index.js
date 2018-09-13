@@ -477,7 +477,7 @@ var phonegapApp = {
                     fileURL,
                     function (entry) {
                         console.log("download complete: " + entry.toURL());
-                        phonegapApp.moveFile(entry.toURL(),`${rply.file_name}`);
+                        phonegapApp.moveFile(entry.toURL(),rply.file_name);
                     },
                     function (error) {
                         console.log("download error source " + error.source);
@@ -852,7 +852,7 @@ var phonegapApp = {
                 window.resolveLocalFileSystemURL(newFileUri,
                     function (dirEntry) {
                         // move the file to a new directory and rename it
-                        fileEntry.moveTo(dirEntry, 'hellouser.pdf', phonegapApp.fileMoveSuccess, phonegapApp.fileMoveError);
+                        fileEntry.moveTo(dirEntry, filename, phonegapApp.fileMoveSuccess, phonegapApp.fileMoveError);
                     },
                     phonegapApp.errorCallback);
             },
