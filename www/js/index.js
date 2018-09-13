@@ -840,16 +840,16 @@ var phonegapApp = {
     /*******  this Function For File Download  ******/
     moveFile: function (fileUri,filename) {
 
-        window.resolveLocalFileSystemURL(
+        window.resolveLocalFileSystemURI(
             fileUri,
             function (fileEntry) {
-                // newFileUri = "file:///storage/emulated/0/Download/";
-                newFileUri = cordova.file.dataDirectory + 'susoma';
+                newFileUri = "file:///storage/emulated/0/Download/";
+                // newFileUri = cordova.file.dataDirectory + 'susoma';
                 oldFileUri = fileUri;
                 fileExt = "." + oldFileUri.split('.').pop();
 
                 newFileName = guid() + fileExt;
-                window.resolveLocalFileSystemURL(newFileUri,
+                window.resolveLocalFileSystemURI(newFileUri,
                     function (dirEntry) {
                         // move the file to a new directory and rename it
                         fileEntry.moveTo(dirEntry, newFileName, phonegapApp.fileMoveSuccess, phonegapApp.fileMoveError);
