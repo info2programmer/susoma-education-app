@@ -353,7 +353,7 @@ var phonegapApp = {
                     swiching += '<a href="#" class="item-link item-content inset" @click="oprnComingSoon">'
                 }
                 else {//assessment  Publish
-                    swiching += '<a href="#" class="item-link item-content inset" onclick="phonegapApp.verifyDownloadAdmit">'
+                    swiching += '<a href="#" class="item-link item-content inset" onclick="">'
                 }
                 swiching += '<div class="item-media"><i class="icon f7-icons md-only color-green">sort_fill</i></div>'
                 swiching += '<div class="item-inner">'
@@ -368,7 +368,7 @@ var phonegapApp = {
                     swiching += '<a href="#" class="item-link item-content inset" @click="oprnComingSoon">'
                 }
                 else{//Admit Card Publish
-                    swiching += '<a href="#" class="item-link item-content inset" onclick="">'
+                    swiching += '<a href="#" class="item-link item-content inset" onclick="phonegapApp.verifyDownloadAdmit()">'
                 }
                 swiching += '<div class="item-media"><i class="icon f7-icons md-only color-green">sort_fill</i></div>'
                 swiching += '<div class="item-inner">'
@@ -556,7 +556,8 @@ var phonegapApp = {
                         openOTPdialog()
                     }
                     else {
-                        navigator.app.loadUrl(rply.downloadlink, { openExternal: true });
+                        // navigator.app.loadUrl(rply.downloadlink, { openExternal: true });
+                        phonegapApp.validateAdmitDownloadOTP(password)
                     }
                 })
             }
@@ -568,47 +569,22 @@ var phonegapApp = {
     },
 
     /*******  This Function For Requresting OTP Password For File Download  ******/
-    // validateAdmitDownloadOTP: function (otp) {
-    //     $.ajax({
-    //         type: "post",
-    //         url: url + "verifyAdmitDownload",
-    //         data: { otp: otp, userid: user, type : 'admit' },
-    //         dataType: "json"
-    //     }).done(function (rply) {
-    //         if (rply.status) {
-    //             navigator.app.loadUrl(rply.downloadlink, { openExternal: true });
-    //             // window.open(rply.url,'_blank');
-    //             // var fileTransfer = new FileTransfer();
-    //             // let uri = encodeURI(`${rply.url}`);
-    //             // // let storageLocation = 'file:///storage/emulated/0/Susoma' + rply.file_name;
-    //             // let fileURL = cordova.file.dataDirectory + rply.file_name;
-
-    //             // fileTransfer.download(
-    //             //     uri,
-    //             //     fileURL,
-    //             //     function (entry) {
-    //             //         console.log("download complete: " + entry.toURL());
-    //             //         phonegapApp.moveFile(entry.toURL(),rply.file_name);
-    //             //     },
-    //             //     function (error) {
-    //             //         console.log("download error source " + error.source);
-    //             //         console.log("download error target " + error.target);
-    //             //         console.log("download error code" + error.code);
-    //             //     },
-    //             //     false,
-    //             //     {
-    //             //         headers: {
-    //             //             "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
-    //             //         }
-    //             //     }
-    //             // );
-    //         }
-    //         else {
-    //             notificationCourseMissmach.open();
-    //         }
-    //         // console.log(rply)
-    //     })
-    // },
+    validateAdmitDownloadOTP: function (otp) {
+        $.ajax({
+            type: "post",
+            url: url + "verifyAdmitDownload",
+            data: { otp: otp, userid: user, type : 'admit' },
+            dataType: "json"
+        }).done(function (rply) {
+            if (rply.status) {
+                navigator.app.loadUrl(rply.downloadlink, { openExternal: true });
+            }
+            else {
+                notificationCourseMissmach.open();
+            }
+            // console.log(rply)
+        })
+    },
     
 
 
