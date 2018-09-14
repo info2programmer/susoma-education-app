@@ -540,7 +540,7 @@ var phonegapApp = {
     },
 
 
-  /*******  This Function For Requresting OTP Password For File Download  ******/
+  /*******  This Function For Requresting OTP Password For Admit Download  ******/
     verifyDownloadAdmit: function () {
         app.preloader.show()
         $.ajax({
@@ -568,7 +568,7 @@ var phonegapApp = {
         })
     },
 
-    /*******  This Function For Requresting OTP Password For File Download  ******/
+    /*******  This Function For Requresting OTP Password For Admit Download  ******/
     validateAdmitDownloadOTP: function (otp) {
         $.ajax({
             type: "post",
@@ -585,6 +585,101 @@ var phonegapApp = {
             // console.log(rply)
         })
     },
+
+
+    /*******  This Function For Requresting OTP Password For Certificate Download  ******/
+    verifyDownloadCertificate: function () {
+        app.preloader.show()
+        $.ajax({
+            type: "post",
+            url: url + "CertificateDownloadCheck",
+            data: { userid: user },
+            dataType: "JSON"
+        }).done(function (rply) {
+            app.preloader.hide()
+            if (rply.status) {
+                app.dialog.password('Enter your OTP', function (password) {
+                    if (password == "") {
+                        openOTPdialog()
+                    }
+                    else {
+                        // navigator.app.loadUrl(rply.downloadlink, { openExternal: true });
+                        phonegapApp.validateCertificateDownloadOTP(password)
+                    }
+                })
+            }
+            else {
+                notificationCourseMissmach.open()
+            }
+
+        })
+    },
+
+    /*******  This Function For Checking OTP Password For Certificate Download  ******/
+    validateCertificateDownloadOTP: function (otp) {
+        $.ajax({
+            type: "post",
+            url: url + "verifyCertificateDownload",
+            data: { otp: otp, userid: user, type: 'certificate' },
+            dataType: "json"
+        }).done(function (rply) {
+            if (rply.status) {
+                navigator.app.loadUrl(rply.downloadlink, { openExternal: true });
+            }
+            else {
+                notificationCourseMissmach.open();
+            }
+            // console.log(rply)
+        })
+    },
+
+
+    /*******  This Function For Requresting OTP Password For Marksheet Download  ******/
+    verifyDownloadMarksheet: function () {
+        app.preloader.show()
+        $.ajax({
+            type: "post",
+            url: url + "MarksheetDownloadCheck",
+            data: { userid: user },
+            dataType: "JSON"
+        }).done(function (rply) {
+            app.preloader.hide()
+            if (rply.status) {
+                app.dialog.password('Enter your OTP', function (password) {
+                    if (password == "") {
+                        openOTPdialog()
+                    }
+                    else {
+                        // navigator.app.loadUrl(rply.downloadlink, { openExternal: true });
+                        phonegapApp.validateMarksheetDownloadOTP(password)
+                    }
+                })
+            }
+            else {
+                notificationCourseMissmach.open()
+            }
+
+        })
+    },
+
+    /*******  This Function For Checking OTP Password For MarkSheet Download  ******/
+    validateMarksheetDownloadOTP: function (otp) {
+        $.ajax({
+            type: "post",
+            url: url + "verifyMarksheetDownload",
+            data: { otp: otp, userid: user, type: 'marksheet' },
+            dataType: "json"
+        }).done(function (rply) {
+            if (rply.status) {
+                navigator.app.loadUrl(rply.downloadlink, { openExternal: true });
+            }
+            else {
+                notificationCourseMissmach.open();
+            }
+            // console.log(rply)
+        })
+    },
+
     
 
 
