@@ -347,7 +347,7 @@ var phonegapApp = {
             }
 
             let swiching = ''
-            if (rply.othdtl[0].course_id==2){
+            if (rply.othdtl[0].course_id == 2){
 
                 if (!rply.othdtl[0].doc_pub_stat) {//assessment Not Publish
                     swiching += '<a href="#" class="item-link item-content inset" @click="oprnComingSoon">'
@@ -666,7 +666,7 @@ var phonegapApp = {
     validateMarksheetDownloadOTP: function (otp) {
         $.ajax({
             type: "post",
-            url: url + "verifyMarksheetDownload",
+            url: url + "VerifyMarksheetDownload",
             data: { otp: otp, userid: user, type: 'marksheet' },
             dataType: "json"
         }).done(function (rply) {
@@ -1019,6 +1019,14 @@ var phonegapApp = {
         }
 
     },
+
+    /*******  this Function For File Download  ******/
+    logout : function(){
+        localStorage.clear()
+        window.location.href="index.html"
+    }
+
+
 
     /*******  this Function For File Download  ******/
     // moveFile: function (fileUri,filename) {
