@@ -67,9 +67,11 @@
      on: {
             pageInit: function (e, page) {
                 window.screen.orientation.lock('landscape-primary');
+                app.panel.disableSwipe=true;
             },
             pageBeforeRemove: function (e, page) {
                 window.screen.orientation.lock('portrait-primary');
+                app.panel.disableSwipe = true;
             },
         }
     }
