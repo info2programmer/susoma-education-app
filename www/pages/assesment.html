@@ -62,3 +62,15 @@
         </div>
     </div>
 </template>
+<script>
+    return {
+     on: {
+            pageInit: function (e, page) {
+                window.screen.orientation.lock('landscape-primary');
+            },
+            pageBeforeRemove: function (e, page) {
+                window.screen.orientation.lock('portrait-primary');
+            },
+        }
+    }
+</script>
