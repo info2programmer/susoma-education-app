@@ -37,7 +37,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="item-link item-content" onclick="phonegapApp.verifyDownloadCertificate()">
+                                <a href="#" class="item-link item-content" onclick="phonegapApp.verifyDownloadCertificate()" id="certificate-link">
                                     <div class="item-media"><i class="icon f7-icons md-only color-pink">list_fill</i></div>
                                     <div class="item-inner">
                                         <div class="item-title-row">
@@ -46,16 +46,16 @@
                                     </div>
                                 </a>
                             </li>
-                            <!-- <li>
-                                <a href="#" class="item-link item-content" @click="oprnComingSoon">
-                                    <div class="item-media"><i class="icon f7-icons md-only" style="color:#615d71">today_fill</i></div>
+                            <li>
+                                <a href="#" class="item-link item-content" onclick="phonegapApp.verifyDownloadIdCard()">
+                                    <div class="item-media"><i class="icon f7-icons md-only" style="color:#615d71">person</i></div>
                                     <div class="item-inner">
                                         <div class="item-title-row">
-                                            <div class="item-title">Routine</div>
+                                            <div class="item-title">Id Card</div>
                                         </div>
                                     </div>
                                 </a>
-                            </li> -->
+                            </li>
                             <li id="ass-add">
                                 <!-- <a href="#" class="item-link item-content inset" @click="oprnComingSoon">
                                     <div class="item-media"><i class="icon f7-icons md-only color-green">sort_fill</i></div>
@@ -77,7 +77,7 @@
                                 </a>
                             </li> -->
                             <li>
-                                <a href="#" class="item-link item-content inset" onclick="phonegapApp.verifyDownloadMarksheet()">
+                                <a href="#" class="item-link item-content inset" onclick="phonegapApp.verifyDownloadMarksheet()" id="marksheet-link">
                                     <div class="item-media"><i class="icon f7-icons md-only color-red">bolt_round_fill</i></div>
                                     <div class="item-inner">
                                         <div class="item-title-row">
@@ -90,12 +90,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card card-outline" style="height: 55px;">
-                <div class="card-content ripple" style="text-align: center;margin-top: 12px;font-size: 20px;">
-                    <i class="icon f7-icons md-only color-green">phone</i>&nbsp; Contact Us
-                </div>
-            </div>
-            <div class="card card-outline" style="height: 55px;" onclick="phonagapApp.logout()">
+            <div class="card card-outline" style="height: 55px;" onclick="phonegapApp.logout()">
                 <div class="card-content ripple" style="text-align: center;margin-top: 12px;font-size: 20px;">
                     <i class="icon f7-icons md-only color-gray">logout_fill</i>&nbsp; Logout
                 </div>

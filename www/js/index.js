@@ -318,7 +318,7 @@ var phonegapApp = {
         });
     },
 
-    /*******  This Function For Check OTP  ******/
+    /*******  This Function For Profile  ******/
     profile: function () {
         $.ajax({
             type: "post",
@@ -349,11 +349,11 @@ var phonegapApp = {
             let swiching = ''
             if (rply.othdtl[0].course_id == 2){
 
-                if (!rply.othdtl[0].doc_pub_stat) {//assessment Not Publish
+                if (rply.othdtl[0].doc_pub_stat!=0) {//assessment Not Publish
                     swiching += '<a href="#" class="item-link item-content inset" @click="oprnComingSoon">'
                 }
                 else {//assessment  Publish
-                    swiching += '<a href="#" class="item-link item-content inset" onclick="">'
+                    swiching += '<a href="/assesment/" class="item-link item-content inset">'
                 }
                 swiching += '<div class="item-media"><i class="icon f7-icons md-only color-green">sort_fill</i></div>'
                 swiching += '<div class="item-inner">'
@@ -364,7 +364,7 @@ var phonegapApp = {
                 swiching += '</a>'
             }
             else{
-                if (!rply.othdtl[0].doc_pub_stat){//Admit Card Not Publish
+                if (rply.othdtl[0].doc_pub_stat != 0){//Admit Card Not Publish
                     swiching += '<a href="#" class="item-link item-content inset" @click="oprnComingSoon">'
                 }
                 else{//Admit Card Publish
@@ -380,6 +380,15 @@ var phonegapApp = {
             }
             $('#ass-add').html(swiching)
 
+
+            if (rply.othdtl[0].marks_pub_stat!=1) {
+                $("#certificate-link").attr("onclick", "notificationWithButton.open()");
+            }
+
+            if (!rply.othdtl[0].cert_pub_stat!=1) {
+                $("#marksheet-link").attr("onclick", "notificationWithButton.open()");
+            }
+
             $("#lblCandidateProfile").attr("src", "http://susomaias.com/susoma/uploads/photo/" + rply.candprof[0].cimage + ".jpg");
             $('#lblCandidateName').html(rply.candprof[0].cname + '&nbsp;<i class="icon f7-icons md-only color-green">check_round_fill</i>');
             $('#lblCandidatePhone').html(rply.candprof[0].c_mobile);
@@ -387,6 +396,51 @@ var phonegapApp = {
     },
 
 
+    /*******  This Function For Request OTP for download Id Card ******/
+    verifyDownloadIdCard : function(){
+        app.preloader.show()
+        $.ajax({
+            type: "post",
+            url: url + "IdDownloadCheck",
+            data: { userid: user },
+            dataType: "JSON"
+        }).done(function (rply) {
+            app.preloader.hide()
+            if (rply.status) {
+                app.dialog.password('Enter your OTP', function (password) {
+                    if (password == "") {
+                        openOTPdialog()
+                    }
+                    else {
+                        // navigator.app.loadUrl(rply.downloadlink, { openExternal: true });
+                        phonegapApp.validateIdDownloadOTP(password)
+                    }
+                })
+            }
+            else {
+                notificationCourseMissmach.open()
+            }
+
+        })
+    },
+
+    /*******  This Function For Requresting OTP Password For Admit Download  ******/
+    validateIdDownloadOTP: function (otp) {
+        $.ajax({
+            type: "post",
+            url: url + "verifyIdDownload",
+            data: { otp: otp, userid: user, type: 'Id' },
+            dataType: "json"
+        }).done(function (rply) {
+            if (rply.status) {
+                navigator.app.loadUrl(rply.downloadlink, { openExternal: true });
+            }
+            else {
+                notificationCourseMissmach.open();
+            }
+            // console.log(rply)
+        })
+    },
 
 
     /*******  This Function For Course Detaails  ******/
@@ -680,8 +734,36 @@ var phonegapApp = {
         })
     },
 
-    
 
+     /*******  This Function For Requresting Assigment Date And Time  ******/
+    assessmentList : function () {
+        let assment = ''
+        $.ajax({
+            type: "post",
+            url: url + "assessmentList",
+            data: {  userid: user },
+            dataType: "json"
+        }).done(function (rply) {
+            if (rply.status) {
+                assment += '<tr>'
+                assment += `<td>${rply.assdtl[0].ass_day} <br> ${rply.assdtl[0].ass_time} </td>`
+                assment += `<td>${rply.assdtl[0].doa1}</td>`
+                assment += `<td>${rply.assdtl[0].docr1}</td>`
+                assment += `<td>${rply.assdtl[0].doa2}</td>`
+                assment += `<td>${rply.assdtl[0].docr2}</td>`
+                assment += `<td>${rply.assdtl[0].doa3}</td>`
+                assment += `<td>${rply.assdtl[0].docr3}</td>`
+                assment += `<td>${rply.assdtl[0].doa4}</td>`
+                assment += `<td>${rply.assdtl[0].docr4}</td>`
+                assment += `<td>${rply.assdtl[0].doa5}</td>`
+                assment += `<td>${rply.assdtl[0].docr5}</td>`
+                assment += `<td>${rply.assdtl[0].ptm}</td>`
+                assment += '</tr>'
+                $('#assesment-list').html(assment)
+            }
+            
+        })
+    },
 
     /*******  This Function For Requresting OTP Password For Application Form  ******/
     requestOTPforApplicationForm: function () {

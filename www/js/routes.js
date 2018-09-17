@@ -176,6 +176,26 @@ routes = [
     
   },
 
+  {
+    path: '/assesment/',
+    async: function (routeTo, routeFrom, resolve, reject) {
+      let router = this;
+      let unique = router.app;
+
+      unique.preloader.show();
+      setTimeout(function () {
+        phonegapApp.assessmentList();
+        unique.preloader.hide();
+        resolve(
+          {
+            componentUrl: './pages/assesment.html',
+          }
+        );
+      }, 1000);
+    },
+
+  },
+
 
   {
     path: '/policy/',
