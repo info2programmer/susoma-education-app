@@ -1109,7 +1109,7 @@ var phonegapApp = {
 
     /*******  this Function For Upload Image Via Gallery  ******/
     openGellery: function () {
-        navigator.camera.getPicture(onGallerySuccess, onGalleryFail, {
+        navigator.camera.getPicture(phonegapApp.onGallerySuccess, phonegapApp.onGalleryFail, {
             quality: 50,
             sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
             allowEdit: true,
