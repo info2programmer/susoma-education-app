@@ -14,7 +14,6 @@ var phonegapApp = {
     /******* When Device Is Ready Then This Block Will Execute ******/
     onDeviceReady: function () {
         app.statusbar.show()
-        phonegapApp.fcmGetToken()
         phonegapApp.institutes()
         phonegapApp.courseHome()
         if (user == "" || user == null) {
@@ -358,7 +357,7 @@ var phonegapApp = {
                 swiching += '<div class="item-media"><i class="icon f7-icons md-only color-green">sort_fill</i></div>'
                 swiching += '<div class="item-inner">'
                 swiching += '<div class="item-title-row">'
-                swiching += '<div class="item-title">Assessment</div>'
+                swiching += '<div class="item-title">Assessment Schedule</div>'
                 swiching += '</div>'
                 swiching += '</div>'
                 swiching += '</a>'
@@ -394,7 +393,6 @@ var phonegapApp = {
             $('#lblCandidatePhone').html(rply.candprof[0].c_mobile);
         });
     },
-
 
     /*******  This Function For Request OTP for download Id Card ******/
     verifyDownloadIdCard : function(){

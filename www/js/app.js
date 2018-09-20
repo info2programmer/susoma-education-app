@@ -84,6 +84,18 @@ $$('.pb-standalone-dark').on('click', function () {
   myPhotoBrowserDark.open();
 });
 
+var myPhotoBrowserDarkAssessment = app.photoBrowser.create({
+  photos: [
+    'http://susomaias.com/susoma/uploads/20180918_112902.png',
+    'http://susomaias.com/susoma/uploads/20180918_113007.png',
+  ],
+  theme: 'dark'
+});
+$$('.pb-standalone-dark-assessment').on('click', function () {
+  myPhotoBrowserDarkAssessment.open();
+});
+
+
 var notificationWithButton = app.notification.create({
   icon: '<i class="icon f7-icons color-red">bell_fill</i>',
   title: 'Susoma',
