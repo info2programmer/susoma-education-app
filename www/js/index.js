@@ -1117,13 +1117,13 @@ var phonegapApp = {
         });
     },
     onGallerySuccess: function (imageURI) {
-        let imageData = "data:image/png;base64," + imageURI;
+        let imageData = "data:image/jpg;base64," + imageURI;
 
         $.ajax({
             url: url + 'apply_image',
             method: 'post',
             dataType: 'JSON',
-            data: { userid: user, image: imageData }
+            data: { userid: user, image: imageURI }
         }).done(function (res) {
             if (!res.status) {
                 window.plugins.toast.show('Failed because: ' + res.message, 'long', 'bottom', function (a) { }, function (b) { });
