@@ -1117,7 +1117,7 @@ var phonegapApp = {
         });
     },
     onGallerySuccess: function (imageURI) {
-        imageData = "data:image/png;base64," + imageData;
+        let imageData = "data:image/png;base64," + imageURI;
 
         $.ajax({
             url: url + 'apply_image',
