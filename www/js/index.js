@@ -15,6 +15,7 @@ var phonegapApp = {
     onDeviceReady: function () {
         app.statusbar.show()
         phonegapApp.institutes()
+        phonegapApp.fcmGetToken()
         phonegapApp.courseHome()
         if (user == "" || user == null) {
             $("#linkHyper").prop("href", "/login/")
