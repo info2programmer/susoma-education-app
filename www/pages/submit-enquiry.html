@@ -261,8 +261,7 @@
             },
             onSuccess: function (imageURI) {
                 imageData = "data:image/png;base64," + imageData;
-                user = localStorage.getItem('platuser');
-
+                
                 $("#profile_image").attr("src", imageData);
 
                 $.ajax({
