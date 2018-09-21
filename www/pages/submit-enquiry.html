@@ -213,10 +213,10 @@
            
             <div class="row">
                 <div class="col"></div>
-                <div class="col"><button onclick="phonegapApp.openFiles()" class="col button"><i class="f7-icons size-50">drawers</i></button></div>
+                <div class="col"><button @click="openCamera" class="col button"><i class="f7-icons size-50">drawers</i></button></div>
                
                 
-                <div class="col"><button onclick="phonegapApp.openGellery()" class="col button"><i class="f7-icons size-50">camera_fill</i></button></div>
+                <div class="col"><button @click="openGellery" class="col button"><i class="f7-icons size-50">camera_fill</i></button></div>
                 <div class="col"></div>
             </div>
             <div class="row" style="margin-top: 12px;">
@@ -226,5 +226,59 @@
     </div>
 </template>
 <script>
-    return {}
+    return {
+        methods: {
+            // This Function For Name Update
+            // updateProfile: function () {
+            //     let userFullName = $('#txtUserFullName').val();
+            //     $.ajax({
+            //         type: "post",
+            //         url: "http://platterexoticfood.com/pladmin/manage_api/cust_profile_update/",
+            //         data: { user: localStorage.getItem("platuser"), field: 'profName', fieldvalue: userFullName },
+            //         dataType: "JSON"
+            //     }).done(function (replay) {
+            //         localStorage.setItem('user_name', userFullName);
+            //         window.plugins.toast.showLongBottom('Name Update Successfully');
+            //     });
+            // },
+
+            //This Function  For Select Image Fom Camera
+            openCamera: function () {
+                navigator.camera.getPicture(onSuccess, onFail, {
+                    quality: 20,
+                    destinationType: Camera.DestinationType.FILE_URL
+                });
+            },
+
+            // This Function For Open Gallery
+            openGellery: function () {
+                navigator.camera.getPicture(onSuccess, onFail, {
+                    quality: 50,
+                    sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+                    allowEdit: true,
+                    destinationType: Camera.DestinationType.FILE_URI
+                });
+            },
+            onSuccess: function (imageURI) {
+                imageData = "data:image/png;base64," + imageData;
+                user = localStorage.getItem('platuser');
+
+                $("#profile_image").attr("src", imageData);
+
+                $.ajax({
+                    url: 'http://platterexoticfood.com/pladmin/manage_api/cust_profile_image',
+                    method: 'post',
+                    dataType: 'JSON',
+                    data: { user: user, image: imageData }
+                }).done(function (res) {
+                    if (!res.success) {
+                        window.plugins.toast.show('Failed because: ' + res.message, 'long', 'bottom', function (a) { }, function (b) { });
+                    }
+                }).fail();
+            },
+            onFail: function (message) {
+                window.plugins.toast.showLongBottom('Failed because: ' + message);
+            }
+        }
+    }
 </script>
