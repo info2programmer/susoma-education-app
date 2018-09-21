@@ -214,7 +214,7 @@
             <div class="row">
                 <div class="col"></div>
                 
-                <div class="col"><button @click="openGellery" class="col popover-open button" data-popover=".popover-links-file"><i class="f7-icons size-50">camera_fill</i></button></div>
+                <div class="col"><button @click="openGellery" class="col button"><i class="f7-icons size-50">camera_fill</i></button></div>
                 <div class="col"></div>
             </div>
             <div class="row" style="margin-top: 12px;">
@@ -241,41 +241,7 @@
             // },
 
             //This Function  For Select Image Fom Camera
-            openCamera: function () {
-                navigator.camera.getPicture(onSuccess, onFail, {
-                    quality: 20,
-                    destinationType: Camera.DestinationType.FILE_URL
-                });
-            },
-
-            // This Function For Open Gallery
-            openGellery: function () {
-                navigator.camera.getPicture(app.onSuccess, app.onFail, {
-                    quality: 50,
-                    sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-                    allowEdit: true,
-                    destinationType: Camera.DestinationType.FILE_URI
-                });
-            },
-            onSuccess: function (imageURI) {
-                imageData = "data:image/png;base64," + imageData;
-                
-                $("#profile_image").attr("src", imageData);
-
-                $.ajax({
-                    url: url + 'apply_image',
-                    method: 'post',
-                    dataType: 'JSON',
-                    data: { user: user, image: imageData }
-                }).done(function (res) {
-                    if (!res.success) {
-                        window.plugins.toast.show('Failed because: ' + res.message, 'long', 'bottom', function (a) { }, function (b) { });
-                    }
-                }).fail();
-            },
-            onFail: function (message) {
-                window.plugins.toast.showLongBottom('Failed because: ' + message);
-            }
+            
         }
     }
 </script>

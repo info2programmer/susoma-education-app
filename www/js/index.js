@@ -1135,46 +1135,6 @@ var phonegapApp = {
     //     window.plugins.toast.showLongBottom('Failed because: ' + message);
     // },
 
-    /*******  this Function For Upload File Via Files  ******/
-    openFiles : function(){
-        filechooser.open({}, successFileCode, errorFileCode);
-    },
-
-    successFileCode : function (data) {
-        let filepath = data.url;
-        function win(r) {
-            console.log("Code = " + r.responseCode);
-            console.log("Response = " + r.response);
-            console.log("Sent = " + r.bytesSent);
-        }
-
-        function fail(error) {
-            console.log("An error has occurred: Code = " + error.code);
-            console.log("upload error source " + error.source);
-            console.log("upload error target " + error.target);
-        }
-
-        let uri = encodeURI(`${url + ''}`);
-        let options = new FileUploadOptions();
-        options.fileKey = "file";
-        options.fileName = filepath.substr(filepath.lastIndexOf('/') + 1);
-
-        let ft = new FileTransfer();
-        ft.onprogress = function (progressEvent) {
-            if (progressEvent.lengthComputable) {
-                loadingStatus.setPercentage(progressEvent.loaded / progressEvent.total);
-            }
-            else {
-                loadingStatus.increment();
-            }
-        };
-
-        ft.upload(filepath, uri, win, fail, options);
-    },
-
-    errorFileCode:  function (msg) {
-        console.log(msg);
-    }
     /*******  this Function For File Download  ******/
     // moveFile: function (fileUri,filename) {
 
@@ -1238,6 +1198,23 @@ var phonegapApp = {
 
 //             });
 //     }
+    openCamera: function () {
+        navigator.camera.getPicture(onSuccess, onFail, {
+            quality: 20,
+            destinationType: Camera.DestinationType.FILE_URL
+        });
+        
+    },
+
+    // This Function For Open Gallery
+    openGellery: function () {
+        navigator.camera.getPicture(app.onSuccess, app.onFail, {
+            quality: 50,
+            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+            allowEdit: true,
+            destinationType: Camera.DestinationType.FILE_URI
+        });
+    },
 };  
 
 function guid() {
@@ -1247,4 +1224,23 @@ function guid() {
             .substring(1);
     }
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+}
+
+
+function onSuccess(imageURI) {
+    imageData = "data:image/png;base64," + imageURI;
+    $.ajax({
+        url: url + 'apply_image',
+        method: 'post',
+        dataType: 'JSON',
+        data: { user: user, image: imageData }
+    }).done(function (res) {
+        if (!res.success) {
+            window.plugins.toast.show('Failed because: ' + res.message, 'long', 'bottom', function (a) { }, function (b) { });
+        }
+    }).fail();
+}
+
+function onFail(message) {
+    window.plugins.toast.showLongBottom('Failed because: ' + message);
 }
