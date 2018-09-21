@@ -1108,32 +1108,32 @@ var phonegapApp = {
     },
 
     /*******  this Function For Upload Image Via Gallery  ******/
-    openGellery: function () {
-        navigator.camera.getPicture(phonegapApp.onGallerySuccess, phonegapApp.onGalleryFail, {
-            quality: 50,
-            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-            allowEdit: true,
-            destinationType: Camera.DestinationType.FILE_URI
-        });
-    },
-    onGallerySuccess: function (imageURI) {
-        imageData = "data:image/png;base64," + imageData;
+    // openGellery: function () {
+    //     navigator.camera.getPicture(phonegapApp.onGallerySuccess, phonegapApp.onGalleryFail, {
+    //         quality: 50,
+    //         sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+    //         allowEdit: true,
+    //         destinationType: Camera.DestinationType.FILE_URI
+    //     });
+    // },
+    // onGallerySuccess: function (imageURI) {
+    //     imageData = "data:image/png;base64," + imageData;
 
-        $.ajax({
-            url: url + 'apply_image',
-            method: 'post',
-            dataType: 'JSON',
-            data: { userid: user, image: imageURI }
-        }).done(function (res) {
-            if (!res.status) {
-                window.plugins.toast.show('Failed because: ' + res.message, 'long', 'bottom', function (a) { }, function (b) { });
-            } 
-            var imageNameForEnq = res.img
-        }).fail();
-    },
-    onGalleryFail: function (message) {
-        window.plugins.toast.showLongBottom('Failed because: ' + message);
-    },
+    //     $.ajax({
+    //         url: url + 'apply_image',
+    //         method: 'post',
+    //         dataType: 'JSON',
+    //         data: { userid: user, image: imageURI }
+    //     }).done(function (res) {
+    //         if (!res.status) {
+    //             window.plugins.toast.show('Failed because: ' + res.message, 'long', 'bottom', function (a) { }, function (b) { });
+    //         } 
+    //         var imageNameForEnq = res.img
+    //     }).fail();
+    // },
+    // onGalleryFail: function (message) {
+    //     window.plugins.toast.showLongBottom('Failed because: ' + message);
+    // },
 
     /*******  this Function For Upload File Via Files  ******/
     openFiles : function(){
