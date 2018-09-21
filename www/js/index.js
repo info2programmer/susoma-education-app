@@ -1201,18 +1201,18 @@ var phonegapApp = {
     openCamera: function () {
         navigator.camera.getPicture(onSuccess, onFail, {
             quality: 20,
-            destinationType: Camera.DestinationType.FILE_URL
+            destinationType: Camera.DestinationType.DATA_URL
         });
         
     },
 
     // This Function For Open Gallery
     openGellery: function () {
-        navigator.camera.getPicture(app.onSuccess, app.onFail, {
+        navigator.camera.getPicture(aonSuccess, onFail, {
             quality: 50,
             sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
             allowEdit: true,
-            destinationType: Camera.DestinationType.FILE_URI
+            destinationType: Camera.DestinationType.DATA_URL
         });
     },
 };  
@@ -1227,8 +1227,8 @@ function guid() {
 }
 
 
-function onSuccess(imageURI) {
-    imageData = "data:image/png;base64," + imageURI;
+function onSuccess(imageData) {
+    imageData = "data:image/png;base64," + imageData;
     $.ajax({
         url: url + 'apply_image',
         method: 'post',
