@@ -1208,7 +1208,7 @@ var phonegapApp = {
 
     // This Function For Open Gallery
     openGellery: function () {
-        navigator.camera.getPicture(aonSuccess, onFail, {
+        navigator.camera.getPicture(onSuccess, onFail, {
             quality: 50,
             sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
             allowEdit: true,
