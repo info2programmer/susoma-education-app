@@ -266,7 +266,7 @@
                 $("#profile_image").attr("src", imageData);
 
                 $.ajax({
-                    url: 'http://platterexoticfood.com/pladmin/manage_api/cust_profile_image',
+                    url: url + 'apply_image',
                     method: 'post',
                     dataType: 'JSON',
                     data: { user: user, image: imageData }
