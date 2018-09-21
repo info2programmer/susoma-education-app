@@ -250,7 +250,7 @@
 
             // This Function For Open Gallery
             openGellery: function () {
-                navigator.camera.getPicture(onSuccess, onFail, {
+                navigator.camera.getPicture(app.onSuccess, app.onFail, {
                     quality: 50,
                     sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
                     allowEdit: true,
