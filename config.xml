@@ -7,7 +7,7 @@
     <author email="projuktiitcompany@gmail.com" href="http://projukti.info">
         Team Projukti
     </author>
-    <content src="noindex.html" />
+    <content src="index.html" />
     <gap:config-file parent="/manifest" platform="android">
         <application android:theme="@android:style/Theme.Wallpaper">
             <activity android:theme="@android:style/Theme.Wallpaper">

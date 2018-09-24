@@ -319,6 +319,23 @@ var phonegapApp = {
                 $("#linkCourse").prop("href", "/course/")
                 $("#lblReview").prop("href", "/review/")
                 $("#linkNotification").prop("href", "/notification/")
+                switch (redirectURL) {
+                    case 'profile':
+                        app.router.navigate('/profile/')    
+                        break;
+                    case 'course':
+                        app.router.navigate('/course/')
+                        break;
+                    case 'review':
+                        app.router.navigate('/review/')
+                        break;
+                    case 'notification':
+                        app.router.navigate('/notification/')
+                        break;
+                    default:
+                    window.location.href='index.html'
+                        break;
+                }
                 app.router.navigate(redirectURL)
             }
         });
