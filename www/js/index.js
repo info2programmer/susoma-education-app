@@ -874,7 +874,8 @@ var phonegapApp = {
                                     ddlSubject1: $('#ddlSubject1').val(),
                                     ddlSubject2: $('#ddlSubject2').val(),
                                     ddlSubject3: $('#ddlSubject3').val(),
-                                    otp: password
+                                    otp: password,
+                                    file: enqImage
                                 },
                                 dataType: "json"
                             }).done(function (rply) {
@@ -1238,26 +1239,20 @@ function guid() {
 
 
 function onSuccess(imageData) {
-    imageData = "data:image/png;base64," + imageData;
+    let imageData = "data:image/png;base64," + imageData;
     $.ajax({
         url: url + 'apply_image',
         method: 'post',
         dataType: 'JSON',
         data: { user: user, image: imageData }
     }).done(function (res) {
-        if (!res.success) {
-            window.plugins.toast.show('Failed because: ' + res.message, 'long', 'bottom', function (a) { }, function (b) { });
+        if (res.status) {
+            var enqImage = res.img
         }
     }).fail();
 }
 
 function onFail(message) {
-    window.plugins.toast.showLongBottom('Failed because: ' + message);
+    console.log('Failed because: ' + message)
 }
 
-function otpSendSuccess(){
-    OTPAutoVerification.stopOTPListener();
-}
-function otpSendFail(){
-    console.log("Problem in listening OTP");
-}
