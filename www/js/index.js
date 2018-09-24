@@ -284,7 +284,6 @@ var phonegapApp = {
             dataType: "JSON"
         }).done(function (rply) {
             if (rply.status == 1) {
-                OTPAutoVerification.startOTPListener(options, success, failure);
                 otpsuccessmsg.open()
                 $('#blockOTP').show()
                 $('#blockOTPButton').show()
