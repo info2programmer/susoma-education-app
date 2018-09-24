@@ -243,7 +243,7 @@ routes = [
   },
 
   {
-    path: '/login/',
+    path: '/login/:navigateTo',
     componentUrl: './pages/login.html',
   },
 

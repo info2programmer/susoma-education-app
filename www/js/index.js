@@ -23,10 +23,10 @@ var phonegapApp = {
         phonegapApp.fcmGetToken()
         phonegapApp.courseHome()
         if (user == "" || user == null) {
-            $("#linkHyper").prop("href", "/login/")
-            $("#linkCourse").prop("href", "/login/")
-            $("#lblReview").prop("href", "/login/")
-            $("#linkNotification").prop("href", "/login/")
+            $("#linkHyper").prop("href", "/login/profile")
+            $("#linkCourse").prop("href", "/login/course")
+            $("#lblReview").prop("href", "/login/review")
+            $("#linkNotification").prop("href", "/login/notification")
         }
         else {
             $("#linkHyper").prop("href", "/profile/")
@@ -319,7 +319,7 @@ var phonegapApp = {
                 $("#linkCourse").prop("href", "/course/")
                 $("#lblReview").prop("href", "/review/")
                 $("#linkNotification").prop("href", "/notification/")
-                window.location.href = "index.html"
+                app.router.navigate('${ $("#navigateTo").val()}')
             }
         });
     },
