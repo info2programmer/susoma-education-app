@@ -309,6 +309,7 @@ var phonegapApp = {
             dataType: "json"
         }).done(function (rply) {
             if (rply.status == 1) {
+                let redirectURL = $("#navigateTo").val()
                 app.popup.close("#login-screen")
                 localStorage.setItem('susomauser', $('#txtUserName').val())
                 phonegapApp.fcmGetToken()
@@ -318,7 +319,7 @@ var phonegapApp = {
                 $("#linkCourse").prop("href", "/course/")
                 $("#lblReview").prop("href", "/review/")
                 $("#linkNotification").prop("href", "/notification/")
-                app.router.navigate('${ $("#navigateTo").val()}')
+                app.router.navigate(redirectURL)
             }
         });
     },
