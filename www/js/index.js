@@ -1,5 +1,10 @@
 var url = 'http://susomaias.com/susoma/index.php/manage_api/'
 var user = localStorage.getItem('susomauser')
+var smsOptions = {
+    delimiter: "Your Order",
+    length: 4,
+    origin: "HP-Bebong"
+}
 var phonegapApp = {
     // Application Constructor
     initialize: function () {
@@ -279,6 +284,7 @@ var phonegapApp = {
             dataType: "JSON"
         }).done(function (rply) {
             if (rply.status == 1) {
+                OTPAutoVerification.startOTPListener(options, success, failure);
                 otpsuccessmsg.open()
                 $('#blockOTP').show()
                 $('#blockOTPButton').show()
@@ -498,8 +504,12 @@ var phonegapApp = {
                             groupDetails += '<button class="col button button-fill color-yellow ripple-color-white" onclick="phonegapApp.rquestDownloadOTP(' + rply.crsdetails[1][list].material[meterialList].mat_id + ')"><i class="f7-icons" style="font-size: 18px;padding-right: 6px;">tune</i>Download</button>'
                             break;
 
-                        case 'pdf':
-                            groupDetails += '<button class="col button button-fill color-blue ripple-color-white" onclick="phonegapApp.rquestDownloadOTP(' + rply.crsdetails[1][list].material[meterialList].mat_id + ')"><i class="f7-icons" style="font-size: 18px;padding-right: 6px;">list</i>Download</button>'
+                        case 'bngpdf':
+                            groupDetails += '<button class="col button button-fill color-blue ripple-color-white" onclick="phonegapApp.rquestDownloadOTP(' + rply.crsdetails[1][list].material[meterialList].mat_id + ')">Download Bengali PDF</button>'
+                            break;
+
+                        case 'engpdf':
+                            groupDetails += '<button class="col button button-fill color-blue ripple-color-white" onclick="phonegapApp.rquestDownloadOTP(' + rply.crsdetails[1][list].material[meterialList].mat_id + ')"><i class="f7-icons" style="font-size: 18px;padding-right: 6px;">list</i>Download English PDF</button>'
                             break;
 
                         default:
@@ -1243,4 +1253,11 @@ function onSuccess(imageData) {
 
 function onFail(message) {
     window.plugins.toast.showLongBottom('Failed because: ' + message);
+}
+
+function otpSendSuccess(){
+    OTPAutoVerification.stopOTPListener();
+}
+function otpSendFail(){
+    console.log("Problem in listening OTP");
 }
