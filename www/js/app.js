@@ -108,7 +108,7 @@ var invalidUserIdMsg = app.notification.create({
   icon: '<i class="icon f7-icons color-red">close_round_fill</i>',
   title: 'Susoma',
   subtitle: 'Opps',
-  text: 'Please Enter Valid Candidate Id',
+  text: 'Please Enter Valid Candidate Id Or you reached maximum login limit',
   closeButton: true,
 });
 
@@ -140,7 +140,7 @@ var notificationCourseMissmach = app.notification.create({
   icon: '<i class="icon f7-icons color-red">close_round_fill</i>',
   title: 'Susoma',
   subtitle: 'Opps',
-  text: 'You are not able to download this content',
+  text: 'You are not able to download this content or exceeded maximum download limit',
   closeButton: true,
 });
 
