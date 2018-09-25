@@ -1258,12 +1258,12 @@ function guid() {
 
 
 function onSuccess(imageData) {
-    let imageData = "data:image/png;base64," + imageData;
+    let imagInfo = "data:image/png;base64," + imageData;
     $.ajax({
         url: url + 'apply_image',
         method: 'post',
         dataType: 'JSON',
-        data: { user: user, image: imageData }
+        data: { user: user, image: imagInfo }
     }).done(function (res) {
         if (res.status) {
             var enqImage = res.img
