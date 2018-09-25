@@ -1,5 +1,6 @@
 var url = 'http://susomaias.com/susoma/index.php/manage_api/'
 var user = localStorage.getItem('susomauser')
+var enqImage = ''
 var smsOptions = {
     delimiter: "Your Order",
     length: 4,
@@ -336,7 +337,7 @@ var phonegapApp = {
                     window.location.href='index.html'
                         break;
                 }
-                app.router.navigate(redirectURL)
+                //app.router.navigate(redirectURL)
             }
         });
     },
