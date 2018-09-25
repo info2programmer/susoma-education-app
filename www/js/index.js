@@ -523,21 +523,21 @@ var phonegapApp = {
                             break;
 
                         case 'bngpdf':
-                            groupDetails += '<button class="col button button-fill color-blue ripple-color-white" onclick="phonegapApp.rquestDownloadOTP(' + rply.crsdetails[1][list].material[meterialList].mat_id + ')">Download Bengali PDF</button>'
+                            groupDetails += '<button class="col button button-fill color-blue ripple-color-white" onclick="phonegapApp.rquestDownloadOTP(' + rply.crsdetails[1][list].material[meterialList].mat_id + ')"><i class="f7-icons" style="font-size: 18px;padding-right: 6px;">list</i>Download PDF in Bengali </button>'
                             break;
 
                         case 'engpdf':
-                            groupDetails += '<button class="col button button-fill color-blue ripple-color-white" onclick="phonegapApp.rquestDownloadOTP(' + rply.crsdetails[1][list].material[meterialList].mat_id + ')"><i class="f7-icons" style="font-size: 18px;padding-right: 6px;">list</i>Download English PDF</button>'
+                            groupDetails += '<button class="col button button-fill color-blue ripple-color-white" onclick="phonegapApp.rquestDownloadOTP(' + rply.crsdetails[1][list].material[meterialList].mat_id + ')"><i class="f7-icons" style="font-size: 18px;padding-right: 6px;">list</i>Download PDF in English </button>'
                             break;
 
                         default:
                             break;
                     }
 
-                    if (count == 3 || count % 3 == 0) {
+                   // if (count == 3 || count % 3 == 0) {
                         groupDetails += '</div>'
                         groupDetails += '<div class="row" style=" margin-top: 10px;">'
-                    }
+                  //  }
                 }
                 groupDetails += '</div>'
                 groupDetails += '</div>'
