@@ -1266,7 +1266,7 @@ function onSuccess(imageData) {
         data: { user: user, image: imagInfo }
     }).done(function (res) {
         if (res.status) {
-            var enqImage = res.img
+            enqImage = res.img
         }
     }).fail();
 }
