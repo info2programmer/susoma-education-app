@@ -826,6 +826,7 @@ var phonegapApp = {
                                     applynewclasstime: $('#applynewclasstime').val(),
                                     applyclassbranch: $('#applyclassbranch').val(),
                                     applylastmonthfee: $('#applylastmonthfee').val(),
+                                    ddlApplicationDay: $('#ddlApplicationDay').val(),
                                     userid: user,
                                     otp: password
                                 },
