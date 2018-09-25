@@ -248,6 +248,12 @@ routes = [
   },
 
   {
+    path: '/contact-details/',
+    componentUrl: './pages/contact.html',
+  },
+
+
+  {
     path: '/course-user/',
     async: function (routeTo, routeFrom, resolve, reject) {
       let router = this;
