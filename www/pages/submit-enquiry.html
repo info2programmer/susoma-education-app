@@ -36,6 +36,37 @@
 
                     <li class="item-content item-input">
                         <div class="item-media">
+                            <i class="icon f7-icons md-only color-orange">person_fill</i>
+                        </div>
+                        <div class="item-inner">
+                            <div class="item-input-wrap">
+                                <select name="ddlGenderEnq" id="ddlGenderEnq">
+                                    <option value="" selected hidden>Select Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="item-content item-input">
+                        <div class="item-media">
+                            <i class="icon f7-icons md-only color-orange">persons_fill</i>
+                        </div>
+                        <div class="item-inner">
+                            <div class="item-title item-floating-label">Guardian Salutation</div>
+                            <div class="item-input-wrap">
+                                <select name="ddlSalutationEnq" id="ddlSalutationEnq">
+                                    <option value="Mr.">Mr.</option>
+                                    <option value="Ms.">Ms.</option>
+                                    <option value="Miss.">Miss.</option>
+                                </select>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="item-content item-input">
+                        <div class="item-media">
                             <i class="icon f7-icons md-only color-orange">persons_fill</i>
                         </div>
                         <div class="item-inner">
@@ -213,9 +244,11 @@
            
             <div class="row">
                 <div class="col"></div>
-                
                 <div class="col"><button class="col popover-open button" data-popover=".popover-links-file"><i class="f7-icons size-50">camera_fill</i></button></div>
                 <div class="col"></div>
+            </div>
+            <div class="row">
+                <div class="col text-align-center">Select File</div>
             </div>
             <div class="row" style="margin-top: 12px;">
                 <button onclick="phonegapApp.requestOTPforEnquiryForm()" class="col button button-fill color-orange">Submit</button>

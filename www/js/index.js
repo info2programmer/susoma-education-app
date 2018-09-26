@@ -87,7 +87,7 @@ var phonegapApp = {
 
     /*******  When Try Again Button Tap Then This Block Will Execute  ******/
     tryAgainInternet: function () {
-        navigator.app.loadUrl("file:///android_asset/www/index.html", { wait: 2000, loadingDialog: "Wait,Loading App", loadUrlTimeoutValue: 60000 });
+        navigator.app.loadUrl("file:///android_asset/www/index.html", { wait: 0, loadingDialog: "Wait,Loading App", loadUrlTimeoutValue: 60000 });
     },
 
     /*******  FCM PLUGIN  ******/
@@ -829,11 +829,25 @@ var phonegapApp = {
                                     applylastmonthfee: $('#applylastmonthfee').val(),
                                     ddlApplicationDay: $('#ddlApplicationDay').val(),
                                     userid: user,
-                                    otp: password
+                                    otp: password,
+                                    sex: $('#ddlGender').val(),
+                                    pre_day: $('#ddlCurrentClass').val()
                                 },
                                 dataType: "json"
                             }).done(function (rply) {
                                 if (rply.status) {
+                                    $('#applyname').val('')
+                                    $('#applyteacher').val('')
+                                    $('#applyaccountno').val('')
+                                    $('#applybranch').val('')
+                                    $('#applyphone').val('')
+                                    $('#applydepartmnet').val('')
+                                    $('#applypreclasstime').val('')
+                                    $('#applycoursechange').val('')
+                                    $('#applynewclasstime').val('')
+                                    $('#applyclassbranch').val('')
+                                    $('#applylastmonthfee').val('')
+                                    $('#ddlApplicationDay').val('')
                                     applicationRequestNotification.open()
                                 }
                                 else {
@@ -895,7 +909,9 @@ var phonegapApp = {
                                     ddlSubject2: $('#ddlSubject2').val(),
                                     ddlSubject3: $('#ddlSubject3').val(),
                                     otp: password,
-                                    file: enqImage
+                                    file: enqImage,
+                                    sex: $('#ddlGenderEnq').val(),
+                                    salute: $('#ddlSalutationEnq').val(),
                                 },
                                 dataType: "json"
                             }).done(function (rply) {
@@ -991,34 +1007,40 @@ var phonegapApp = {
 
     /*******  Calculate Age  ******/
     calculateAge: function (age) {
-        let mdate = age.toString()
-        let yearThen = parseInt(mdate.substring(0, 4), 10)
-        let monthThen = parseInt(mdate.substring(5, 7), 10)
-        let dayThen = parseInt(mdate.substring(8, 10), 10)
+        if(age){
+            let mdate = age.toString()
+            let yearThen = parseInt(mdate.substring(0, 4), 10)
+            let monthThen = parseInt(mdate.substring(5, 7), 10)
+            let dayThen = parseInt(mdate.substring(8, 10), 10)
 
-        let today = new Date();
-        let birthday = new Date(yearThen, monthThen - 1, dayThen)
+            let today = new Date();
+            let birthday = new Date(yearThen, monthThen - 1, dayThen)
 
-        let differenceInMilisecond = today.valueOf() - birthday.valueOf()
+            let differenceInMilisecond = today.valueOf() - birthday.valueOf()
 
-        let year_age = Math.floor(differenceInMilisecond / 31536000000)
-        let day_age = Math.floor((differenceInMilisecond % 31536000000) / 86400000)
+            let year_age = Math.floor(differenceInMilisecond / 31536000000)
+            let day_age = Math.floor((differenceInMilisecond % 31536000000) / 86400000)
 
-        // if ((today.getMonth() == birthday.getMonth()) && (today.getDate() == birthday.getDate())) {
-        //     alert("Happy B'day!!!");
-        // }
+            // if ((today.getMonth() == birthday.getMonth()) && (today.getDate() == birthday.getDate())) {
+            //     alert("Happy B'day!!!");
+            // }
 
-        var month_age = Math.floor(day_age / 30)
+            var month_age = Math.floor(day_age / 30)
 
-        day_age = day_age % 30
+            day_age = day_age % 30
 
-        if (isNaN(year_age) || isNaN(month_age) || isNaN(day_age)) {
-            // $("#exact_age").text("Invalid birthday - Please try again!");
-            return
+            if (isNaN(year_age) || isNaN(month_age) || isNaN(day_age)) {
+                // $("#exact_age").text("Invalid birthday - Please try again!");
+                return
+            }
+            else {
+                $("#enqage").val(year_age + " years " + month_age + " months " + day_age + " days old")
+            }
         }
-        else {
-            $("#enqage").val(year_age + " years " + month_age + " months " + day_age + " days old")
+        else{
+            $("#enqage").val('')
         }
+        
     },
 
     /*******  Calculate Content  ******/
@@ -1123,6 +1145,7 @@ var phonegapApp = {
                 data: { userid: user, msg: message },
                 dataType: "json"
             }).done(function () {
+                $('#txtContactMessage').val('')
                 contactSubmitMessage.open()
             })
         }
@@ -1260,6 +1283,8 @@ function guid() {
 
 function onSuccess(imageData) {
     let imagInfo = "data:image/png;base64," + imageData;
+    window.plugins.toast.show('File Uploading, Please Wait . . . ', 'long', 'center', function (a) { console.log('toast success: ' + a) }, function (b) { alert('toast error: ' + b) })
+    app.preloader.show()
     $.ajax({
         url: url + 'apply_image',
         method: 'post',
@@ -1268,6 +1293,8 @@ function onSuccess(imageData) {
     }).done(function (res) {
         if (res.status) {
             enqImage = res.img
+            app.preloader.hide()
+            window.plugins.toast.show('File uploaded', 'long', 'center', function (a) { console.log('toast success: ' + a) }, function (b) { alert('toast error: ' + b) })
         }
     }).fail();
 }
