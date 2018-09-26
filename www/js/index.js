@@ -916,6 +916,7 @@ var phonegapApp = {
                                 dataType: "json"
                             }).done(function (rply) {
                                 if (rply.status) {
+                                    enqImage = ''
                                     $('#enqname').val('')
                                     $('#enqprevious').val('')
                                     $('#ddlSubject1').val('')
@@ -1142,10 +1143,11 @@ var phonegapApp = {
             $.ajax({
                 type: "post",
                 url: url + "ContactSubmit",
-                data: { userid: user, msg: message },
+                data: { userid: user, msg: message, file: enqImage, },
                 dataType: "json"
             }).done(function () {
                 $('#txtContactMessage').val('')
+                enqImage=''
                 contactSubmitMessage.open()
             })
         }

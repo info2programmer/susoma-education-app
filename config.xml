@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.susomaias" version="0.1.3" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.susomaias" version="0.1.4" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Susoma</name>
     <description>
         INSTITUTION DEDICATED FOR ART AND CULTURE
@@ -18,7 +18,7 @@
     <preference name="StatusBarOverlaysWebView" value="true" />
     <preference name="StatusBarStyle" value="lightcontent" />
     <preference name="StatusBarBackgroundColor" value="#0c83c8" />
-    <preference name="android-minSdkVersion" value="21" />
+    <preference name="android-minSdkVersion" value="18" />
     <preference name="phonegap-version" value="cli-8.0.0" />
     <preference name="Orientation" value="portrait" />
     <preference name="AndroidExtraFilesystems" value="files,files-external,documents,sdcard,cache,cache-external,assets,root" />
