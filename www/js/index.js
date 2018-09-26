@@ -87,7 +87,8 @@ var phonegapApp = {
 
     /*******  When Try Again Button Tap Then This Block Will Execute  ******/
     tryAgainInternet: function () {
-        navigator.app.loadUrl("file:///android_asset/www/index.html", { wait: 0, loadingDialog: "Wait,Loading App", loadUrlTimeoutValue: 60000 });
+        // navigator.app.loadUrl("file:///android_asset/www/index.html", { wait: 0, loadingDialog: "Wait,Loading App", loadUrlTimeoutValue: 60000 });
+        window.location.href ="index.html"
     },
 
     /*******  FCM PLUGIN  ******/
