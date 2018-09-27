@@ -796,9 +796,9 @@ var phonegapApp = {
 
     /*******  This Function For Requresting OTP Password For Application Form  ******/
     requestOTPforApplicationForm: function () {
-        let applicationFormData = app.form.convertToData('#application-form')
+       // let applicationFormData = app.form.convertToData('#application-form')
 
-        if (applicationFormData) {
+        if ($('#applydepartmnet').val() != "" && $('#applyteacher').val() != "" && $('#applyaccountno').val() != "" && $('#applybranch').val() != "" && $('#applyphone').val() != "" && $('#applydepartmnet').val() != "" && $('#applypreclasstime').val() != "" && $('#applycoursechange').val() != "" && $('#applynewclasstime').val() != "" && $('#applyclassbranch').val() != "" && $('#applylastmonthfee').val() != "" && $('#ddlApplicationDay').val() != "") {
             $.ajax({
                 type: "post",
                 url: url + "ApplicationCheck",
@@ -864,6 +864,10 @@ var phonegapApp = {
                 }
             })
         }
+        else{
+            notificationValidationError.open()
+        }
+        
 
     },
 
@@ -874,7 +878,7 @@ var phonegapApp = {
     /*******  This Function For Requresting OTP Password For Enquiry Form  ******/
     requestOTPforEnquiryForm: function () {
         let applicationFormData = app.form.convertToData('#enquiry-form')
-        if (applicationFormData) {
+        if ($('#enqname').val() != "" && $('#enqgurdianname').val() != "" && $('#enqphone').val() != "" && $('#enqdob').val() != "" && $('#enqage').val() != "" && $('#enqclass').val() != "" && $('#enqschool').val() != "" && $('#ddlMedium').val() != "" && $('#enqprevious').val() != "" && $('#ddlSubject1').val() != "" && $('#ddlSubject2').val() != "" && $('#ddlSubject3').val() != "" && $('#ddlGenderEnq').val() != "" && $('#ddlSalutationEnq').val() != "") {
             $.ajax({
                 type: "post",
                 url: url + "EnquiryCheck",
@@ -888,11 +892,6 @@ var phonegapApp = {
                             openOTPdialog()
                         }
                         else {
-                            // dob = new Date(dob);
-                            // var today = new Date();
-                            // var age = Math.floor((today - dob) / (365.25 * 24 * 60 * 60 * 1000));
-                            // $('#age').html(age + ' years old');
-
                             $.ajax({
                                 type: "post",
                                 url: url + "EnquirySubmit",
@@ -942,6 +941,9 @@ var phonegapApp = {
                     notificationCourseMissmach.open()
                 }
             })
+        }
+        else{
+            notificationValidationError.open()
         }
 
     },
