@@ -416,7 +416,7 @@ var phonegapApp = {
                 $("#certificate-link").attr("onclick", "notificationWithButton.open()");
             }
 
-            if (!rply.othdtl[0].marks_pub_stat!=1) {
+            if (rply.othdtl[0].marks_pub_stat!=1) {
                 $("#marksheet-link").attr("onclick", "notificationWithButton.open()");
             }
 
