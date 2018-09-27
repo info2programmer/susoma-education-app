@@ -412,11 +412,11 @@ var phonegapApp = {
             $('#ass-add').html(swiching)
 
 
-            if (rply.othdtl[0].marks_pub_stat!=1) {
+            if (rply.othdtl[0].cert_pub_stat!=1) {
                 $("#certificate-link").attr("onclick", "notificationWithButton.open()");
             }
 
-            if (!rply.othdtl[0].cert_pub_stat!=1) {
+            if (!rply.othdtl[0].marks_pub_stat!=1) {
                 $("#marksheet-link").attr("onclick", "notificationWithButton.open()");
             }
 
