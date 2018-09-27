@@ -28,12 +28,14 @@ var phonegapApp = {
             $("#linkCourse").prop("href", "/login/course")
             $("#lblReview").prop("href", "/login/review")
             $("#linkNotification").prop("href", "/login/notification")
+            $("#lblCustomizedApplication").prop("href", "/login/contact")
         }
         else {
             $("#linkHyper").prop("href", "/profile/")
             $("#linkCourse").prop("href", "/course/")
             $("#lblReview").prop("href", "/review/")
             $("#linkNotification").prop("href", "/notification/")
+            $("#lblCustomizedApplication").prop("href", "/contact/")
         }
     },
 
@@ -333,6 +335,9 @@ var phonegapApp = {
                         break;
                     case 'notification':
                         app.router.navigate('/notification/')
+                        break;
+                    case 'contact':
+                        app.router.navigate('/contact/')
                         break;
                     default:
                     window.location.href='index.html'
