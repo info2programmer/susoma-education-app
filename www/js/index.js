@@ -323,6 +323,7 @@ var phonegapApp = {
                 $("#linkCourse").prop("href", "/course/")
                 $("#lblReview").prop("href", "/review/")
                 $("#linkNotification").prop("href", "/notification/")
+                $("#lblCustomizedApplication").prop("href", "/contact/")
                 switch (redirectURL) {
                     case 'profile':
                         app.router.navigate('/profile/')    
