@@ -568,7 +568,7 @@ var phonegapApp = {
             dataType: "JSON"
         }).done(function (rply) {
             app.preloader.hide()
-            if (rply.status) {
+            if (rply.status==1) {
                 app.dialog.password('Enter your OTP', function (password) {
                     if (password == "") {
                         openOTPdialog()
@@ -578,6 +578,9 @@ var phonegapApp = {
                     }
                     // console.log(`OTP is ${password}`)
                 })
+            }
+            if (rply.status == 2) {
+                phonegapApp.validateDownloadOTP(rply.old_otp, meterialId)
             }
             else {
                 notificationCourseMissmach.open()
