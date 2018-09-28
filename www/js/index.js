@@ -888,7 +888,7 @@ var phonegapApp = {
     /*******  This Function For Requresting OTP Password For Enquiry Form  ******/
     requestOTPforEnquiryForm: function () {
         let applicationFormData = app.form.convertToData('#enquiry-form')
-        if ($('#enqname').val() != "" && $('#enqgurdianname').val() != "" && $('#enqphone').val() != "" && $('#enqdob').val() != "" && $('#enqage').val() != "" && $('#enqclass').val() != "" && $('#enqschool').val() != "" && $('#ddlMedium').val() != "" && $('#enqprevious').val() != "" && $('#ddlSubject1').val() != "" && $('#ddlSubject2').val() != "" && $('#ddlSubject3').val() != "" && $('#ddlGenderEnq').val() != "" && $('#ddlSalutationEnq').val() != "") {
+        if ($('#enqname').val() != "" && $('#enqgurdianname').val() != "" && $('#enqphone').val() != "" && $('#enqdob').val() != "" && $('#enqage').val() != "" && $('#enqclass').val() != "" && $('#enqschool').val() != "" && $('#ddlMedium').val() != "" && $('#enqprevious').val() != "" && $('#ddlSubject1').val() != "" && $('#ddlGenderEnq').val() != "" && $('#ddlSalutationEnq').val() != "") {
             $.ajax({
                 type: "post",
                 url: url + "EnquiryCheck",
