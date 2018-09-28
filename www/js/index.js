@@ -288,6 +288,7 @@ var phonegapApp = {
             dataType: "JSON"
         }).done(function (rply) {
             if (rply.status == 1) {
+                window.plugins.toast.show('A candiate can login 3 times only', 'long', 'center', function (a) { console.log('toast success: ' + a) }, function (b) { alert('toast error: ' + b) })
                 otpsuccessmsg.open()
                 $('#blockOTP').show()
                 $('#blockOTPButton').show()
