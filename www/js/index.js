@@ -568,7 +568,7 @@ var phonegapApp = {
             dataType: "JSON"
         }).done(function (rply) {
             app.preloader.hide()
-            if (rply.status==1) {
+            if (rply.status == 1) {
                 app.dialog.password('Enter your OTP', function (password) {
                     if (password == "") {
                         openOTPdialog()
