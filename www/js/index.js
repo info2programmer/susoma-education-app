@@ -314,9 +314,10 @@ var phonegapApp = {
             dataType: "json"
         }).done(function (rply) {
             if (rply.status == 1) {
+                localStorage.setItem('susomauser', $('#txtUserName').val())
+                user = localStorage.getItem('susomauser')
                 let redirectURL = $("#navigateTo").val()
                 app.popup.close("#login-screen")
-                localStorage.setItem('susomauser', $('#txtUserName').val())
                 phonegapApp.fcmGetToken()
                 phonegapApp.institutes()
                 phonegapApp.courses()
@@ -352,6 +353,7 @@ var phonegapApp = {
 
     /*******  This Function For Profile  ******/
     profile: function () {
+        
         $.ajax({
             type: "post",
             url: url + 'profile',
@@ -808,7 +810,7 @@ var phonegapApp = {
     requestOTPforApplicationForm: function () {
        // let applicationFormData = app.form.convertToData('#application-form')
 
-        if ($('#applydepartmnet').val() != "" && $('#applyteacher').val() != "" && $('#applyaccountno').val() != "" && $('#applybranch').val() != "" && $('#applyphone').val() != "" && $('#applydepartmnet').val() != "" && $('#applypreclasstime').val() != "" && $('#applycoursechange').val() != "" && $('#applynewclasstime').val() != "" && $('#applyclassbranch').val() != "" && $('#applylastmonthfee').val() != "" && $('#ddlApplicationDay').val() != "") {
+        if ($('#applydepartmnet').val() != "" && $('#applyteacher').val() != "" && $('#applyaccountno').val() != "" && $('#applybranch').val() != "" && $('#applyphone').val() != ""  && $('#applypreclasstime').val() != "" && $('#applycoursechange').val() != "" && $('#applynewclasstime').val() != "" && $('#applyclassbranch').val() != "" && $('#applylastmonthfee').val() != "" && $('#ddlApplicationDay').val() != "") {
             $.ajax({
                 type: "post",
                 url: url + "ApplicationCheck",
@@ -875,6 +877,39 @@ var phonegapApp = {
             })
         }
         else{
+            if ($('#applydepartmnet').val() == ""){
+                $('#applydepartmnet').focus()
+            }
+            else if ($('#applyteacher').val() == ""){
+                $('#applyteacher').focus()
+            }
+            else if (('#applyaccountno').val()){
+                $('#applyaccountno').focus()
+            }
+            else if ($('#applybranch').val() == ""){
+                $('#applybranch').focus()
+            }
+            else if ($('#applyphone').val() == ""){
+                $('#applyphone').focus()
+            }
+            else if ($('#applypreclasstime').val() == ""){
+                $('#applypreclasstime').focus()
+            }
+            else if ($('#applycoursechange').val() == ""){
+                $('#applycoursechange').focus()
+            }
+            else if ($('#applynewclasstime').val()){
+                $('#applynewclasstime').focus()
+            }
+            else if ($('#applyclassbranch').val()){
+                $('#applyclassbranch').focus()
+            }
+            else if ($('#applylastmonthfee').val()) {
+                $('#applylastmonthfee').focus()
+            }
+            else if ($('#ddlApplicationDay').val()) {
+                $('#ddlApplicationDay').focus()
+            }
             notificationValidationError.open()
         }
         
@@ -953,6 +988,43 @@ var phonegapApp = {
             })
         }
         else{
+            if ($('#enqname').val() == ""){
+                $('#enqname').focus()
+            }
+            else if ($('#enqgurdianname').val() == "") {
+                $('#enqgurdianname').focus()
+            }
+            else if ($('#enqphone').val() == "") {
+                $('#enqphone').focus()
+            }
+            else if ($('#enqdob').val() == "") {
+                $('#enqdob').focus()
+            }
+            else if ($('#enqage').val() == "") {
+                $('#enqage').focus()
+            }
+            else if ($('#enqclass').val() == "") {
+                $('#enqclass').focus()
+            }
+            else if ($('#enqschool').val() == "") {
+                $('#enqschool').focus()
+            }
+            else if ($('#ddlMedium').val() == "") {
+                $('#ddlMedium').focus()
+            }
+            else if ($('#enqprevious').val() == "") {
+                $('#enqprevious').focus()
+            }
+            else if ($('#ddlSubject1').val() == "") {
+                $('#ddlSubject1').focus()
+            }
+            else if ($('#ddlGenderEnq').val() == "") {
+                $('#ddlGenderEnq').focus()
+            }
+            else if ($('#ddlSalutationEnq').val() == "") {
+                $('#ddlSalutationEnq').focus()
+            }
+
             notificationValidationError.open()
         }
 

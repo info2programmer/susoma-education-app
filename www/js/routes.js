@@ -53,7 +53,6 @@ routes = [
     async: function (routeTo, routeFrom, resolve, reject) {
       let router = this;
       let unique = router.app;
-
       unique.preloader.show();
       setTimeout(function () {
         phonegapApp.profile();

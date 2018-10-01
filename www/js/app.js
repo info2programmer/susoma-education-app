@@ -148,7 +148,7 @@ var notificationValidationError = app.notification.create({
   icon: '<i class="icon f7-icons color-red">close_round_fill</i>',
   title: 'Susoma',
   subtitle: 'Opps',
-  text: 'Validation Error',
+  text: 'Please fill up all the mandatory fields',
   closeButton: true,
 });
 
