@@ -381,7 +381,7 @@ var phonegapApp = {
             let swiching = ''
             if (rply.othdtl[0].course_id == 2){
 
-                if (rply.othdtl[0].doc_pub_stat!=0) {//assessment Not Publish
+                if (rply.othdtl[0].doc_pub_stat!=1) {//assessment Not Publish
                     swiching += '<a href="#" class="item-link item-content inset" @click="oprnComingSoon">'
                 }
                 else {//assessment  Publish
@@ -396,7 +396,7 @@ var phonegapApp = {
                 swiching += '</a>'
             }
             else{
-                if (rply.othdtl[0].doc_pub_stat != 0){//Admit Card Not Publish
+                if (rply.othdtl[0].doc_pub_stat != 1){//Admit Card Not Publish
                     swiching += '<a href="#" class="item-link item-content inset" @click="oprnComingSoon">'
                 }
                 else{//Admit Card Publish
