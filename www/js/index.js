@@ -580,7 +580,7 @@ var phonegapApp = {
                     // console.log(`OTP is ${password}`)
                 })
             }
-            if (rply.status == 2) {
+            else if (rply.status == 2) {
                 phonegapApp.validateDownloadOTP(rply.old_otp, meterialId)
             }
             else {
