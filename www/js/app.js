@@ -140,7 +140,7 @@ var notificationCourseMissmach = app.notification.create({
   icon: '<i class="icon f7-icons color-red">close_round_fill</i>',
   title: 'Susoma',
   subtitle: 'Opps',
-  text: 'You are not able to download this content or exceeded maximum download limit',
+  text: 'You are not able to download this content',
   closeButton: true,
 });
 

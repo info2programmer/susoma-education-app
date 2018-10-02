@@ -561,7 +561,6 @@ var phonegapApp = {
 
     /*******  This Function For Requresting OTP Password For File Download  ******/
     rquestDownloadOTP: function (meterialId) {
-        window.plugins.toast.show('You file download limit is 3 times only', 'long', 'center', function (a) { console.log('toast success: ' + a) }, function (b) { alert('toast error: ' + b) })
         app.preloader.show()
         $.ajax({
             type: "post",
