@@ -49,7 +49,6 @@
       "cordova-plugin-vibration": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-whitelist": {},
-      "cordova-plugin-statusbar": {},
       "cordova-plugin-x-toast": {},
       "cordova-plugin-screen-orientation": {},
       "cordova-plugin-fcm": {},

@@ -136,4 +136,14 @@
 .demo-card-header-pic .card-content-padding .date{
   color: #8e8e93;
 }
+.statusbar {
+  background: pink;
+  /* We can add transition for smooth color animation */
+  transition: 400ms;
+}
+
+/* Change Statusbar background when panel opened */
+html.with-panel-left-cover .statusbar {
+  background: #fff;
+}
 

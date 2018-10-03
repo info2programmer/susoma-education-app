@@ -360,6 +360,12 @@ var phonegapApp = {
             data: { userid: user },
             dataType: "json"
         }).done(function (rply) {
+            if (rply.candprof[0].ctype == 'T') {
+                $('#ass-add').hide()
+                $('#t-mar').hide()
+                $('#t-id').hide()
+                $('#t-cer').hide()
+            }
             let courseDetails = ''
             for (list in rply.othdtl) {
                 courseDetails += '<div class="card card-outline slideInRight">'
@@ -371,7 +377,9 @@ var phonegapApp = {
                 courseDetails += '<div class="col-70">'
                 courseDetails += `<div class="title" style="font-size: 20px;"><strong>${rply.othdtl[list].name}</strong></div>`
                 courseDetails += `<div>${rply.othdtl[list].grp_name}</div>`
+                if (rply.candprof[0].ctype != 'T') {
                 courseDetails += `<div><strong>Total Fees : </strong> ${rply.payment_dtl[list].tamt} <strong>Due Amount : </strong> ${rply.payment_dtl[list].tamt - rply.othdtl[list].fees}</div>`
+                }
                 courseDetails += '</div>'
                 courseDetails += '</div>'
                 courseDetails += '</div>'
@@ -384,7 +392,7 @@ var phonegapApp = {
             if (rply.othdtl[0].course_id == 2){
 
                 if (rply.othdtl[0].asses_pub_stat!=1) {//assessment Not Publish
-                    swiching += '<a href="#" class="item-link item-content inset" @click="oprnComingSoon">'
+                    swiching += '<a href="#" class="item-link item-content inset" onclick="notificationWithButton.open()">'
                 }
                 else {//assessment  Publish
                     swiching += '<a href="/assesment/" class="item-link item-content inset">'
@@ -399,7 +407,7 @@ var phonegapApp = {
             }
             else{
                 if (rply.othdtl[0].doc_pub_stat != 1){//Admit Card Not Publish
-                    swiching += '<a href="#" class="item-link item-content inset" @click="oprnComingSoon">'
+                    swiching += '<a href="#" class="item-link item-content inset" onclick="notificationWithButton.open()">'
                 }
                 else{//Admit Card Publish
                     swiching += '<a href="#" class="item-link item-content inset" onclick="phonegapApp.verifyDownloadAdmit()">'
@@ -422,7 +430,7 @@ var phonegapApp = {
             if (rply.othdtl[0].marks_pub_stat!=1) {
                 $("#marksheet-link").attr("onclick", "notificationWithButton.open()");
             }
-
+            
             $("#lblCandidateProfile").attr("src", "http://susomaias.com/susoma/uploads/photo/" + rply.candprof[0].cimage + ".jpg");
             $('#lblCandidateName').html(rply.candprof[0].cname + '&nbsp;<i class="icon f7-icons md-only color-green">check_round_fill</i>');
             $('#lblCandidatePhone').html(rply.candprof[0].c_mobile);

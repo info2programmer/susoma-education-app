@@ -51,7 +51,11 @@ var app  = new Framework7({
     title: 'My App',
     closeTimeout: 3000,
     swipeToClose : true
-  }
+  },
+
+  statusbar: {
+    enabled:true
+  },
 });
 
 var swiper = app.swiper.create('.swiper-container-banner', {
