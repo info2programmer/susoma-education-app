@@ -19,6 +19,9 @@ var phonegapApp = {
 
     /******* When Device Is Ready Then This Block Will Execute ******/
     onDeviceReady: function () {
+       
+        StatusBar.backgroundColorByHexString("#0c83c8");
+        StatusBar.overlaysWebView(true);
         app.statusbar.show()
         phonegapApp.institutes()
         phonegapApp.fcmGetToken()
