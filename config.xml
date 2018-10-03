@@ -16,8 +16,9 @@
     </gap:config-file>
     <preference name="DisallowOverscroll" value="true" />
     <preference name="StatusBarOverlaysWebView" value="true" />
-    <preference name="StatusBarStyle" value="lightcontent" />
+    <preference name="StatusBarStyle" value="default" />
     <preference name="StatusBarBackgroundColor" value="#0c83c8" />
+    <preference name="StatusBarDefaultScrollToTop" value="false" />
     <preference name="android-minSdkVersion" value="18" />
     <preference name="phonegap-version" value="cli-8.0.0" />
     <preference name="Orientation" value="portrait" />

@@ -137,7 +137,7 @@
   color: #8e8e93;
 }
 .statusbar {
-  background: pink;
+  background: #0c83c8;
   /* We can add transition for smooth color animation */
   transition: 400ms;
 }
