@@ -78,9 +78,12 @@ var mainView = app.views.create('.view-main', {
 /*=== Standalone Dark ===*/
 var myPhotoBrowserDark = app.photoBrowser.create({
   photos: [
-    'http://lorempixel.com/1024/1024/sports/1/',
-    'http://lorempixel.com/1024/1024/sports/2/',
-    'http://lorempixel.com/1024/1024/sports/3/',
+    'http://susomaias.com/susoma/uploads/brochure/b1.jpg',
+    'http://susomaias.com/susoma/uploads/brochure/b2.jpg',
+    'http://susomaias.com/susoma/uploads/brochure/b3.jpg',
+    'http://susomaias.com/susoma/uploads/brochure/b4.jpg',
+    'http://susomaias.com/susoma/uploads/brochure/b5.jpg',
+    'http://susomaias.com/susoma/uploads/brochure/b6.jpg',
   ],
   theme: 'dark'
 });
