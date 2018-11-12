@@ -19,7 +19,6 @@ var phonegapApp = {
 
     /******* When Device Is Ready Then This Block Will Execute ******/
     onDeviceReady: function () {
-        app.statusbar.show()
         phonegapApp.institutes()
         phonegapApp.fcmGetToken()
         phonegapApp.courseHome()

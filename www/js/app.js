@@ -23,11 +23,7 @@ var app  = new Framework7({
     title: 'Susoma',
   },
 
-  // Status Bar 
-  statusbar: {
-    enabled: true,
-    materialBackgroundColor: '#0c83c8'
-  },
+ 
 
   // App root methods
   methods: {
