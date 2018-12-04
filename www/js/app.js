@@ -6,7 +6,7 @@ var app  = new Framework7({
   root: '#app', // App root element
   id: 'com.susomaias', // App bundle ID
   name: 'Susoma', // App name
-  theme: 'auto', // Automatic theme detection
+  theme: 'md', // Automatic theme detection
   // App root data
   data: function () {
     return {
@@ -97,6 +97,8 @@ var myPhotoBrowserDarkAssessment = app.photoBrowser.create({
 $$('.pb-standalone-dark-assessment').on('click', function () {
   myPhotoBrowserDarkAssessment.open();
 });
+
+
 
 
 var notificationWithButton = app.notification.create({

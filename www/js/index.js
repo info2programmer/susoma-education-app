@@ -22,6 +22,7 @@ var phonegapApp = {
         phonegapApp.institutes()
         phonegapApp.fcmGetToken()
         phonegapApp.courseHome()
+        phonegapApp.noticeBoard()
         if (user == "" || user == null) {
             $("#linkHyper").prop("href", "/login/profile")
             $("#linkCourse").prop("href", "/login/course")
@@ -1362,6 +1363,22 @@ var phonegapApp = {
             destinationType: Camera.DestinationType.DATA_URL
         });
     },
+
+
+    // This Function For Nitice BOard
+    noticeBoard : function () {
+        $.ajax({
+            type: "post",
+            url: url + "getNotice",
+            data: {},
+            dataType: "json",
+        }).done(function(rply){
+            // console.log(rply)
+            let image = 'http://susomaias.com/susoma/uploads/' + rply.notice
+            // console.log(image)
+            $('#imageNotice').attr('src', image)
+        })
+    }
 };  
 
 function guid() {
@@ -1395,4 +1412,9 @@ function onSuccess(imageData) {
 function onFail(message) {
     console.log('Failed because: ' + message)
 }
+
+
+
+
+
 

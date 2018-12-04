@@ -49,6 +49,25 @@ routes = [
 
   },
   {
+    path: '/notice-board/',
+    async: function (routeTo, routeFrom, resolve, reject) {
+      let router = this;
+      let unique = router.app;
+
+      unique.preloader.show();
+      setTimeout(function () {
+        phonegapApp.noticeBoard();
+        unique.preloader.hide();
+        resolve(
+          {
+            componentUrl: './pages/notice-board.html',
+          }
+        );
+      }, 1000);
+    },
+
+  },
+  {
     path: '/profile/',
     async: function (routeTo, routeFrom, resolve, reject) {
       let router = this;
