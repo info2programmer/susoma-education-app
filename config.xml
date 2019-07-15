@@ -23,10 +23,8 @@
     <preference name="StatusBarStyle" value="lightcontent" />
     <preference name="StatusBarBackgroundColor" value="#0c83c8" />
     <preference name="phonegap-version" value="cli-8.0.0" />
-    <preference name="AndroidPersistentFileLocation" value="Compatibility" />
     <preference name="SplashScreenDelay" value="6000" />
     <preference name="AutoHideSplashScreen" value="true" />
-    <preference name="AndroidExtraFilesystems" value="files,files-external,documents,sdcard,cache,cache-external,assets,root" />
     <platform name="android">
         <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="www/res/icon/android/drawable-mdpi-icon.png" />
@@ -82,9 +80,6 @@
     <plugin name="cordova-plugin-fcm" spec="^2.1.2" />
     <plugin name="cordova-plugin-device-motion" />
     <plugin name="cordova-plugin-device-orientation" />
-    <plugin name="com.telerik.plugins.nativepagetransitions" spec="~0.6.5" />
-    <plugin name="cordova-plugin-console" />
-    <plugin name="cordova-plugin-contacts" />
     <plugin name="cordova-plugin-customurlscheme" spec="~4.3.0">
         <variable name="URL_SCHEME" value="susoma" />
     </plugin>
@@ -94,6 +89,5 @@
     <plugin name="cordova-android-support-gradle-release" spec="^1.4.4">
         <variable name="ANDROID_SUPPORT_VERSION" value="27.+" />
     </plugin>
-    <plugin name="cordova-plugin-file-downloader" />
     <plugin name="cordova-plugin-statusbar" spec="^2.4.2" />
 </widget>
