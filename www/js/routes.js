@@ -83,7 +83,7 @@ routes = [
       let unique = router.app;
       unique.preloader.show();
       setTimeout(function() {
-        phonegapApp.profile();
+        phonegapApp.magazine();
         unique.preloader.hide();
         resolve({
           componentUrl: "./pages/magazine.html"
