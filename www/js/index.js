@@ -1378,6 +1378,21 @@ var phonegapApp = {
             // console.log(image)
             $('#imageNotice').attr('src', image)
         })
+    },
+
+    // This Function For Nitice BOard
+    magazine: function () {
+        $.ajax({
+            type: "post",
+            url: url + "getMagazine",
+            data: {},
+            dataType: "json",
+        }).done(function (rply) {
+            // console.log(rply)
+            let image = 'http://susomaias.com/susoma/uploads/' + rply.notice
+            // console.log(image)
+            $('#imageNotice').attr('src', image)
+        })
     }
 };  
 

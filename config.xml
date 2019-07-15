@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.susomaias" version="0.2.5" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Cross</name>
+    <name>Susoma</name>
     <description>
         INSTITUTION DEDICATED FOR ART AND CULTURE
     </description>
@@ -67,13 +67,9 @@
     <allow-intent href="geo:*" />
     <platform name="android">
         <allow-intent href="market:*" />
-        <edit-config
-        file="app/src/main/AndroidManifest.xml"
-        mode="merge"
-        target="/manifest/application"
-    >
-        <application android:largeHeap="true" />
-    </edit-config>
+        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+            <application android:largeHeap="true" />
+        </edit-config>
     </platform>
     <engine name="ios" />
     <plugin name="cordova-plugin-battery-status" spec="~1.2.4" />
@@ -104,8 +100,8 @@
     <plugin name="cordova-plugin-youtube-video-player" spec="^2.3.0" />
     <plugin name="cordova-clipboard" spec="^1.2.1" />
     <plugin name="cordova-plugin-sms-receive" spec="^1.0.2" />
-    <engine name="android" spec="6.2.3" />
     <plugin name="cordova-plugin-chooser" />
     <plugin name="cordova-plugin-spinner" />
     <plugin name="cordova-plugin-appversion" />
+    <engine name="android" spec="^8.0.0" />
 </widget>

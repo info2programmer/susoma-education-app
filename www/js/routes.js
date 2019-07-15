@@ -1,318 +1,291 @@
 routes = [
   {
-    path: '/',
-    url: './index.html',
+    path: "/",
+    url: "./index.html"
   },
   {
-    path: '/about/',
-    url: './pages/about.html',
+    path: "/about/",
+    url: "./pages/about.html"
   },
   {
-    path: '/form/',
-    url: './pages/form.html',
+    path: "/form/",
+    url: "./pages/form.html"
   },
   // Left View Pages
   {
-    path: '/left-page-1/',
-    url: './pages/left-page-1.html',
+    path: "/left-page-1/",
+    url: "./pages/left-page-1.html"
   },
   {
-    path: '/left-page-2/',
-    url: './pages/left-page-2.html',
+    path: "/left-page-2/",
+    url: "./pages/left-page-2.html"
   },
   // Page Loaders & Router
   {
-    path: '/page-loader-template7/:user/:userId/:posts/:postId/',
-    templateUrl: './pages/page-loader-template7.html',
+    path: "/page-loader-template7/:user/:userId/:posts/:postId/",
+    templateUrl: "./pages/page-loader-template7.html"
   },
   {
-    path: '/page-loader-component/:user/:userId/:posts/:postId/',
-    componentUrl: './pages/page-loader-component.html',
+    path: "/page-loader-component/:user/:userId/:posts/:postId/",
+    componentUrl: "./pages/page-loader-component.html"
   },
   {
-    path: '/notification/',
-    async: function (routeTo, routeFrom, resolve, reject) {
+    path: "/notification/",
+    async: function(routeTo, routeFrom, resolve, reject) {
       let router = this;
       let unique = router.app;
-     
+
       unique.preloader.show();
-      setTimeout(function () {
+      setTimeout(function() {
         phonegapApp.getNotification();
         unique.preloader.hide();
-        resolve(
-          {
-            componentUrl: './pages/notification.html',
-          }
-        );
+        resolve({
+          componentUrl: "./pages/notification.html"
+        });
       }, 1000);
-    },
-
+    }
   },
   {
-    path: '/notice-board/',
-    async: function (routeTo, routeFrom, resolve, reject) {
+    path: "/notice-board/",
+    async: function(routeTo, routeFrom, resolve, reject) {
       let router = this;
       let unique = router.app;
 
       unique.preloader.show();
-      setTimeout(function () {
+      setTimeout(function() {
         phonegapApp.noticeBoard();
         unique.preloader.hide();
-        resolve(
-          {
-            componentUrl: './pages/notice-board.html',
-          }
-        );
+        resolve({
+          componentUrl: "./pages/notice-board.html"
+        });
       }, 1000);
-    },
-
+    }
   },
   {
-    path: '/profile/',
-    async: function (routeTo, routeFrom, resolve, reject) {
+    path: "/profile/",
+    async: function(routeTo, routeFrom, resolve, reject) {
       let router = this;
       let unique = router.app;
       unique.preloader.show();
-      setTimeout(function () {
+      setTimeout(function() {
         phonegapApp.profile();
         unique.preloader.hide();
-        resolve(
-          {
-            componentUrl: './pages/dashbord.html',
-          }
-        );
+        resolve({
+          componentUrl: "./pages/dashbord.html"
+        });
       }, 1000);
-    },
-
+    }
+  },
+  {
+    path: "/magazine/",
+    async: function(routeTo, routeFrom, resolve, reject) {
+      let router = this;
+      let unique = router.app;
+      unique.preloader.show();
+      setTimeout(function() {
+        phonegapApp.profile();
+        unique.preloader.hide();
+        resolve({
+          componentUrl: "./pages/magazine.html"
+        });
+      }, 1000);
+    }
   },
 
   {
-    path: '/institute/',
-    async: function (routeTo, routeFrom, resolve, reject) {
+    path: "/institute/",
+    async: function(routeTo, routeFrom, resolve, reject) {
       let router = this;
       let unique = router.app;
 
       unique.preloader.show();
-      setTimeout(function () {
+      setTimeout(function() {
         phonegapApp.institutesDetails();
         unique.preloader.hide();
-        resolve(
-          {
-            componentUrl: './pages/institutes.html',
-          }
-        );
+        resolve({
+          componentUrl: "./pages/institutes.html"
+        });
       }, 1000);
-    },
-
+    }
   },
 
-
   {
-    path: '/course/',
-    async: function (routeTo, routeFrom, resolve, reject) {
+    path: "/course/",
+    async: function(routeTo, routeFrom, resolve, reject) {
       let router = this;
       let unique = router.app;
 
       unique.preloader.show();
-      setTimeout(function () {
-         phonegapApp.courses();
+      setTimeout(function() {
+        phonegapApp.courses();
         unique.preloader.hide();
-        resolve(
-          {
-            componentUrl: './pages/course.html',
-          }
-        );
+        resolve({
+          componentUrl: "./pages/course.html"
+        });
       }, 1000);
-    },
-
+    }
   },
 
   {
-    path: '/course-details/:courseId',
-    async: function (routeTo, routeFrom, resolve, reject) {
+    path: "/course-details/:courseId",
+    async: function(routeTo, routeFrom, resolve, reject) {
       let router = this;
       let unique = router.app;
       let courseId = routeTo.params.courseId;
 
       unique.preloader.show();
-      setTimeout(function () {
+      setTimeout(function() {
         // app.getChat(parseInt(id));
-        phonegapApp.courseDetails(courseId)
+        phonegapApp.courseDetails(courseId);
         unique.preloader.hide();
-        resolve(
-          {
-            componentUrl: './pages/course-details.html',
-          }
-        );
+        resolve({
+          componentUrl: "./pages/course-details.html"
+        });
       }, 1000);
-    },
-
+    }
   },
 
   {
-    path: '/review/',
-    async: function (routeTo, routeFrom, resolve, reject) {
+    path: "/review/",
+    async: function(routeTo, routeFrom, resolve, reject) {
       let router = this;
       let unique = router.app;
 
       unique.preloader.show();
-      setTimeout(function () {
+      setTimeout(function() {
         phonegapApp.reviewLists();
         unique.preloader.hide();
-        resolve(
-          {
-            componentUrl: './pages/review.html',
-          }
-        );
+        resolve({
+          componentUrl: "./pages/review.html"
+        });
       }, 1000);
-    },
-
+    }
   },
 
+  {
+    path: "/submit-review/",
+    componentUrl: "./pages/give-review.html"
+  },
 
   {
-    path: '/submit-review/',
-    componentUrl: './pages/give-review.html',
-  },
-  
-  {
-    path: '/enquiry/',
-    async: function (routeTo, routeFrom, resolve, reject) {
+    path: "/enquiry/",
+    async: function(routeTo, routeFrom, resolve, reject) {
       let router = this;
       let unique = router.app;
 
       unique.preloader.show();
-      setTimeout(function () {
+      setTimeout(function() {
         unique.preloader.hide();
-        resolve(
-          {
-            componentUrl: './pages/submit-enquiry.html',
-          }
-        );
+        resolve({
+          componentUrl: "./pages/submit-enquiry.html"
+        });
       }, 1000);
-    },
-    
+    }
   },
 
   {
-    path: '/assesment/',
-    async: function (routeTo, routeFrom, resolve, reject) {
+    path: "/assesment/",
+    async: function(routeTo, routeFrom, resolve, reject) {
       let router = this;
       let unique = router.app;
 
       unique.preloader.show();
-      setTimeout(function () {
+      setTimeout(function() {
         phonegapApp.assessmentList();
         unique.preloader.hide();
-        resolve(
-          {
-            componentUrl: './pages/assesment.html',
-          }
-        );
+        resolve({
+          componentUrl: "./pages/assesment.html"
+        });
       }, 1000);
-    },
-
+    }
   },
 
-
   {
-    path: '/policy/',
-    async: function (routeTo, routeFrom, resolve, reject) {
+    path: "/policy/",
+    async: function(routeTo, routeFrom, resolve, reject) {
       let router = this;
       let unique = router.app;
 
       unique.preloader.show();
-      setTimeout(function () {
+      setTimeout(function() {
         phonegapApp.privacy();
         unique.preloader.hide();
-        resolve(
-          {
-            componentUrl: './pages/policy.html',
-          }
-        );
+        resolve({
+          componentUrl: "./pages/policy.html"
+        });
       }, 1000);
-    },
-
+    }
   },
 
   {
-    path: '/contact/',
-    async: function (routeTo, routeFrom, resolve, reject) {
+    path: "/contact/",
+    async: function(routeTo, routeFrom, resolve, reject) {
       let router = this;
       let unique = router.app;
 
       unique.preloader.show();
-      setTimeout(function () {
+      setTimeout(function() {
         phonegapApp.studentDetails();
         unique.preloader.hide();
-        resolve(
-          {
-            componentUrl: './pages/conatct-us.html',
-          }
-        );
+        resolve({
+          componentUrl: "./pages/conatct-us.html"
+        });
       }, 1000);
-    },
-
+    }
   },
 
   {
-    path: '/application/',
-    componentUrl: './pages/application.html',
+    path: "/application/",
+    componentUrl: "./pages/application.html"
   },
 
   {
-    path: '/login/:navigateTo',
-    componentUrl: './pages/login.html',
+    path: "/login/:navigateTo",
+    componentUrl: "./pages/login.html"
   },
 
   {
-    path: '/contact-details/',
-    componentUrl: './pages/contact.html',
+    path: "/contact-details/",
+    componentUrl: "./pages/contact.html"
   },
 
-
   {
-    path: '/course-user/',
-    async: function (routeTo, routeFrom, resolve, reject) {
+    path: "/course-user/",
+    async: function(routeTo, routeFrom, resolve, reject) {
       let router = this;
       let unique = router.app;
 
       unique.preloader.show();
-      setTimeout(function () {
+      setTimeout(function() {
         phonegapApp.profile();
         unique.preloader.hide();
-        resolve(
-          {
-            componentUrl: './pages/course-user.html',
-          }
-        );
+        resolve({
+          componentUrl: "./pages/course-user.html"
+        });
       }, 1000);
-    },
+    }
   },
 
   {
-    path: '/course-content/:courseId',
-    async: function (routeTo, routeFrom, resolve, reject) {
+    path: "/course-content/:courseId",
+    async: function(routeTo, routeFrom, resolve, reject) {
       let router = this;
       let unique = router.app;
       let courseId = routeTo.params.courseId;
       unique.preloader.show();
-      setTimeout(function () {
+      setTimeout(function() {
         phonegapApp.courseContent(courseId);
         unique.preloader.hide();
-        resolve(
-          {
-            componentUrl: './pages/course-content.html',
-          }
-        );
+        resolve({
+          componentUrl: "./pages/course-content.html"
+        });
       }, 1000);
-    },
+    }
   },
 
- 
   // Default route (404 page). MUST BE THE LAST
   {
-    path: '(.*)',
-    url: './pages/404.html',
-  },
+    path: "(.*)",
+    url: "./pages/404.html"
+  }
 ];
