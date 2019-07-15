@@ -101,5 +101,4 @@
     <plugin name="cordova-plugin-spinner" />
     <plugin name="cordova-plugin-appversion" />
     <plugin name="cordova-plugin-fcm" />
-    <resource-file src="google-services.json" target="app/google-services.json" />
 </widget>
