@@ -46,7 +46,7 @@
         <splash density="port-xhdpi" src="www/res/screen/android/drawable-port-xhdpi-screen.png" />
         <splash density="port-xxhdpi" src="www/res/screen/android/drawable-port-xxhdpi-screen.png" />
         <splash density="port-xxxhdpi" src="www/res/screen/android/drawable-port-xxxhdpi-screen.png" />
-        <resource-file src="google-services.json" target="app/google-services.json" />
+        
     </platform>
     <access origin="*" />
     <access subdomains="true" uri="*" />
@@ -65,6 +65,7 @@
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
             <application android:largeHeap="true" />
         </edit-config>
+        <resource-file src="google-services.json" target="app/google-services.json" />
     </platform>
     <engine name="ios" />
     <engine name="android" spec="^8.0.0" />
