@@ -63,7 +63,6 @@
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
-    <engine name="ios" />
     <engine name="android" spec="~6.2.3" />
     <plugin name="cordova-plugin-battery-status" spec="~1.2.4" />
     <plugin name="cordova-plugin-camera" spec="~2.4.1" />
