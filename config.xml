@@ -8,14 +8,8 @@
         Team Projukti
     </author>
     <content src="index.html" />
-    <gap:config-file parent="/manifest" platform="android">
-        <application android:theme="@android:style/Theme.Wallpaper">
-            <activity android:theme="@android:style/Theme.Wallpaper">
-            </activity>
-        </application>
-    </gap:config-file>
     <preference name="DisallowOverscroll" value="false" />
-    <preference name="android-minSdkVersion" value="23" />
+    <preference name="android-minSdkVersion" value="19" />
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
     <preference name="Fullscreen" value="false" />
     <preference name="Orientation" value="portrait" />
