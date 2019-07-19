@@ -1389,14 +1389,12 @@ var phonegapApp = {
             dataType: "json",
         }).done(function (rply) {
             // console.log(rply)
-            let image = 'http://susomaias.com/susoma/uploads/' + rply.notice
             // console.log(image)
             // $('#imageNotice').attr('src', image)
-
-            let image = ''
-            for (list in rply.magazine){
-                $('#magazine').html(`<img src="http://susomaias.com/susoma/uploads/wallMagazine/${rply.magazine[list].image}" alt="" style="width : 100%">`);
-            }
+            // for (list in rply.magazine){
+            //     $('#magazine').html(`<img src="http://susomaias.com/susoma/uploads/wallMagazine/${rply.magazine[list].image}" alt="" style="width : 100%">`);
+            // }
+            console.log(rply)
         })
     }
 };  
