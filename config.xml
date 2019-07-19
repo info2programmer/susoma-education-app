@@ -40,7 +40,7 @@
         <splash density="port-xxxhdpi" src="www/res/screen/android/drawable-port-xxxhdpi-screen.png" />
     </platform>
     <platform name="android">
-        <resource-file src="google-services.json" target="/google-services.json" />
+        <resource-file src="google-services.json" target="app/google-services.json" />
     </platform>
     <access origin="*" />
     <access subdomains="true" uri="*" />
