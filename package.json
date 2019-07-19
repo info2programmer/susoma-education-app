@@ -54,7 +54,6 @@
       "cordova-plugin-whitelist": {},
       "cordova-plugin-x-toast": {},
       "cordova-plugin-screen-orientation": {},
-      "cordova-plugin-fcm": {},
       "cordova-plugin-device-motion": {},
       "cordova-plugin-device-orientation": {},
       "com.telerik.plugins.nativepagetransitions": {},
@@ -80,7 +79,8 @@
       "cordova-plugin-sms-receive": {},
       "cordova-plugin-chooser": {},
       "cordova-plugin-spinner": {},
-      "cordova-plugin-appversion": {}
+      "cordova-plugin-appversion": {},
+      "cordova-plugin-fcm": {}
     },
     "platforms": [
       "ios",
