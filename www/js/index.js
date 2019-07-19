@@ -1382,19 +1382,21 @@ var phonegapApp = {
 
     // This Function For Nitice BOard
     magazine: function () {
+        let magazine = ''
         $.ajax({
             type: "post",
             url: url + "getMagazine",
             data: {},
             dataType: "json",
         }).done(function (rply) {
-            // console.log(rply)
-            // console.log(image)
-            // $('#imageNotice').attr('src', image)
-            // for (list in rply.magazine){
-            //     $('#magazine').html(`<img src="http://susomaias.com/susoma/uploads/wallMagazine/${rply.magazine[list].image}" alt="" style="width : 100%">`);
-            // }
-            console.log(rply)
+            for(list in rply.magazine)
+            {
+                magazine += '<div class="card demo-facebook-card">'
+                magazine += `<div class="card-content"> <img src="http://susomaias.com/susoma/uploads/wallMagazine/${rply.magazine[list].image}" alt="" style="width : 100%"></div>`
+                magazine += '<div class="card-footer"><a href="#" class="link">View Now</a></div>'
+                magazine += '</div>'
+            }
+            $('#magazine').html(magazine);
         })
     }
 };  

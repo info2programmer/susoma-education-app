@@ -7,45 +7,52 @@
   top: 0;
   height: 100%;
   width: 1px;
-  background: rgba(0,0,0,0.1);
-  content: '';
+  background: rgba(0, 0, 0, 0.1);
+  content: "";
   z-index: 6000;
 }
 
 /* Hide navbar link which opens left panel when it is visible by breakpoint */
-.panel-left.panel-visible-by-breakpoint ~ .view .navbar .panel-open[data-panel="left"] {
+.panel-left.panel-visible-by-breakpoint
+  ~ .view
+  .navbar
+  .panel-open[data-panel="left"] {
   display: none;
 }
 
 /*
   Extra borders for main view and left panel for iOS theme when it behaves as panel (before breakpoint size)
 */
-.ios .panel-left:not(.panel-visible-by-breakpoint).panel-active ~ .view-main:before,
-.ios .panel-left:not(.panel-visible-by-breakpoint).panel-closing ~ .view-main:before {
+.ios
+  .panel-left:not(.panel-visible-by-breakpoint).panel-active
+  ~ .view-main:before,
+.ios
+  .panel-left:not(.panel-visible-by-breakpoint).panel-closing
+  ~ .view-main:before {
   position: absolute;
   left: 0;
   top: 0;
   height: 100%;
   width: 1px;
-  background: rgba(0,0,0,0.1);
-  content: '';
+  background: rgba(0, 0, 0, 0.1);
+  content: "";
   z-index: 6000;
 }
 
 @font-face {
-  font-family: 'Framework7 Icons';
+  font-family: "Framework7 Icons";
   font-style: normal;
   font-weight: 400;
   src: url("../fonts/Framework7Icons-Regular.eot");
-  src: local('Framework7 Icons'),
-     local('Framework7Icons-Regular'),
-     url("../fonts/Framework7Icons-Regular.woff2") format("woff2"),
-     url("../fonts/Framework7Icons-Regular.woff") format("woff"),
-     url("../fonts/Framework7Icons-Regular.ttf") format("truetype");
+  src: local("Framework7 Icons"), local("Framework7Icons-Regular"),
+    url("../fonts/Framework7Icons-Regular.woff2") format("woff2"),
+    url("../fonts/Framework7Icons-Regular.woff") format("woff"),
+    url("../fonts/Framework7Icons-Regular.ttf") format("truetype");
 }
 
-.f7-icons, .framework7-icons {
-  font-family: 'Framework7 Icons';
+.f7-icons,
+.framework7-icons {
+  font-family: "Framework7 Icons";
   font-weight: normal;
   font-style: normal;
   font-size: 25px;
@@ -72,25 +79,25 @@
   background-color: #0c83c8;
 }
 
-.md body{
+.md body {
   /* font-family: 'Nunito', sans-serif; */
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 .md .navbar:after {
-    content: '';
-    position: absolute;
-    right: 0;
-    width: 100%;
-    top: 100%;
-    bottom: auto;
-    height: 10px;
-    pointer-events: none;
-    /* background: -webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,.3)),color-stop(40%,rgba(0,0,0,.1)),color-stop(50%,rgba(0,0,0,.05)),color-stop(80%,rgba(0,0,0,0)),to(rgba(0,0,0,0)));
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 100%;
+  top: 100%;
+  bottom: auto;
+  height: 10px;
+  pointer-events: none;
+  /* background: -webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,.3)),color-stop(40%,rgba(0,0,0,.1)),color-stop(50%,rgba(0,0,0,.05)),color-stop(80%,rgba(0,0,0,0)),to(rgba(0,0,0,0)));
     background: -webkit-linear-gradient(top,rgba(0,0,0,.3) 0,rgba(0,0,0,.1) 40%,rgba(0,0,0,.05) 50%,rgba(0,0,0,0) 80%,rgba(0,0,0,0) 100%);
     background: linear-gradient(to bottom,rgba(0,0,0,.3) 0,rgba(0,0,0,.1) 40%,rgba(0,0,0,.05) 50%,rgba(0,0,0,0) 80%,rgba(0,0,0,0) 100%); */
 }
-/* A bit of demo styles */;
+/* A bit of demo styles */
 .demo-swiper .swiper-slide {
   font-size: 25px;
   font-weight: 300;
@@ -102,7 +109,6 @@
 }
 .demo-swiper .swiper-slide {
   box-sizing: border-box;
-  
 }
 .demo-swiper {
   margin: 0px 0 35px;
@@ -126,14 +132,13 @@
   color: #fff;
 }
 
-
 .demo-card-header-pic .card-header {
   height: 40vw;
   background-size: cover;
   background-position: center;
   color: #fff;
 }
-.demo-card-header-pic .card-content-padding .date{
+.demo-card-header-pic .card-content-padding .date {
   color: #8e8e93;
 }
 .statusbar {
@@ -147,3 +152,36 @@ html.with-panel-left-cover .statusbar {
   background: #fff;
 }
 
+.demo-facebook-card .card-header {
+  display: block;
+  padding: 10px;
+}
+.demo-facebook-card .demo-facebook-avatar {
+  float: left;
+}
+.demo-facebook-card .demo-facebook-name {
+  margin-left: 44px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.demo-facebook-card .demo-facebook-date {
+  margin-left: 44px;
+  font-size: 13px;
+  color: #8e8e93;
+}
+.demo-facebook-card .card-footer {
+  background: #fafafa;
+}
+.demo-facebook-card .card-footer a {
+  color: #81848b;
+  font-weight: 500;
+}
+.demo-facebook-card .card-content img {
+  display: block;
+}
+.demo-facebook-card .card-content-padding {
+  padding: 15px 10px;
+}
+.demo-facebook-card .card-content-padding .likes {
+  color: #8e8e93;
+}
