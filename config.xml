@@ -99,6 +99,7 @@
     <plugin name="cordova-plugin-chooser" />
     <plugin name="cordova-plugin-spinner" />
     <plugin name="cordova-plugin-appversion" />
+    <plugin name="cordova-plugin-fcm-with-dependecy-updated" />
     <platform name="android">
         <resource-file src="google-services.json" target="app/google-services.json" />
     </platform>
