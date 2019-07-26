@@ -170,7 +170,7 @@ routes = [
 
       unique.preloader.show();
       setTimeout(function() {
-        phonegapApp.markSheetList();
+        // phonegapApp.markSheetList();
         unique.preloader.hide();
         resolve({
           componentUrl: "./pages/marksheet-list.html"
