@@ -1393,7 +1393,7 @@ var phonegapApp = {
             {
                 magazine += '<div class="card demo-facebook-card">'
                 magazine += `<div class="card-content"> <img src="http://susomaias.com/susoma/uploads/wallMagazine/${rply.magazine[list].image}" alt="" style="width : 100%"></div>`
-                magazine += `<div class="card-footer"><a href="http://susomaias.com/susoma/uploads/wallMagazine/${rply.magazine[list].image}" target="_system" class="link external" download>View Now</a></div>`
+                magazine += `<div class="card-footer"><a href="http://susomaias.com/susoma/manage_api/downloadMagazine/${rply.magazine[list].wall_magazine_id}" target="_system" class="link external" download>Download</a></div>`
                 magazine += '</div>'
             }
             $('#magazine').html(magazine);
