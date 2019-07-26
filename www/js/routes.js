@@ -163,6 +163,23 @@ routes = [
   },
 
   {
+    path: "/marksheet-list/:userId",
+    async: function(routeTo, routeFrom, resolve, reject) {
+      let router = this;
+      let unique = router.app;
+
+      unique.preloader.show();
+      setTimeout(function() {
+        phonegapApp.markSheetList();
+        unique.preloader.hide();
+        resolve({
+          componentUrl: "./pages/marksheet-list.html"
+        });
+      }, 1000);
+    }
+  },
+
+  {
     path: "/submit-review/",
     componentUrl: "./pages/give-review.html"
   },

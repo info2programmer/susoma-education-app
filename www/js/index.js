@@ -20,7 +20,7 @@ var phonegapApp = {
     /******* When Device Is Ready Then This Block Will Execute ******/
     onDeviceReady: function () {
         phonegapApp.institutes()
-        phonegapApp.fcmGetToken()
+        // phonegapApp.fcmGetToken()
         phonegapApp.courseHome()
         phonegapApp.noticeBoard()
         if (user == "" || user == null) {
@@ -426,11 +426,7 @@ var phonegapApp = {
             if (rply.othdtl[0].cert_pub_stat!=1) {
                 $("#certificate-link").attr("onclick", "notificationWithButton.open()");
             }
-
-            if (rply.othdtl[0].marks_pub_stat!=1) {
-                $("#marksheet-link").attr("onclick", "notificationWithButton.open()");
-            }
-            
+            $("#marksheet-link").attr("href", `/marksheet-list/${user}`);
             $("#lblCandidateProfile").attr("src", "http://susomaias.com/susoma/uploads/photo/" + rply.candprof[0].cimage + ".jpg");
             $('#lblCandidateName').html(rply.candprof[0].cname + '&nbsp;<i class="icon f7-icons md-only color-green">check_round_fill</i>');
             $('#lblCandidatePhone').html(rply.candprof[0].c_mobile);

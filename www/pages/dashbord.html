@@ -1,63 +1,90 @@
 <template>
-    <div class="page">
-        <div class="navbar">
-            <div class="navbar-inner sliding">
-                <div class="left">
-                    <a href="index.html" class="link external">
-                        <i class="icon icon-back"></i>
-                        <span class="ios-only">Back</span>
-                    </a>
-                </div>
-                <div class="title">Profile</div>
-                <div class="right">
-                    <a class="link popover-open" href="#" data-popover=".popover-links"><i class="f7-icons">more_vertical</i></a>
-                </div>
-            </div>
+  <div class="page">
+    <div class="navbar">
+      <div class="navbar-inner sliding">
+        <div class="left">
+          <a href="index.html" class="link external">
+            <i class="icon icon-back"></i>
+            <span class="ios-only">Back</span>
+          </a>
         </div>
-        <div class="page-content">
-            <div class="row" style="text-align:center;margin-top: 24px;">
-                <div class="col">
-                    <img src="img/user.png" id="lblCandidateProfile" width="120">
-                    <div class="strong title" style="font-size: 20px;" id="lblCandidateName"></div>
-                    <div class="strong title" style="font-size: 12px;" id="lblCandidatePhone"></div>
-                </div>
-            </div>
-            <div class="card card-outline">
-                <div class="card-content card-content-padding">
-                    <div class="list media-list">
-                        <ul>
-                            <li>
-                                <a href="/course-user/" class="item-link item-content inset">
-                                    <div class="item-media"><i class="icon f7-icons md-only color-yellow">tabs_fill</i></div>
-                                    <div class="item-inner">
-                                        <div class="item-title-row">
-                                            <div class="item-title">Interactive Modules</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li id="t-cer">
-                                <a href="#" class="item-link item-content" onclick="phonegapApp.verifyDownloadCertificate()" id="certificate-link">
-                                    <div class="item-media"><i class="icon f7-icons md-only color-pink">list_fill</i></div>
-                                    <div class="item-inner">
-                                        <div class="item-title-row">
-                                            <div class="item-title">Certificate</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li id="t-id">
-                                <a href="#" class="item-link item-content" onclick="phonegapApp.verifyDownloadIdCard()">
-                                    <div class="item-media"><i class="icon f7-icons md-only" style="color:#615d71">person</i></div>
-                                    <div class="item-inner">
-                                        <div class="item-title-row">
-                                            <div class="item-title">Id Card</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li id="ass-add">
-                                <!-- <a href="#" class="item-link item-content inset" @click="oprnComingSoon">
+        <div class="title">Profile</div>
+        <div class="right">
+          <a class="link popover-open" href="#" data-popover=".popover-links"
+            ><i class="f7-icons">more_vertical</i></a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="page-content">
+      <div class="row" style="text-align:center;margin-top: 24px;">
+        <div class="col">
+          <img src="img/user.png" id="lblCandidateProfile" width="120" />
+          <div
+            class="strong title"
+            style="font-size: 20px;"
+            id="lblCandidateName"
+          ></div>
+          <div
+            class="strong title"
+            style="font-size: 12px;"
+            id="lblCandidatePhone"
+          ></div>
+        </div>
+      </div>
+      <div class="card card-outline">
+        <div class="card-content card-content-padding">
+          <div class="list media-list">
+            <ul>
+              <li>
+                <a href="/course-user/" class="item-link item-content inset">
+                  <div class="item-media">
+                    <i class="icon f7-icons md-only color-yellow">tabs_fill</i>
+                  </div>
+                  <div class="item-inner">
+                    <div class="item-title-row">
+                      <div class="item-title">Interactive Modules</div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li id="t-cer">
+                <a
+                  href="#"
+                  class="item-link item-content"
+                  onclick="phonegapApp.verifyDownloadCertificate()"
+                  id="certificate-link"
+                >
+                  <div class="item-media">
+                    <i class="icon f7-icons md-only color-pink">list_fill</i>
+                  </div>
+                  <div class="item-inner">
+                    <div class="item-title-row">
+                      <div class="item-title">Certificate</div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li id="t-id">
+                <a
+                  href="#"
+                  class="item-link item-content"
+                  onclick="phonegapApp.verifyDownloadIdCard()"
+                >
+                  <div class="item-media">
+                    <i class="icon f7-icons md-only" style="color:#615d71"
+                      >person</i
+                    >
+                  </div>
+                  <div class="item-inner">
+                    <div class="item-title-row">
+                      <div class="item-title">Id Card</div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li id="ass-add">
+                <!-- <a href="#" class="item-link item-content inset" @click="oprnComingSoon">
                                     <div class="item-media"><i class="icon f7-icons md-only color-green">sort_fill</i></div>
                                     <div class="item-inner">
                                         <div class="item-title-row">
@@ -65,8 +92,8 @@
                                         </div>
                                     </div>
                                 </a> -->
-                            </li>
-                            <!-- <li>
+              </li>
+              <!-- <li>
                                 <a href="#" class="item-link item-content inset" @click="oprnComingSoon">
                                     <div class="item-media"><i class="icon f7-icons md-only color-orange">compose_fill</i></div>
                                     <div class="item-inner">
@@ -76,34 +103,50 @@
                                     </div>
                                 </a>
                             </li> -->
-                            <li id="t-mar">
-                                <a href="#" class="item-link item-content inset" onclick="phonegapApp.verifyDownloadMarksheet()" id="marksheet-link">
-                                    <div class="item-media"><i class="icon f7-icons md-only color-red">bolt_round_fill</i></div>
-                                    <div class="item-inner">
-                                        <div class="item-title-row">
-                                            <div class="item-title">Marksheet</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
+              <li id="t-mar">
+                <a
+                  href=""
+                  class="item-link item-content inset"
+                  id="marksheet-link"
+                >
+                  <div class="item-media">
+                    <i class="icon f7-icons md-only color-red"
+                      >bolt_round_fill</i
+                    >
+                  </div>
+                  <div class="item-inner">
+                    <div class="item-title-row">
+                      <div class="item-title">Marksheet</div>
                     </div>
-                </div>
-            </div>
-            <div class="card card-outline" style="height: 55px;" onclick="phonegapApp.logout()">
-                <div class="card-content ripple" style="text-align: center;margin-top: 12px;font-size: 20px;">
-                    <i class="icon f7-icons md-only color-gray">logout_fill</i>&nbsp; Logout
-                </div>
-            </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
+      </div>
+      <div
+        class="card card-outline"
+        style="height: 55px;"
+        onclick="phonegapApp.logout()"
+      >
+        <div
+          class="card-content ripple"
+          style="text-align: center;margin-top: 12px;font-size: 20px;"
+        >
+          <i class="icon f7-icons md-only color-gray">logout_fill</i>&nbsp;
+          Logout
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 <script>
-    return {
-        methods: {
-            oprnComingSoon : function(){
-                notificationWithButton.open();
-            }
-        },
+  return {
+    methods: {
+      oprnComingSoon: function() {
+        notificationWithButton.open();
+      }
     }
+  };
 </script>
