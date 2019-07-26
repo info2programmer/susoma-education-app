@@ -73,7 +73,7 @@ var phonegapApp = {
                         window.location.href = "index.html"
                     }
                     else {
-                        app.router.navigate(previousURL)
+                        mainView.router.navigate(previousURL)
                     }
                 }
 
@@ -328,19 +328,19 @@ var phonegapApp = {
                 $("#lblCustomizedApplication").prop("href", "/contact/")
                 switch (redirectURL) {
                     case 'profile':
-                        app.router.navigate('/profile/')    
+                        mainView.router.navigate('/profile/')    
                         break;
                     case 'course':
-                        app.router.navigate('/course/')
+                        mainView.router.navigate('/course/')
                         break;
                     case 'review':
-                        app.router.navigate('/review/')
+                        mainView.router.navigate('/review/')
                         break;
                     case 'notification':
-                        app.router.navigate('/notification/')
+                        mainView.router.navigate('/notification/')
                         break;
                     case 'contact':
-                        app.router.navigate('/contact/')
+                        mainView.router.navigate('/contact/')
                         break;
                     default:
                     window.location.href='index.html'
