@@ -1394,6 +1394,21 @@ var phonegapApp = {
             }
             $('#magazine').html(magazine);
         })
+    },
+
+
+    // This Section For Get All Marksheet List
+    markSheetList : function(){
+        let user = localStorage.getItem('susomauser');
+
+        $.ajax({
+            type: "post",
+            url: url + "markSheetList",
+            data: {user : user},
+            dataType: "json"
+        }).done((rply) =>{
+            console.log(rply)
+        });
     }
 };  
 
