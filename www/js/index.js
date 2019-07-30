@@ -423,9 +423,8 @@ var phonegapApp = {
             $('#ass-add').html(swiching)
 
 
-            if (rply.othdtl[0].cert_pub_stat!=1) {
-                $("#certificate-link").attr("onclick", "notificationWithButton.open()");
-            }
+            
+            $("#certificate-link").attr("onclick", `/certificate-list/${user}`);
             $("#marksheet-link").attr("href", `/marksheet-list/${user}`);
             $("#lblCandidateProfile").attr("src", "http://susomaias.com/susoma/uploads/photo/" + rply.candprof[0].cimage + ".jpg");
             $('#lblCandidateName').html(rply.candprof[0].cname + '&nbsp;<i class="icon f7-icons md-only color-green">check_round_fill</i>');
@@ -1410,6 +1409,27 @@ var phonegapApp = {
             if(rply.status){
                 let markSheet = ''
                 for (list in rply.markSheetData){
+                    markSheet += `<li><a class="link external" target='_system' href="http://susomaias.com/susoma/manage_api/Marksheet/${rply.markSheetData[list].stud_id}/${rply.markSheetData[list].cert_id}">${rply.markSheetData[list].asses_month_strt} ${rply.markSheetData[list].asses_date_strt} - ${rply.markSheetData[list].asses_month_end} ${rply.markSheetData[list].asses_date_end}</a></li>`
+                }
+
+                $('#markSheetList').html(markSheet);
+            }
+        });
+    },
+
+    // this section for certificate list
+    certificateList : function () {  
+        let user = localStorage.getItem('susomauser');
+
+        $.ajax({
+            type: "post",
+            url: url + "certificateList",
+            data: { user: user },
+            dataType: "json"
+        }).done((rply) => {
+            if (rply.status) {
+                let markSheet = ''
+                for (list in rply.markSheetData) {
                     markSheet += `<li><a class="link external" target='_system' href="http://susomaias.com/susoma/manage_api/Marksheet/${rply.markSheetData[list].stud_id}/${rply.markSheetData[list].cert_id}">${rply.markSheetData[list].asses_month_strt} ${rply.markSheetData[list].asses_date_strt} - ${rply.markSheetData[list].asses_month_end} ${rply.markSheetData[list].asses_date_end}</a></li>`
                 }
 

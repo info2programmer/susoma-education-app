@@ -178,6 +178,22 @@ routes = [
       }, 1000);
     }
   },
+  {
+    path: "/certificate-list/:userId",
+    async: function(routeTo, routeFrom, resolve, reject) {
+      let router = this;
+      let unique = router.app;
+
+      unique.preloader.show();
+      setTimeout(function() {
+        phonegapApp.markSheetList();
+        unique.preloader.hide();
+        resolve({
+          componentUrl: "./pages/certificate-list.html"
+        });
+      }, 1000);
+    }
+  },
 
   {
     path: "/submit-review/",
