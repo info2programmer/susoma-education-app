@@ -1410,7 +1410,7 @@ var phonegapApp = {
             if(rply.status){
                 let markSheet = ''
                 for (list in rply.markSheetData){
-                    markSheet += `<li><a href="#">${rply.markSheetData[list].asses_month_strt} ${rply.markSheetData[list].asses_date_strt} - ${rply.markSheetData[list].asses_month_end} ${rply.markSheetData[list].asses_date_end}</a></li>`
+                    markSheet += `<li><a class="link external" href="http://susomaias.com/susoma/manage_api/Marksheet/${rply.markSheetData[list].stud_id}/${rply.markSheetData[list].cert_id}">${rply.markSheetData[list].asses_month_strt} ${rply.markSheetData[list].asses_date_strt} - ${rply.markSheetData[list].asses_month_end} ${rply.markSheetData[list].asses_date_end}</a></li>`
                 }
 
                 $('#markSheetList').html(markSheet);
