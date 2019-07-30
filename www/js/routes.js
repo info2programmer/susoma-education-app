@@ -186,7 +186,7 @@ routes = [
 
       unique.preloader.show();
       setTimeout(function() {
-        phonegapApp.markSheetList();
+        phonegapApp.certificateList();
         unique.preloader.hide();
         resolve({
           componentUrl: "./pages/certificate-list.html"
