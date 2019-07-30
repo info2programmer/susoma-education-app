@@ -1430,7 +1430,7 @@ var phonegapApp = {
             if (rply.status) {
                 let markSheet = ''
                 for (list in rply.certificateData) {
-                    markSheet += `<li><a class="link external" target='_system' href="http://susomaias.com/susoma/manage_api/Marksheet/${rply.certificateData[list].stud_id}/${rply.certificateData[list].cert_id}">${rply.certificateData[list].asses_month_strt} ${rply.certificateData[list].asses_date_strt} - ${rply.certificateData[list].asses_month_end} ${rply.certificateData[list].asses_date_end}</a></li>`
+                    markSheet += `<li><a class="link external" target='_system' href="http://susomaias.com/susoma/manage_api/Certificate/${rply.certificateData[list].stud_id}/${rply.certificateData[list].cert_id}">${rply.certificateData[list].asses_month_strt} ${rply.certificateData[list].asses_date_strt} - ${rply.certificateData[list].asses_month_end} ${rply.certificateData[list].asses_date_end}</a></li>`
                 }
 
                 $('#certificateList').html(markSheet);
