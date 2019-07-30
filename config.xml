@@ -103,3 +103,4 @@
     <platform name="android">
         <resource-file src="google-services.json" target="app/google-services.json" />
     </platform>
+</widget>
