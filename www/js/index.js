@@ -424,7 +424,7 @@ var phonegapApp = {
 
 
             
-            $("#certificate-link").attr("onclick", `/certificate-list/${user}`);
+            $("#certificate-link").attr("href", `/certificate-list/${user}`);
             $("#marksheet-link").attr("href", `/marksheet-list/${user}`);
             $("#lblCandidateProfile").attr("src", "http://susomaias.com/susoma/uploads/photo/" + rply.candprof[0].cimage + ".jpg");
             $('#lblCandidateName').html(rply.candprof[0].cname + '&nbsp;<i class="icon f7-icons md-only color-green">check_round_fill</i>');
