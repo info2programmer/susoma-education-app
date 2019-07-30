@@ -1407,7 +1407,14 @@ var phonegapApp = {
             data: {user : user},
             dataType: "json"
         }).done((rply) =>{
-            console.log(rply)
+            if(rply.status){
+                let markSheet = ''
+                for (list in rply.markSheetData){
+                    markSheet += `<li><a href="#">${rply.markSheetData[list].asses_month_strt} ${rply.markSheetData[list].asses_date_strt} - ${rply.markSheetData[list].asses_month_end} ${rply.markSheetData[list].asses_date_end}</a></li>`
+                }
+
+                $('#markSheetList').html(markSheet);
+            }
         });
     }
 };  
