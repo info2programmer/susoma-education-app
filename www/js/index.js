@@ -1433,7 +1433,7 @@ var phonegapApp = {
                     markSheet += `<li><a class="link external" target='_system' href="http://susomaias.com/susoma/manage_api/Marksheet/${rply.markSheetData[list].stud_id}/${rply.markSheetData[list].cert_id}">${rply.markSheetData[list].asses_month_strt} ${rply.markSheetData[list].asses_date_strt} - ${rply.markSheetData[list].asses_month_end} ${rply.markSheetData[list].asses_date_end}</a></li>`
                 }
 
-                $('#markSheetList').html(markSheet);
+                $('#certificateList').html(markSheet);
             }
         });
     }
