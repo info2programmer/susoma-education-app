@@ -20,7 +20,7 @@ var phonegapApp = {
     /******* When Device Is Ready Then This Block Will Execute ******/
     onDeviceReady: function () {
         phonegapApp.institutes()
-        // phonegapApp.fcmGetToken()
+        phonegapApp.fcmGetToken()
         phonegapApp.courseHome()
         phonegapApp.noticeBoard()
         if (user == "" || user == null) {
