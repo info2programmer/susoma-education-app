@@ -1362,16 +1362,23 @@ var phonegapApp = {
 
     // This Function For Nitice BOard
     noticeBoard : function () {
+        let noticeData = ''
         $.ajax({
             type: "post",
-            url: url + "getNotice",
+            url: url + "getAllActiveNotice",
             data: {},
             dataType: "json",
         }).done(function(rply){
             // console.log(rply)
-            let image = 'http://susomaias.com/susoma/uploads/' + rply.notice
-            // console.log(image)
-            $('#imageNotice').attr('src', image)
+            
+            for(list in rply.notice)
+            {
+                noticeData += '<div class="card demo-facebook-card">'
+                noticeData += `<div class="card-content"> <img src="http://susomaias.com/susoma/uploads/${rply.notice[list].brochure}" alt="" style="width : 100%"></div>`
+                
+                noticeData += '</div>'
+            }
+            $('#noticeSection').html(noticeData);
         })
     },
 
